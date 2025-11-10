@@ -21,7 +21,8 @@ namespace FinalEDPOrderingSystem
                     {
                         new Product { Name = "Laptop", Price = 49999 },
                         new Product { Name = "Smartphone", Price = 24999 },
-                      
+                        new Product { Name = "Dildo", Price = 100 }
+
                     }
                 },
                 new Category

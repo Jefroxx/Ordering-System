@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginCode\CredentialsVerifier.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Forms\Add_EditEmployees.cs">
       <SubType>Form</SubType>
@@ -143,6 +144,7 @@
     <Compile Include="Forms\ManageStocksForm.Designer.cs">
       <DependentUpon>ManageStocksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginCode\LoginInformation.cs" />
     <Compile Include="MockDatabase.cs" />
     <Compile Include="Forms\PaymentMethodCashorCard.cs">
       <SubType>Form</SubType>
@@ -523,5 +525,6 @@
   <ItemGroup>
     <None Include="Resources\BTn_Back.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

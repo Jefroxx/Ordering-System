@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,10 @@ namespace FinalEDPOrderingSystem
     internal class DBConnection
     {
         private static DBConnection instance = null;
-        public String s;
+        public string s;
         private DBConnection()
         {
-            s = "Data Source=DESKTOP-ABC1234;Initial Catalog=EDPOrderingSystemDB;Integrated Security=True";
+            s = "Data Source=DESKTOP-210F3BR\\SQLEXPRESS;Initial Catalog=MattsPrivateParts;Integrated Security=True;";
         }
         public static DBConnection getInstance()
         {
@@ -21,6 +22,10 @@ namespace FinalEDPOrderingSystem
                 instance = new DBConnection();
             }
             return instance;
+        }
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(s);
         }
     }
 }

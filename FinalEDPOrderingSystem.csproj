@@ -48,22 +48,22 @@
   <ItemGroup>
     <Compile Include="LoginCode\CredentialsVerifier.cs" />
     <Compile Include="DBConnection.cs" />
-    <Compile Include="Forms\Add_EditEmployees.cs">
+    <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add_EditEmployees.Designer.cs">
+    <Compile Include="Forms\Admin Side\Add_EditEmployees.Designer.cs">
       <DependentUpon>Add_EditEmployees.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Add_EditProductsForm.cs">
+    <Compile Include="Forms\Admin Side\Add_EditProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add_EditProductsForm.Designer.cs">
+    <Compile Include="Forms\Admin Side\Add_EditProductsForm.Designer.cs">
       <DependentUpon>Add_EditProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminMainForm.cs">
+    <Compile Include="Forms\Admin Side\AdminMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminMainForm.Designer.cs">
+    <Compile Include="Forms\Admin Side\AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPageFactory.cs" />
@@ -80,16 +80,16 @@
     <Compile Include="CartProductCard.Designer.cs">
       <DependentUpon>CartProductCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CashlessPaymentForm.cs">
+    <Compile Include="Forms\Payment\CashlessPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CashlessPaymentForm.Designer.cs">
+    <Compile Include="Forms\Payment\CashlessPaymentForm.Designer.cs">
       <DependentUpon>CashlessPaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CashPaymentForm.cs">
+    <Compile Include="Forms\Payment\CashPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CashPaymentForm.Designer.cs">
+    <Compile Include="Forms\Payment\CashPaymentForm.Designer.cs">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
@@ -99,10 +99,10 @@
     <Compile Include="CategoryPage.Designer.cs">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomerMainForm.cs">
+    <Compile Include="Forms\Customer Side\CustomerMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomerMainForm.Designer.cs">
+    <Compile Include="Forms\Customer Side\CustomerMainForm.Designer.cs">
       <DependentUpon>CustomerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DashboardPage.cs">
@@ -138,18 +138,18 @@
       <DependentUpon>LoginPage.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Forms\ManageStocksForm.cs">
+    <Compile Include="Forms\Admin Side\ManageStocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ManageStocksForm.Designer.cs">
+    <Compile Include="Forms\Admin Side\ManageStocksForm.Designer.cs">
       <DependentUpon>ManageStocksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginCode\LoginInformation.cs" />
     <Compile Include="MockDatabase.cs" />
-    <Compile Include="Forms\PaymentMethodCashorCard.cs">
+    <Compile Include="Forms\Payment\PaymentMethodCashorCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PaymentMethodCashorCard.Designer.cs">
+    <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
@@ -174,10 +174,10 @@
     <Compile Include="QRPaymentControl.Designer.cs">
       <DependentUpon>QRPaymentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ShoppingCartPage.cs">
+    <Compile Include="Forms\Customer Side\ShoppingCartPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ShoppingCartPage.Designer.cs">
+    <Compile Include="Forms\Customer Side\ShoppingCartPage.Designer.cs">
       <DependentUpon>ShoppingCartPage.cs</DependentUpon>
     </Compile>
     <Compile Include="TransactionsPage.cs">
@@ -186,19 +186,19 @@
     <Compile Include="TransactionsPage.Designer.cs">
       <DependentUpon>TransactionsPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewProductForm.cs">
+    <Compile Include="Forms\Customer Side\ViewProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewProductForm.Designer.cs">
+    <Compile Include="Forms\Customer Side\ViewProductForm.Designer.cs">
       <DependentUpon>ViewProductForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Add_EditEmployees.resx">
+    <EmbeddedResource Include="Forms\Admin Side\Add_EditEmployees.resx">
       <DependentUpon>Add_EditEmployees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add_EditProductsForm.resx">
+    <EmbeddedResource Include="Forms\Admin Side\Add_EditProductsForm.resx">
       <DependentUpon>Add_EditProductsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminMainForm.resx">
+    <EmbeddedResource Include="Forms\Admin Side\AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CardPaymentControl.resx">
@@ -207,16 +207,16 @@
     <EmbeddedResource Include="CartProductCard.resx">
       <DependentUpon>CartProductCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CashlessPaymentForm.resx">
+    <EmbeddedResource Include="Forms\Payment\CashlessPaymentForm.resx">
       <DependentUpon>CashlessPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CashPaymentForm.resx">
+    <EmbeddedResource Include="Forms\Payment\CashPaymentForm.resx">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CategoryPage.resx">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomerMainForm.resx">
+    <EmbeddedResource Include="Forms\Customer Side\CustomerMainForm.resx">
       <DependentUpon>CustomerMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardPage.resx">
@@ -235,10 +235,10 @@
       <DependentUpon>LoginPage.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ManageStocksForm.resx">
+    <EmbeddedResource Include="Forms\Admin Side\ManageStocksForm.resx">
       <DependentUpon>ManageStocksForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PaymentMethodCashorCard.resx">
+    <EmbeddedResource Include="Forms\Payment\PaymentMethodCashorCard.resx">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductCard.resx">
@@ -260,13 +260,13 @@
     <EmbeddedResource Include="QRPaymentControl.resx">
       <DependentUpon>QRPaymentControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ShoppingCartPage.resx">
+    <EmbeddedResource Include="Forms\Customer Side\ShoppingCartPage.resx">
       <DependentUpon>ShoppingCartPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransactionsPage.resx">
       <DependentUpon>TransactionsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewProductForm.resx">
+    <EmbeddedResource Include="Forms\Customer Side\ViewProductForm.resx">
       <DependentUpon>ViewProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

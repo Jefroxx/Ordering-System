@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Employee;
 
 namespace FinalEDPOrderingSystem
 {
@@ -88,15 +89,22 @@ namespace FinalEDPOrderingSystem
         }
         private void btnAddEmployees_Click(object sender, EventArgs e)
         {
-            using (Add_EditEmployees add_Editemp = new Add_EditEmployees())
+            DBConnection db = DBConnection.getInstance();
+            using (SqlConnection conn = db.GetConnection())
             {
-                add_Editemp.Status = "Add";
-                add_Editemp.StartPosition = FormStartPosition.CenterParent;
-                if (add_Editemp.ShowDialog(this.FindForm()) == DialogResult.OK)
+                EmployeeRepository repository = new EmployeeRepository(conn);
+
+                using (Add_EditEmployees add_Editemp = new Add_EditEmployees(repository))
                 {
-                    LoadEmployees(); // refresh the grid after adding
+                    add_Editemp.Status = "Add"; // or "Edit"
+                    add_Editemp.StartPosition = FormStartPosition.CenterParent;
+
+                    if (add_Editemp.ShowDialog(this.FindForm()) == DialogResult.OK)
+                    {
+                        LoadEmployees(); // Refresh your DataGridView
+                    }
                 }
-            }
+            }   
         }
         private void btnEditEmployees_Click(object sender, EventArgs e)
         {
@@ -104,15 +112,29 @@ namespace FinalEDPOrderingSystem
             {
                 int empID = Convert.ToInt32(EmployeesViewer.SelectedRows[0].Cells["EmployeeID"].Value);
 
-                using (Add_EditEmployees add_Editemp = new Add_EditEmployees())
+                DBConnection db = DBConnection.getInstance();
+                using (SqlConnection conn = db.GetConnection())
                 {
-                    add_Editemp.Status = "Edit";
-                    add_Editemp.EmployeeID = empID;   // <-- IMPORTANT
-                    add_Editemp.StartPosition = FormStartPosition.CenterParent;
+                    EmployeeRepository repository = new EmployeeRepository(conn);
 
-                    if (add_Editemp.ShowDialog(this.FindForm()) == DialogResult.OK)
+                    // Fetch the employee first
+                    EmployeeInformation empToEdit = repository.GetEmployeeByID(empID);
+                    if (empToEdit == null)
                     {
-                        LoadEmployees(); // refresh the grid after editing
+                        MessageBox.Show("Employee not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    using (Add_EditEmployees editForm = new Add_EditEmployees(repository))
+                    {
+                        editForm.Status = "Edit";
+                        editForm.CurrentEmployee = empToEdit; // <-- must pass the employee here
+                        editForm.StartPosition = FormStartPosition.CenterParent;
+
+                        if (editForm.ShowDialog(this.FindForm()) == DialogResult.OK)
+                        {
+                            LoadEmployees();
+                        }
                     }
                 }
             }

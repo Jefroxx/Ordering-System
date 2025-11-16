@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using FinalEDPOrderingSystem.Code.Product;
 
 namespace FinalEDPOrderingSystem
 {
     public partial class Add_EditProductsForm : Form
     {
         public string Status;
-
-        public Add_EditProductsForm()
+        private readonly ProductRepository _repository;
+        public ProductInformation CurrentProduct { get; set; }
+        public Add_EditProductsForm(ProductRepository repo)
         {
             InitializeComponent();
+            _repository = repo;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -37,76 +40,42 @@ namespace FinalEDPOrderingSystem
                 return;
             //Need pasahan og value tanan
 
-            DBConnection db = DBConnection.getInstance();
+           ProductInformation product = new ProductInformation
+            {
+                ProductID = CurrentProduct?.ProductID ?? 0,
+                Brand = txtProdBrand.Text.Trim(),
+                Model = txtProdModel.Text.Trim(),
+                Stocks = int.Parse(txtStocks.Text),
+                Price = decimal.Parse(txtPrice.Text),
+                Description = txtDescription.Text.Trim()
+            };
 
             if (Status == "Add")
             {
-                using (SqlConnection conn = db.GetConnection())
+                var (success, id) = _repository.AddProduct(product);
+
+                if (success)
                 {
-                    using (SqlCommand cmd = new SqlCommand("AddProduct", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@Product_Brand", txtProdBrand.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Product_Model", txtProdModel.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Stocks", Convert.ToInt32(txtStocks.Text));
-                        cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPrice.Text));
-                        cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
-
-                        conn.Open();
-
-                        int result = Convert.ToInt32(cmd.ExecuteScalar());
-
-                        using(SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if(reader.Read())
-                            {
-                                int success = Convert.ToInt32(reader["Success"]);
-                                if (result == 1)
-                                {
-                                    int newProductID = Convert.ToInt32(reader["ProductID"]);
-
-                                    MessageBox.Show($"Product added successfully!\nAssigned Product ID: {newProductID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("A product with the same brand and model already exists!", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                        }
-                    }
+                    MessageBox.Show($"Product added successfully! ID: {id}");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Duplicate product already exists!");
                 }
             }
             else if (Status == "Edit")
             {
+                bool success = _repository.UpdateProduct(product);
 
-                using (SqlConnection conn = db.GetConnection())
+                if (success)
                 {
-                    using (SqlCommand cmd = new SqlCommand("EditProduct", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        //cmd.Parameters.AddWithValue("@ProductID", Convert.ToInt32(txtProductID.Text));
-                        cmd.Parameters.AddWithValue("@Product_Brand", txtProdBrand.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Product_Model", txtProdModel.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Stocks", Convert.ToInt32(txtStocks.Text));
-                        cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPrice.Text));
-                        cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
-
-                        conn.Open();
-
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Product " + Status + "ed Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        catch (SqlException ex)
-                        {
-                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
+                    MessageBox.Show("Product updated successfully!");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Update failed.");
                 }
             }
                 
@@ -129,6 +98,14 @@ namespace FinalEDPOrderingSystem
                 txtStocks.ReadOnly = true;
             }
         }
+        private void LoadProductData()
+        {
+            txtProdBrand.Text = CurrentProduct.Brand;
+            txtProdModel.Text = CurrentProduct.Model;
+            txtStocks.Text = CurrentProduct.Stocks.ToString();
+            txtPrice.Text = CurrentProduct.Price.ToString("0.00");
+            txtDescription.Text = CurrentProduct.Description;
+        }
 
         //Form Cleaners
         private void Add_EditProductsForm_Load(object sender, EventArgs e)
@@ -137,6 +114,9 @@ namespace FinalEDPOrderingSystem
             ButtonDesigner.MainButtons(btnAddProducts);
             ButtonDesigner.SecondaryButtons(btnCancel);
             ButtonDesigner.SecondaryButtons(btnUploadImage);
+
+            if (Status == "Edit" && CurrentProduct != null)
+                LoadProductData();
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)

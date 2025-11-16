@@ -8,175 +8,91 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Employee;
 
 namespace FinalEDPOrderingSystem
 {
     public partial class Add_EditEmployees : Form
     {
-        public int EmployeeID { get; set; }
-        public string Status;
-        public Add_EditEmployees()
+        private readonly EmployeeRepository _repository;
+        public EmployeeInformation CurrentEmployee { get; set; }
+        public string Status { get; set; }
+        public Add_EditEmployees(EmployeeRepository repository)
         {
             InitializeComponent();
+            _repository = repository;
             FillGender();
         }
+
 
         private void FillGender()
         {
             GenderComboBox.Items.Add("Male");
             GenderComboBox.Items.Add("Female");
         }
-
         private void LoadEmployeeData()
         {
-            DBConnection db = DBConnection.getInstance();
-
-            using (SqlConnection conn = db.GetConnection())
+            if (CurrentEmployee != null)
             {
-                using (SqlCommand cmd = new SqlCommand("GetEmployeeByID", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
-
-                    conn.Open();
-
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-                            txtLname.Text = dr["LastName"].ToString();
-                            txtFname.Text = dr["FirstName"].ToString();
-                            txtMI.Text = dr["MI"].ToString();
-                            birthdayPicker.Value = Convert.ToDateTime(dr["Birthday"]);
-                            GenderComboBox.Text = dr["Gender"].ToString();
-                            txtAge.Text = dr["Age"].ToString();
-                            txtContactNo.Text = dr["ContactNo"].ToString();
-                            txtAddress.Text = dr["Address"].ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Employee not found!");
-                        }
-                    }
-                }
+                txtLname.Text = CurrentEmployee.LastName;
+                txtFname.Text = CurrentEmployee.FirstName;
+                txtMI.Text = CurrentEmployee.MiddleInitial;
+                birthdayPicker.Value = CurrentEmployee.Birthday;
+                GenderComboBox.Text = CurrentEmployee.Gender;
+                txtAge.Text = CurrentEmployee.Age.ToString();
+                txtContactNo.Text = CurrentEmployee.ContactNo;
+                txtAddress.Text = CurrentEmployee.Address;
             }
         }
-
-
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            if (!InputCheckers.NullChecker(txtLname, "Last Name")
-             || !InputCheckers.NullChecker(txtFname, "First Name") ||
-             !InputCheckers.NullChecker(txtContactNo, "Contact") ||
-             !InputCheckers.NullChecker(txtAge, "Age") ||
-             !InputCheckers.NullChecker(txtAddress, "Address"))
-                return;
-
-            DBConnection db = DBConnection.getInstance();
-
-            if(Status == "Add")
+            EmployeeInformation emp = new EmployeeInformation
             {
-                using (SqlConnection conn = db.GetConnection())
+                EmployeeID = CurrentEmployee?.EmployeeID ?? 0,
+                LastName = txtLname.Text.Trim(),
+                FirstName = txtFname.Text.Trim(),
+                MiddleInitial = txtMI.Text.Trim(),
+                Birthday = birthdayPicker.Value.Date,
+                Gender = GenderComboBox.SelectedItem?.ToString(),
+                Age = int.Parse(txtAge.Text.Trim()),
+                ContactNo = txtContactNo.Text.Trim(),
+                Address = txtAddress.Text.Trim()
+            };
+
+            if (Status == "Add")
+            {
+                var (success, newID) = _repository.AddEmployee(emp);
+                if (success)
                 {
-                    using (SqlCommand cmd = new SqlCommand("AddEmployee", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@Last_Name", txtLname.Text.Trim());
-                        cmd.Parameters.AddWithValue("@First_Name", txtFname.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Middle_Initial", txtMI.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Birthday", birthdayPicker.Value.Date);
-                        cmd.Parameters.AddWithValue("@Gender", GenderComboBox.SelectedItem?.ToString());
-                        cmd.Parameters.AddWithValue("@Age", int.Parse(txtAge.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@Contact_Number", txtContactNo.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
-
-                        conn.Open();
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int success = Convert.ToInt32(reader["Success"]);
-
-                                if (success == 1)
-                                {
-                                    int newEmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                                    MessageBox.Show("Employee added successfully! New Employee ID: " + newEmployeeID);
-                                    this.DialogResult = DialogResult.OK;   // <-- INSERTED
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("An employee with the same first and last name already exists!");
-                                }
-                            }
-                        }
-                    }
+                    MessageBox.Show($"Employee added successfully! ID: {newID}");
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
+                else
+                    MessageBox.Show("Duplicate employee exists.");
             }
             else if (Status == "Edit")
             {
-                using (SqlConnection conn = db.GetConnection())
+                bool success = _repository.UpdateEmployee(emp);
+                if (success)
                 {
-                    using (SqlCommand cmd = new SqlCommand("UpdateEmployee", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        // Send EmployeeID to the stored procedure
-                        cmd.Parameters.AddWithValue("@EmployeeID", this.EmployeeID);
-
-                        cmd.Parameters.AddWithValue("@Last_Name", txtLname.Text.Trim());
-                        cmd.Parameters.AddWithValue("@First_Name", txtFname.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Middle_Initial", txtMI.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Birthday", birthdayPicker.Value.Date);
-                        cmd.Parameters.AddWithValue("@Gender", GenderComboBox.SelectedItem?.ToString());
-                        cmd.Parameters.AddWithValue("@Age", int.Parse(txtAge.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@Contact_Number", txtContactNo.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
-
-                        conn.Open();
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int success = Convert.ToInt32(reader["Success"]);
-
-                                if (success == 1)
-                                {
-                                    MessageBox.Show("Employee updated successfully!",
-                                                    "Success",
-                                                    MessageBoxButtons.OK,
-                                                    MessageBoxIcon.Information);
-                                    this.DialogResult = DialogResult.OK;   // <-- INSERTED
-                                    this.Close();
-                                }
-                                else if (success == 0)
-                                {
-                                    MessageBox.Show("Another employee with the same first and last name already exists!",
-                                                    "Duplicate",
-                                                    MessageBoxButtons.OK,
-                                                    MessageBoxIcon.Warning);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Employee update failed.",
-                                                    "Error",
-                                                    MessageBoxButtons.OK,
-                                                    MessageBoxIcon.Error);
-                                }
-                            }
-                        }
-                    }
+                    MessageBox.Show("Employee updated successfully.");
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
+                else
+                    MessageBox.Show("Duplicate employee exists.");
             }
         }
 
         private void Add_EditEmployees_Load(object sender, EventArgs e)
         {
-            if (Status == "Edit")
+            if (Status == "Edit" && CurrentEmployee != null)
+            {
+                // Reload from DB in case data changed
+                CurrentEmployee = _repository.GetEmployeeByID(CurrentEmployee.EmployeeID);
                 LoadEmployeeData();
+            }
             ButtonDesigner.MainButtons(btnAddEmployee);
             ButtonDesigner.SecondaryButtons(btnCancel);
             ButtonDesigner.SecondaryButtons(btnUploadImage);

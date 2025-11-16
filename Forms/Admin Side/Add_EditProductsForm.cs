@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace FinalEDPOrderingSystem
 {
@@ -27,14 +29,87 @@ namespace FinalEDPOrderingSystem
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
 
-            if (!InputCheckers.NullChecker(txtProdName, "Product Name")
+            if (!InputCheckers.NullChecker(txtProdBrand, "Product Brand")
+               || !InputCheckers.NullChecker(txtProdModel, "Product Model")
                || !InputCheckers.NullChecker(txtStocks, "Stocks") ||
                !InputCheckers.NullChecker(txtPrice, "Price") ||
                !InputCheckers.NullChecker(txtDescription, "Description"))
                 return;
             //Need pasahan og value tanan
-            MessageBox.Show("Product " + Status + "ed Successfully!");
-            this.Close();
+
+            DBConnection db = DBConnection.getInstance();
+
+            if (Status == "Add")
+            {
+                using (SqlConnection conn = db.GetConnection())
+                {
+                    using (SqlCommand cmd = new SqlCommand("AddProduct", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Product_Brand", txtProdBrand.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Product_Model", txtProdModel.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Stocks", Convert.ToInt32(txtStocks.Text));
+                        cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPrice.Text));
+                        cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
+
+                        conn.Open();
+
+                        int result = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if(reader.Read())
+                            {
+                                int success = Convert.ToInt32(reader["Success"]);
+                                if (result == 1)
+                                {
+                                    int newProductID = Convert.ToInt32(reader["ProductID"]);
+
+                                    MessageBox.Show($"Product added successfully!\nAssigned Product ID: {newProductID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("A product with the same brand and model already exists!", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (Status == "Edit")
+            {
+
+                using (SqlConnection conn = db.GetConnection())
+                {
+                    using (SqlCommand cmd = new SqlCommand("EditProduct", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        //cmd.Parameters.AddWithValue("@ProductID", Convert.ToInt32(txtProductID.Text));
+                        cmd.Parameters.AddWithValue("@Product_Brand", txtProdBrand.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Product_Model", txtProdModel.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Stocks", Convert.ToInt32(txtStocks.Text));
+                        cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPrice.Text));
+                        cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
+
+                        conn.Open();
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Product " + Status + "ed Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+                
         }
 
         //Buttons Loader/Settings
@@ -72,6 +147,11 @@ namespace FinalEDPOrderingSystem
         private void txtStocks_KeyPress(object sender, KeyPressEventArgs e)
         {
             InputCheckers.NumbersOnly(e);
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

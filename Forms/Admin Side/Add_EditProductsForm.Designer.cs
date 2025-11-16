@@ -30,7 +30,7 @@
         {
             this.btnUploadImage = new System.Windows.Forms.Button();
             this.btnAddProducts = new System.Windows.Forms.Button();
-            this.txtProdName = new System.Windows.Forms.TextBox();
+            this.txtProdBrand = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtStocks = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -47,6 +47,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtProdModel = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.btnUploadImage.BackColor = System.Drawing.Color.Transparent;
             this.btnUploadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUploadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUploadImage.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadImage.ForeColor = System.Drawing.Color.Transparent;
             this.btnUploadImage.Location = new System.Drawing.Point(148, 481);
             this.btnUploadImage.Name = "btnUploadImage";
@@ -67,7 +69,7 @@
             // 
             this.btnAddProducts.BackColor = System.Drawing.Color.Transparent;
             this.btnAddProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddProducts.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProducts.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddProducts.Location = new System.Drawing.Point(683, 481);
             this.btnAddProducts.Name = "btnAddProducts";
@@ -76,16 +78,16 @@
             this.btnAddProducts.UseVisualStyleBackColor = false;
             this.btnAddProducts.Click += new System.EventHandler(this.btnAddProducts_Click);
             // 
-            // txtProdName
+            // txtProdBrand
             // 
-            this.txtProdName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.txtProdName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProdName.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
-            this.txtProdName.Location = new System.Drawing.Point(433, 76);
-            this.txtProdName.Name = "txtProdName";
-            this.txtProdName.Size = new System.Drawing.Size(492, 33);
-            this.txtProdName.TabIndex = 41;
+            this.txtProdBrand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtProdBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProdBrand.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdBrand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtProdBrand.Location = new System.Drawing.Point(433, 76);
+            this.txtProdBrand.Name = "txtProdBrand";
+            this.txtProdBrand.Size = new System.Drawing.Size(169, 33);
+            this.txtProdBrand.TabIndex = 41;
             // 
             // txtPrice
             // 
@@ -153,9 +155,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.label3.Location = new System.Drawing.Point(429, 53);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 20);
+            this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 53;
-            this.label3.Text = "Product Name";
+            this.label3.Text = "Product Brand";
             // 
             // label1
             // 
@@ -209,7 +211,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancel.Font = new System.Drawing.Font("Imprint MT Shadow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
             this.btnCancel.Location = new System.Drawing.Point(511, 481);
             this.btnCancel.Name = "btnCancel";
@@ -266,6 +268,30 @@
             this.panel4.Size = new System.Drawing.Size(10, 545);
             this.panel4.TabIndex = 60;
             // 
+            // txtProdModel
+            // 
+            this.txtProdModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtProdModel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProdModel.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtProdModel.Location = new System.Drawing.Point(633, 76);
+            this.txtProdModel.Name = "txtProdModel";
+            this.txtProdModel.Size = new System.Drawing.Size(292, 33);
+            this.txtProdModel.TabIndex = 61;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label7.Location = new System.Drawing.Point(629, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(123, 20);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Product Model";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // Add_EditProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +299,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(998, 565);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtProdModel);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -288,7 +316,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtStocks);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.txtProdName);
+            this.Controls.Add(this.txtProdBrand);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.btnAddProducts);
@@ -308,7 +336,7 @@
 
         private System.Windows.Forms.Button btnUploadImage;
         private System.Windows.Forms.Button btnAddProducts;
-        private System.Windows.Forms.TextBox txtProdName;
+        private System.Windows.Forms.TextBox txtProdBrand;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtStocks;
         private System.Windows.Forms.TextBox txtDescription;
@@ -325,5 +353,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtProdModel;
+        private System.Windows.Forms.Label label7;
     }
 }

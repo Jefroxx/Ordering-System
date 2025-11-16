@@ -76,6 +76,8 @@
             this.EmployeesViewer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.EmployeesViewer.Size = new System.Drawing.Size(989, 491);
             this.EmployeesViewer.TabIndex = 46;
+            this.EmployeesViewer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeesViewer_CellContentClick);
+            this.EmployeesViewer.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.EmployeesViewer_DataBindingComplete);
             // 
             // filterComboBox
             // 
@@ -92,7 +94,7 @@
             // 
             this.btnEditEmployees.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_43;
             this.btnEditEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEditEmployees.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.btnEditEmployees.Location = new System.Drawing.Point(752, 15);
             this.btnEditEmployees.Name = "btnEditEmployees";
@@ -108,7 +110,7 @@
             this.btnAddEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.btnAddEmployees.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_41;
             this.btnAddEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddEmployees.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployees.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddEmployees.Location = new System.Drawing.Point(875, 15);
             this.btnAddEmployees.Name = "btnAddEmployees";

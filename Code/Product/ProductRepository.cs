@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Data.Common;
 
 namespace FinalEDPOrderingSystem.Code.Product
 {
@@ -101,6 +102,18 @@ namespace FinalEDPOrderingSystem.Code.Product
             }
 
             return null;
+        }
+        public bool UpdateProductStock(int productID, int newStock)
+        {
+            using (SqlCommand cmd = new SqlCommand("UpdateProductStock", _conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+                cmd.Parameters.AddWithValue("@NewStock", newStock);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
         }
     }
 }

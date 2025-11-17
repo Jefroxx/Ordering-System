@@ -65,6 +65,7 @@
             this.txtProdID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtProdID.Location = new System.Drawing.Point(85, 164);
             this.txtProdID.Name = "txtProdID";
+            this.txtProdID.ReadOnly = true;
             this.txtProdID.Size = new System.Drawing.Size(430, 33);
             this.txtProdID.TabIndex = 43;
             this.txtProdID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdID_KeyPress);

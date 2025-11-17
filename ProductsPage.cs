@@ -87,10 +87,47 @@ namespace FinalEDPOrderingSystem
 
         private void btnManageStocks_Click(object sender, EventArgs e)
         {
-            using (ManageStocksForm manager = new ManageStocksForm())
+            if (Productsviewer.SelectedRows.Count == 0)
             {
-                manager.StartPosition = FormStartPosition.CenterParent;
-                manager.ShowDialog(this.FindForm());
+                MessageBox.Show("Please select a product to manage.",
+                                "Manage Stocks",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Get the selected ProductID
+            int productID = Convert.ToInt32(Productsviewer.SelectedRows[0].Cells["ProductID"].Value);
+
+            DBConnection db = DBConnection.getInstance();
+            using (SqlConnection conn = db.GetConnection())
+            {
+                ProductRepository repository = new ProductRepository(conn);
+
+                // Fetch the product to edit
+                ProductInformation product = repository.GetProductByID(productID);
+
+                if (product == null)
+                {
+                    MessageBox.Show("Product not found.",
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Open stock management form
+                using (ManageStocksForm manager = new ManageStocksForm(repository))
+                {
+                    manager.CurrentProduct = product;   // ← Load ID, Name, Stock
+                    manager.StartPosition = FormStartPosition.CenterParent;
+
+                    // IMPORTANT: refresh table after updating!
+                    if (manager.ShowDialog(this.FindForm()) == DialogResult.OK)
+                    {
+                        LoadProducts();   // <<< REFRESH TABLE
+                    }
+                }
             }
         }
         private void FormatEmployeeGrid()

@@ -77,6 +77,7 @@
             this.lblCategory.Size = new System.Drawing.Size(42, 16);
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "label1";
+            this.lblCategory.Visible = false;
             // 
             // ProductCard
             // 

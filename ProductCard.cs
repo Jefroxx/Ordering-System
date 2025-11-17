@@ -12,6 +12,7 @@ namespace FinalEDPOrderingSystem
 {
     public partial class ProductCard : UserControl
     {
+        public int ProductID { get; set; }
         public ProductCard()
         {
             InitializeComponent();
@@ -53,10 +54,14 @@ namespace FinalEDPOrderingSystem
 
         private void ProductCard_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
-            ViewProductForm cartForm = new ViewProductForm();
-            cartForm.FormClosed += (s, args) => this.Show();
-            cartForm.Show();
+            var card = sender as ProductCard; // cast sender to your card type
+            if (card == null) return;
+
+            this.Hide();
+            ViewProductForm viewForm = new ViewProductForm();
+            viewForm.ProductID = card.ProductID; // pass the correct ID
+            viewForm.FormClosed += (s, args) => this.Show();
+            viewForm.Show();
         }
     }
 }

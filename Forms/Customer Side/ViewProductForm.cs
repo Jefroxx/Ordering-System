@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,45 @@ namespace FinalEDPOrderingSystem
 {
     public partial class ViewProductForm : Form
     {
+        public int ProductID { get; set; }
         public int Quantity = 1;
         public ViewProductForm()
         {
             InitializeComponent();
         }
+        private void LoadProductDetails()
+        {
+            DBConnection db = DBConnection.getInstance();
 
-   
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("GetProductWithCategory", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductID", ProductID);
+                    MessageBox.Show(ProductID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            lblProductName.Text = reader["Brand"].ToString() + " " + reader["Model"].ToString();
+                            lblPrice.Text = $"₱{Convert.ToDecimal(reader["Price"]):N2}";
+                            txtDescription.Text = reader["Description"] == DBNull.Value ? "" : reader["Description"].ToString();
+                            lblCategory.Text = reader["CategoryName"] == DBNull.Value ? "No Category" : reader["CategoryName"].ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void BackButton_Click(object sender, EventArgs e)
         {
@@ -28,6 +61,8 @@ namespace FinalEDPOrderingSystem
         private void ViewProductForm_Load(object sender, EventArgs e)
         {
             txtQuantity.Text = Quantity.ToString();
+            LoadProductDetails();
+
         }
 
 
@@ -35,6 +70,7 @@ namespace FinalEDPOrderingSystem
         private void PlusQuantityBtn_Click(object sender, EventArgs e)
         {
             txtQuantity.Text = (int.Parse(txtQuantity.Text) + 1).ToString();
+
         }
 
         private void MinusQuantityBtn_Click(object sender, EventArgs e)

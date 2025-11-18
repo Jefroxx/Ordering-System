@@ -27,7 +27,6 @@ namespace FinalEDPOrderingSystem.Code.Employee
                 cmd.Parameters.AddWithValue("@Middle_Initial", emp.MiddleInitial);
                 cmd.Parameters.AddWithValue("@Birthday", emp.Birthday);
                 cmd.Parameters.AddWithValue("@Gender", emp.Gender);
-                cmd.Parameters.AddWithValue("@Age", emp.Age);
                 cmd.Parameters.AddWithValue("@Contact_Number", emp.ContactNo);
                 cmd.Parameters.AddWithValue("@Address", emp.Address);
 

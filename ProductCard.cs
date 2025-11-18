@@ -22,6 +22,7 @@ namespace FinalEDPOrderingSystem
         {
             get => lblProductName.Text;
             set => lblProductName.Text = value;
+
         }
 
         public decimal Price
@@ -52,6 +53,7 @@ namespace FinalEDPOrderingSystem
             return bmp;
         }
 
+
         private void ProductCard_Click(object sender, EventArgs e)
         {
             var card = sender as ProductCard; // cast sender to your card type
@@ -62,6 +64,33 @@ namespace FinalEDPOrderingSystem
             viewForm.ProductID = card.ProductID; // pass the correct ID
             viewForm.FormClosed += (s, args) => this.Show();
             viewForm.Show();
+        }
+
+        private void ProductCard_Load(object sender, EventArgs e)
+        {
+
+            FitLabelFont(lblProductName);
+        }
+        private void FitLabelFont(Label lbl)
+        {
+            if (string.IsNullOrEmpty(lbl.Text)) return;
+
+            int labelWidth = lbl.Width;
+            int labelHeight = lbl.Height;
+            float fontSize = lbl.Font.Size;
+
+            using (Graphics g = lbl.CreateGraphics())
+            {
+                SizeF textSize = g.MeasureString(lbl.Text, lbl.Font);
+
+                // Shrink until it fits
+                while ((textSize.Width > labelWidth || textSize.Height > labelHeight) && fontSize > 1)
+                {
+                    fontSize -= 0.5f;
+                    lbl.Font = new Font(lbl.Font.FontFamily, fontSize, lbl.Font.Style);
+                    textSize = g.MeasureString(lbl.Text, lbl.Font);
+                }
+            }
         }
     }
 }

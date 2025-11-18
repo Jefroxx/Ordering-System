@@ -47,7 +47,11 @@ namespace FinalEDPOrderingSystem
                     Width = 125,
                     ForeColor = Color.FromArgb(32, 42, 192),
                     BackColor = Color.FromArgb(234, 235, 255),
-                    Height = 75
+                    Height = 75,
+
+                    AutoSize = false,                                  // Keep button size fixed
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    UseCompatibleTextRendering = true
                 };
                 ButtonDesigner.SecondaryButtons(btn);
                 btn.Click += (s, e) => ShowCategory(cat);

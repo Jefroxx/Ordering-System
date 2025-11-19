@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Interfaces;
+using FinalEDPOrderingSystem.Code.Product;
+using FinalEDPOrderingSystem.Code.Repositories;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace FinalEDPOrderingSystem
@@ -16,6 +19,15 @@ namespace FinalEDPOrderingSystem
         public CustomerMainForm()
         {
             InitializeComponent();
+            var conn = DBConnection.getInstance().GetConnection();
+
+            // 2. Create the repositories
+            IProductRepository productRepo = new ProductRepository(conn);
+            ICartRepository cartRepo = new CartRepository();
+
+            // 3. Create the service
+            ICartService cartService = new CartService(productRepo, cartRepo);
+
             LoadCategories();
             ShowHomepage();
         }
@@ -94,12 +106,25 @@ namespace FinalEDPOrderingSystem
             var back = new LandingPage();
             back.Show();
         }
-
+        private readonly ICartService _cartService;
+        private readonly int _cartID;
         private void BtnCart_Click(object sender, EventArgs e)
         {
-            this.Hide(); // hide current form
-            ShoppingCartPage cartForm = new ShoppingCartPage();
-            cartForm.FormClosed += (s, args) => this.Show(); 
+
+            // 1. Get database connection
+            var conn = DBConnection.getInstance().GetConnection();
+
+            // 2. Create repositories
+            IProductRepository productRepo = new ProductRepository(conn);
+            ICartRepository cartRepo = new CartRepository(conn);
+
+            // 3. Create service
+            ICartService cartService = new CartService(productRepo, cartRepo);
+
+            // 4. Pass service to ShoppingCartPage
+            int cartId = 1; // your active cart ID
+            ShoppingCartPage cartForm = new ShoppingCartPage(cartService, cartId);
+            cartForm.FormClosed += (s, args) => this.Show();
             cartForm.Show();
         }
     }

@@ -32,8 +32,8 @@ namespace FinalEDPOrderingSystem
 
         private void btnOrderAgain_Click(object sender, EventArgs e)
         {
-            CustomerMainForm customerMainForm = new CustomerMainForm();
-            customerMainForm.Show();
+            //CustomerMainForm customerMainForm = new CustomerMainForm();
+            //customerMainForm.Show();
             this.Close();
         }
     }

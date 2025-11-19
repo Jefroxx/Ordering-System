@@ -66,11 +66,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(174)))), ((int)(((byte)(220)))));
-            this.label3.Location = new System.Drawing.Point(175, 356);
+            this.label3.Location = new System.Drawing.Point(219, 356);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(428, 25);
+            this.label3.Size = new System.Drawing.Size(388, 25);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Please present this number at the counter";
+            this.label3.Text = "Please pay this amount at the counter";
             // 
             // label2
             // 
@@ -78,11 +78,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.label2.Location = new System.Drawing.Point(231, 48);
+            this.label2.Location = new System.Drawing.Point(298, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(331, 33);
+            this.label2.Size = new System.Drawing.Size(204, 33);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Your Order Number is ";
+            this.label2.Text = "Your Total is:";
             // 
             // btnDone
             // 
@@ -90,7 +90,7 @@
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(194, 52);
             this.btnDone.TabIndex = 1;
-            this.btnDone.Text = "Done";
+            this.btnDone.Text = "Print Receipt";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
@@ -100,7 +100,7 @@
             this.btnOrderAgain.Name = "btnOrderAgain";
             this.btnOrderAgain.Size = new System.Drawing.Size(194, 52);
             this.btnOrderAgain.TabIndex = 1;
-            this.btnOrderAgain.Text = "Order Again?";
+            this.btnOrderAgain.Text = "Cancel";
             this.btnOrderAgain.UseVisualStyleBackColor = true;
             this.btnOrderAgain.Click += new System.EventHandler(this.btnOrderAgain_Click);
             // 

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Product;
+
 
 namespace FinalEDPOrderingSystem
 {
@@ -36,12 +38,16 @@ namespace FinalEDPOrderingSystem
 
         private void LoadProductInfo()
         {
-            if (ProductData.Image != null)
+            lblProductName.Text = ProductData.Name ?? "Unnamed Product";
+            lblPrice.Text = $"₱{ProductData.Price:N2}";
+            txtQuantity.Text = ProductData.Quantity.ToString();
+
+            if (ProductData.Image != null && ProductData.Image.Length > 0)
             {
-                lblProductName.Text = ProductData.Name ?? "Unnamed Product";
-                lblPrice.Text = $"₱{ProductData.Price:N2}";
-                txtQuantity.Text = ProductData.Quantity.ToString();
-                Productimage.Image = new Bitmap(ProductData.Image); // clone so it’s independent
+                using (var ms = new MemoryStream(ProductData.Image))
+                {
+                    Productimage.Image = Image.FromStream(ms);
+                }
                 Productimage.SizeMode = PictureBoxSizeMode.Zoom;
             }
             else

@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,9 +54,18 @@
   <ItemGroup>
     <Compile Include="Code\Cart\CartDataAccess.cs" />
     <Compile Include="Code\Cart\EmployeeInformation.cs" />
+    <Compile Include="Code\Repositories\CartCalculator.cs" />
+    <Compile Include="Code\Repositories\CartRepository.cs" />
+    <Compile Include="Code\Repositories\CartService.cs" />
     <Compile Include="Code\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Code\Repositories\ICartRepository.cs" />
+    <Compile Include="Code\Repositories\ICartService.cs" />
+    <Compile Include="Code\Repositories\IProductRepository.cs" />
+    <Compile Include="Code\Repositories\IProductService.cs" />
     <Compile Include="Code\Repositories\ProductInformation.cs" />
     <Compile Include="Code\Repositories\ProductRepository.cs" />
+    <Compile Include="Code\Repositories\ProductService.cs" />
+    <Compile Include="Code\Repositories\ShoppingCartService.cs" />
     <Compile Include="LoginCode\CredentialsVerifier.cs" />
     <Compile Include="Data\DBConnection.cs" />
     <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
@@ -72,6 +87,12 @@
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPageFactory.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptPDF.cs" />
     <Compile Include="UI Components\ButtonDesigner.cs" />
     <Compile Include="UI Components\CardPaymentControl.cs">
       <SubType>UserControl</SubType>
@@ -254,14 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UI Components\QRPaymentControl.resx">
       <DependentUpon>QRPaymentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +290,7 @@
     <EmbeddedResource Include="Forms\Customer Side\ViewProductForm.resx">
       <DependentUpon>ViewProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -530,6 +547,8 @@
   <ItemGroup>
     <None Include="Resources\BTn_Back.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Cashless1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

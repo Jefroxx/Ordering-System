@@ -13,7 +13,7 @@ namespace FinalEDPOrderingSystem
         public string s;
         private DBConnection()
         {
-            s = "Data Source=DESKTOP-210F3BR\\SQLEXPRESS;Initial Catalog=MattsPrivateParts;Integrated Security=True;";
+            s = "Data Source=DESKTOP-210F3BR\\SQLEXPRESS;Initial Catalog=MattsPrivateParts;Integrated Security=True;MultipleActiveResultSets=True;\r\n";
         }
         public static DBConnection getInstance()
         {

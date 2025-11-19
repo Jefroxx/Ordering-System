@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Product;
+using FinalEDPOrderingSystem.Code.Repositories;
 
 namespace FinalEDPOrderingSystem
 {
@@ -16,13 +18,15 @@ namespace FinalEDPOrderingSystem
     {
         private List<Product> cartProducts = new List<Product>();
         public Product ProductData { get; private set; }
-
-        public ShoppingCartPage()
-        {
-            InitializeComponent();
-            cartProducts = new List<Product>();
-        }
+        private ShoppingCartService cartService;
         public event EventHandler QuantityChanged;
+
+
+        private readonly ICartService _cartService;
+        private readonly int _cartId;
+
+        // keep local view-model list for UI; keep in sync with controls
+        private readonly List<Product> _displayedProducts = new List<Product>();
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
@@ -34,12 +38,15 @@ namespace FinalEDPOrderingSystem
                 QuantityChanged?.Invoke(this, EventArgs.Empty);
             }
         }
-        public ShoppingCartPage(List<Product> productsInCart)
+        public ShoppingCartPage(ICartService cartService, int cartId = 3)
         {
             InitializeComponent();
-            cartProducts = productsInCart ?? new List<Product>();
 
-            LoadCartItems();
+            _cartService = cartService ?? throw new ArgumentNullException(nameof(cartService));
+            _cartId = cartId;
+
+            // UI initialization
+            ButtonDesigner.MainButtons(btnPayNow);
         }
         private void LoadCartItems()
         {
@@ -113,81 +120,256 @@ namespace FinalEDPOrderingSystem
             return products;
         }
 
-        private void ShoppingCartPage_Load(object sender, EventArgs e)
+        private async void ShoppingCartPage_Load(object sender, EventArgs e)
         {
-            ButtonDesigner.MainButtons(btnPayNow);
+            if (btnPayNow != null)
+                ButtonDesigner.MainButtons(btnPayNow);
+
+            if (cartProductsLayout != null)
+                cartProductsLayout.Controls.Clear();
+
+            var products = await _cartService.GetCartProductsAsync(_cartId);
+
             cartProductsLayout.Controls.Clear();
 
-            int cartID = 4; // replace with actual cart logic
-            List<Product> productsFromDb = LoadCartProductsFromDb(cartID);
-
-            foreach (var product in productsFromDb)
+            foreach (var product in products)
             {
-                CartProductCard card = new CartProductCard();
+                var card = new CartProductCard();
                 card.SetProduct(product);
-
-                // Subscribe to QuantityChanged event
                 card.QuantityChanged += (s, ev) => UpdateTotal();
-
                 cartProductsLayout.Controls.Add(card);
             }
+
             UpdateTotal();
-
-            
         }
-        public static List<Product> GetCartProducts(int cartID)
+        private void UpdateTotalUI()
         {
-            List<Product> products = new List<Product>();
-            DBConnection db = DBConnection.getInstance();
+            txtTotal.Text = $"₱{cartService.GetTotal():N2}";
+        }
+        //public static List<Product> GetCartProducts(int cartID)
+        //{
+        //    List<Product> products = new List<Product>();
+        //    DBConnection db = DBConnection.getInstance();
 
-            using (SqlConnection conn = db.GetConnection())
+        //    using (SqlConnection conn = db.GetConnection())
+        //    {
+        //        conn.Open();
+
+        //        using (SqlCommand cmd = new SqlCommand("sp_GetCartItems", conn)) // your stored procedure
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@CartID", cartID);
+
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                // Assuming the first result set is the cart items
+        //                while (reader.Read())
+        //                {
+        //                    products.Add(new Product
+        //                    {
+        //                        ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+        //                        Name = reader.GetString(reader.GetOrdinal("Name")),
+        //                        Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+        //                        Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+        //                        Description = reader.IsDBNull(reader.GetOrdinal("Description"))
+        //                            ? string.Empty
+        //                            : reader.GetString(reader.GetOrdinal("Description"))
+        //                    });
+        //                }
+
+        //                // If your stored procedure returns other result sets (like totals), you can handle them here
+        //                // if (reader.NextResult()) { ... }
+        //            }
+        //        }
+        //    }
+
+        //    return products;
+        //}
+
+        //private List<Product> GetDisplayedProducts()
+        //{
+        //    List<Product> products = new List<Product>();
+
+        //    foreach (CartProductCard card in cartProductsLayout.Controls.OfType<CartProductCard>())
+        //    {
+        //        if (card.ProductData != null)
+        //            products.Add(card.ProductData);
+        //    }
+        //    return products;
+        //}
+        //public bool CheckoutCart(int cartID, int paymentMethodID, int? walkInCustomerID = null)
+        //{
+        //    try
+        //    {
+        //        DBConnection db = DBConnection.getInstance();
+
+        //        using (SqlConnection conn = db.GetConnection())
+        //        {
+        //            conn.Open();
+
+        //            using (SqlCommand cmd = new SqlCommand("sp_CheckoutCart", conn))
+        //            {
+        //                cmd.CommandType = CommandType.StoredProcedure;
+
+        //                cmd.Parameters.AddWithValue("@CartID", cartID);
+        //                cmd.Parameters.AddWithValue("@PaymentMethodID", paymentMethodID);
+
+        //                if (walkInCustomerID.HasValue)
+        //                    cmd.Parameters.AddWithValue("@WalkInCustomerID", walkInCustomerID.Value);
+        //                else
+        //                    cmd.Parameters.AddWithValue("@WalkInCustomerID", DBNull.Value);
+
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //        }
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Checkout failed: " + ex.Message);
+        //        return false;
+        //    }
+        //}
+
+        private async void btnPayNow_Click(object sender, EventArgs e)
+        {
+            // simple guard
+            if (!_displayedProducts.Any())
             {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("sp_GetCartItems", conn)) // your stored procedure
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CartID", cartID);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        // Assuming the first result set is the cart items
-                        while (reader.Read())
-                        {
-                            products.Add(new Product
-                            {
-                                ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
-                                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
-                                Description = reader.IsDBNull(reader.GetOrdinal("Description"))
-                                    ? string.Empty
-                                    : reader.GetString(reader.GetOrdinal("Description"))
-                            });
-                        }
-
-                        // If your stored procedure returns other result sets (like totals), you can handle them here
-                        // if (reader.NextResult()) { ... }
-                    }
-                }
+                MessageBox.Show("Cart is empty.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
-            return products;
-        }
+            int paymentMethodId = 1; // choose via UI in real app
+            int? walkInCustomerId = null;
 
-        private void btnPayNow_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            PaymentMethodCashorCard paymentPage = new PaymentMethodCashorCard();
-            paymentPage.FormClosed += (s, args) => this.Show();
-            paymentPage.ShowDialog();
+            try
+            {
+                btnPayNow.Enabled = false;
+                bool ok = await _cartService.CheckoutAsync(_cartId, paymentMethodId, walkInCustomerId);
 
+                if (!ok)
+                {
+                    MessageBox.Show("Checkout failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // generate receipt (existing utility)
+                string filePath = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                ReceiptPDF.Generate(filePath, _displayedProducts);
+
+                MessageBox.Show("Checkout complete!\nReceipt generated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                try
+                {
+                    System.Diagnostics.Process.Start(filePath);
+                }
+                catch
+                {
+                    // ignore failures opening file
+                }
+
+                // reset UI
+                cartProductsLayout.Controls.Clear();
+                _displayedProducts.Clear();
+                UpdateTotalDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Checkout error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnPayNow.Enabled = true;
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            await LoadCartAsync();
+        }
+
+        private async Task LoadCartAsync()
+        {
+            try
+            {
+                cartProductsLayout.Controls.Clear();
+                _displayedProducts.Clear();
+
+                var products = await _cartService.GetCartProductsAsync(_cartId);
+
+                foreach (var p in products)
+                {
+                    var card = new CartProductCard();
+                    card.SetProduct(p);
+
+                    // subscribe to events (store references if you need to unsubscribe later)
+                    card.QuantityChanged += Card_QuantityChanged;
+                    card.OnRemove += Card_OnRemove;
+
+                    cartProductsLayout.Controls.Add(card);
+                    _displayedProducts.Add(p);
+                }
+
+                UpdateTotalDisplay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load cart: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Card_OnRemove(CartProductCard card)
+        {
+            // remove from UI and local list
+            if (card?.ProductData != null)
+            {
+                _displayedProducts.Remove(card.ProductData);
+            }
+
+            cartProductsLayout.Controls.Remove(card);
+            UpdateTotalDisplay();
+        }
+
+        private void Card_QuantityChanged(object sender, EventArgs e)
+        {
+            // sender should be CartProductCard
+            if (sender is CartProductCard card && card.ProductData != null)
+            {
+                // ensure our local list matches the card's product quantity
+                var local = _displayedProducts.FirstOrDefault(p => p.ID == card.ProductData.ID);
+                if (local != null)
+                {
+                    local.Quantity = card.ProductData.Quantity;
+                }
+            }
+
+            UpdateTotalDisplay();
+        }
+
+        private void UpdateTotalDisplay()
+        {
+            var total = _cartService.CalculateTotal(_displayedProducts);
+            txtTotal.Text = FormatCurrency(total);
+        }
+
+        private static string FormatCurrency(decimal amount)
+        {
+            return string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-PH"), "₱{0:N2}", amount);
+        }
+
+        
+
+
     }
 
 }

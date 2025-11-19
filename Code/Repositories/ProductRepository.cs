@@ -7,16 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Data.Common;
+using FinalEDPOrderingSystem.Code.Interfaces;
 
 namespace FinalEDPOrderingSystem.Code.Product
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly SqlConnection _conn;
 
         public ProductRepository(SqlConnection conn)
         {
             _conn = conn;
+        }
+        public ProductRepository()
+        {
+
         }
 
         public (bool Success, int NewID) AddProduct(ProductInformation product)
@@ -44,7 +49,6 @@ namespace FinalEDPOrderingSystem.Code.Product
                     }
                 }
             }
-
             return (false, 0);
         }
 
@@ -103,6 +107,7 @@ namespace FinalEDPOrderingSystem.Code.Product
 
             return null;
         }
+
         public bool UpdateProductStock(int productID, int newStock)
         {
             using (SqlCommand cmd = new SqlCommand("UpdateProductStock", _conn))
@@ -112,7 +117,72 @@ namespace FinalEDPOrderingSystem.Code.Product
                 cmd.Parameters.AddWithValue("@ProductID", productID);
                 cmd.Parameters.AddWithValue("@NewStock", newStock);
 
+                if (_conn.State != ConnectionState.Open)
+                    _conn.Open();
+
                 return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public List<Product> GetCartProducts(int cartID)
+        {
+            var products = new List<Product>();
+            var conn = _conn;
+
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+
+            using (var cmd = new SqlCommand("sp_GetCartItems", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CartID", cartID);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        products.Add(new Product
+                        {
+                            ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                            Name = reader.GetString(reader.GetOrdinal("Name")),
+                            Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                            Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+                            Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? "" : reader.GetString(reader.GetOrdinal("Description")),
+                            Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (byte[])reader["Image"]
+                        });
+                    }
+                }
+            }
+
+            return products;
+        }
+
+        public bool CheckoutCart(int cartID, int paymentMethodID, int? walkInCustomerID = null)
+        {
+            try
+            {
+                // Use the injected connection instead of 'db'
+                var conn = _conn;
+
+                if (conn.State != ConnectionState.Open)
+                    conn.Open();
+
+                using (var cmd = new SqlCommand("sp_CheckoutCart", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CartID", cartID);
+                    cmd.Parameters.AddWithValue("@PaymentMethodID", paymentMethodID);
+                    cmd.Parameters.AddWithValue("@WalkInCustomerID",
+                        walkInCustomerID.HasValue ? (object)walkInCustomerID.Value : DBNull.Value);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

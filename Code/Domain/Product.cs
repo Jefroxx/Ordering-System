@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalEDPOrderingSystem
+namespace FinalEDPOrderingSystem.Code.Product
 {
     public class Product
     {
-        public int ID { get; set; }          // <-- ProductID
-        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; } = string.Empty;
         public decimal Price { get; set; }
-        public Image Image { get; set; }
-        public string Description { get; set; }
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
+        public string Description { get; set; } = string.Empty;
+        public byte[] Image { get; set; }
     }
 }

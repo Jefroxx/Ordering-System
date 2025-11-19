@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Repositories;
 using static System.Collections.Specialized.BitVector32;
 
 namespace FinalEDPOrderingSystem
@@ -175,10 +176,12 @@ namespace FinalEDPOrderingSystem
 
             return cartID;
         }
+        private readonly ICartService _cartService; // injected into current form
+        private readonly int _currentCartID;
         private void BtnCart_Click(object sender, EventArgs e)
         {
-            this.Hide(); // hide current form
-            ShoppingCartPage cartForm = new ShoppingCartPage();
+            this.Hide();
+            ShoppingCartPage cartForm = new ShoppingCartPage(_cartService, _currentCartID);
             cartForm.FormClosed += (s, args) => this.Show();
             cartForm.Show();
 

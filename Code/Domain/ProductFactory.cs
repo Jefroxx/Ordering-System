@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Product;
 
 namespace FinalEDPOrderingSystem
 {
@@ -14,11 +17,19 @@ namespace FinalEDPOrderingSystem
         {
             var card = new ProductCard
             {
-                ProductID = p.ID,     // <-- ADD THIS
+                ProductID = p.ID,
                 ProductName = p.Name,
-                ProductImage = p.Image,
                 Margin = new Padding(10)
             };
+
+            // Convert byte[] to Image if not null
+            if (p.Image != null && p.Image.Length > 0)
+            {
+                using (var ms = new MemoryStream(p.Image))
+                {
+                    card.ProductImage = Image.FromStream(ms);
+                }
+            }
 
             card.Price = p.Price;
 

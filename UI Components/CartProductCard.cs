@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +17,14 @@ namespace FinalEDPOrderingSystem
         public event Action<CartProductCard> OnRemove; 
         public event Action OnQuantityChanged; 
         public Product ProductData { get; private set; }
+        public event EventHandler QuantityChanged;
+
 
         public CartProductCard()
         {
             InitializeComponent();
+            txtQuantity.TextChanged += TxtQuantity_TextChanged;
+
         }
 
         public CartProductCard(Product product)
@@ -93,18 +99,21 @@ namespace FinalEDPOrderingSystem
         public void SetProduct(Product product)
         {
             ProductData = product;
-            lblProductName.Text = product.Name;
+            lblProductName.Text = product.Name ?? "Unnamed Product";
             lblPrice.Text = $"₱{product.Price:N2}";
-            txtQuantity.Text = $"{product.Quantity}";
+            txtQuantity.Text = product.Quantity.ToString();
 
-            if (product.Image != null)
+            // If you have an image later, handle it here
+            Productimage.Image = null;
+        }
+        private void TxtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtQuantity.Text, out int qty))
             {
-                Productimage.Image = product.Image;
-                Productimage.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            else
-            {
-                Productimage.Image = null; // or a placeholder if you want
+                ProductData.Quantity = qty;
+
+                // Fire the event
+                QuantityChanged?.Invoke(this, EventArgs.Empty);
             }
         }
     }

@@ -14,11 +14,14 @@ namespace FinalEDPOrderingSystem
         {
             var card = new ProductCard
             {
+                ProductID = p.ID,     // <-- ADD THIS
                 ProductName = p.Name,
                 ProductImage = p.Image,
+                Margin = new Padding(10)
             };
+
             card.Price = p.Price;
-            card.Margin = new Padding(10);
+
             return card;
         }
     }

@@ -16,6 +16,10 @@ namespace FinalEDPOrderingSystem
         public ProductCard()
         {
             InitializeComponent();
+            this.Click += ProductCard_Click;
+
+            foreach (Control ctrl in this.Controls)
+                ctrl.Click += ProductCard_Click;
         }
 
         public string ProductName
@@ -61,7 +65,7 @@ namespace FinalEDPOrderingSystem
 
             this.Hide();
             ViewProductForm viewForm = new ViewProductForm();
-            viewForm.ProductID = card.ProductID; // pass the correct ID
+            viewForm.ProductID = this.ProductID;  // always correct now
             viewForm.FormClosed += (s, args) => this.Show();
             viewForm.Show();
         }

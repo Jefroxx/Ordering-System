@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Employee\EmployeeInformation.cs" />
-    <Compile Include="Code\Employee\EmployeeRepository.cs" />
-    <Compile Include="Code\Product\ProductInformation.cs" />
-    <Compile Include="Code\Product\ProductRepository.cs" />
-    <Compile Include="LoginCode\CredentialsVerifier.cs" />
-    <Compile Include="DBConnection.cs" />
+    <Compile Include="Code\AppState.cs" />
+    <Compile Include="Code\Cart\CartDataAccess.cs" />
+    <Compile Include="Code\Cart\EmployeeInformation.cs" />
+    <Compile Include="Code\Repositories\CartRepository.cs" />
+    <Compile Include="Code\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Code\Repositories\ProductInformation.cs" />
+    <Compile Include="Code\Repositories\ProductRepository.cs" />
+    <Compile Include="Code\Repositories\ReceiptPDF.cs" />
+    <Compile Include="Code\Session.cs" />
+    <Compile Include="Data\DBConnection.cs" />
     <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,17 +81,18 @@
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPageFactory.cs" />
-    <Compile Include="ButtonDesigner.cs" />
-    <Compile Include="CardPaymentControl.cs">
+    <Compile Include="QRListener.cs" />
+    <Compile Include="UI Components\ButtonDesigner.cs" />
+    <Compile Include="UI Components\CardPaymentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CardPaymentControl.Designer.cs">
+    <Compile Include="UI Components\CardPaymentControl.Designer.cs">
       <DependentUpon>CardPaymentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CartProductCard.cs">
+    <Compile Include="UI Components\CartProductCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CartProductCard.Designer.cs">
+    <Compile Include="UI Components\CartProductCard.Designer.cs">
       <DependentUpon>CartProductCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Payment\CashlessPaymentForm.cs">
@@ -96,11 +107,11 @@
     <Compile Include="Forms\Payment\CashPaymentForm.Designer.cs">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Category.cs" />
-    <Compile Include="CategoryPage.cs">
+    <Compile Include="Code\Domain\Category.cs" />
+    <Compile Include="Forms\Shared Pages\CategoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoryPage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\CategoryPage.Designer.cs">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer Side\CustomerMainForm.cs">
@@ -109,36 +120,36 @@
     <Compile Include="Forms\Customer Side\CustomerMainForm.Designer.cs">
       <DependentUpon>CustomerMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DashboardPage.cs">
+    <Compile Include="Forms\Shared Pages\DashboardPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DashboardPage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\DashboardPage.Designer.cs">
       <DependentUpon>DashboardPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesPage.cs">
+    <Compile Include="Forms\Shared Pages\EmployeesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EmployeesPage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\EmployeesPage.Designer.cs">
       <DependentUpon>EmployeesPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Homepage.cs">
+    <Compile Include="Forms\Shared Pages\Homepage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Homepage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\Homepage.Designer.cs">
       <DependentUpon>Homepage.cs</DependentUpon>
     </Compile>
     <Compile Include="InputCheckers.cs" />
-    <Compile Include="Forms\LandingPage.cs">
+    <Compile Include="Forms\Payment\LandingPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LandingPage.Designer.cs">
+    <Compile Include="Forms\Payment\LandingPage.Designer.cs">
       <DependentUpon>LandingPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginPage.cs">
+    <Compile Include="Forms\Payment\LoginPage.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Forms\LoginPage.Designer.cs">
+    <Compile Include="Forms\Payment\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -149,34 +160,33 @@
       <DependentUpon>ManageStocksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginCode\LoginInformation.cs" />
-    <Compile Include="MockDatabase.cs" />
+    <Compile Include="Data\MockDatabase.cs" />
     <Compile Include="Forms\Payment\PaymentMethodCashorCard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Photo&amp;DirectoryManager.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductCard.cs">
+    <Compile Include="Code\Domain\Product.cs" />
+    <Compile Include="UI Components\ProductCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductCard.Designer.cs">
+    <Compile Include="UI Components\ProductCard.Designer.cs">
       <DependentUpon>ProductCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductFactory.cs" />
-    <Compile Include="ProductsPage.cs">
+    <Compile Include="Code\Domain\ProductFactory.cs" />
+    <Compile Include="Forms\Shared Pages\ProductsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductsPage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\ProductsPage.Designer.cs">
       <DependentUpon>ProductsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QRPaymentControl.cs">
+    <Compile Include="UI Components\QRPaymentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="QRPaymentControl.Designer.cs">
+    <Compile Include="UI Components\QRPaymentControl.Designer.cs">
       <DependentUpon>QRPaymentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer Side\ShoppingCartPage.cs">
@@ -185,10 +195,10 @@
     <Compile Include="Forms\Customer Side\ShoppingCartPage.Designer.cs">
       <DependentUpon>ShoppingCartPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="TransactionsPage.cs">
+    <Compile Include="Forms\Shared Pages\TransactionsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TransactionsPage.Designer.cs">
+    <Compile Include="Forms\Shared Pages\TransactionsPage.Designer.cs">
       <DependentUpon>TransactionsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer Side\ViewProductForm.cs">
@@ -206,10 +216,10 @@
     <EmbeddedResource Include="Forms\Admin Side\AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CardPaymentControl.resx">
+    <EmbeddedResource Include="UI Components\CardPaymentControl.resx">
       <DependentUpon>CardPaymentControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CartProductCard.resx">
+    <EmbeddedResource Include="UI Components\CartProductCard.resx">
       <DependentUpon>CartProductCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Payment\CashlessPaymentForm.resx">
@@ -218,25 +228,25 @@
     <EmbeddedResource Include="Forms\Payment\CashPaymentForm.resx">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoryPage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\CategoryPage.resx">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Side\CustomerMainForm.resx">
       <DependentUpon>CustomerMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DashboardPage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\DashboardPage.resx">
       <DependentUpon>DashboardPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeesPage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\EmployeesPage.resx">
       <DependentUpon>EmployeesPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Homepage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LandingPage.resx">
+    <EmbeddedResource Include="Forms\Payment\LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginPage.resx">
+    <EmbeddedResource Include="Forms\Payment\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -246,10 +256,10 @@
     <EmbeddedResource Include="Forms\Payment\PaymentMethodCashorCard.resx">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductCard.resx">
+    <EmbeddedResource Include="UI Components\ProductCard.resx">
       <DependentUpon>ProductCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductsPage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\ProductsPage.resx">
       <DependentUpon>ProductsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -262,18 +272,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="QRPaymentControl.resx">
+    <EmbeddedResource Include="UI Components\QRPaymentControl.resx">
       <DependentUpon>QRPaymentControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Side\ShoppingCartPage.resx">
       <DependentUpon>ShoppingCartPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TransactionsPage.resx">
+    <EmbeddedResource Include="Forms\Shared Pages\TransactionsPage.resx">
       <DependentUpon>TransactionsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer Side\ViewProductForm.resx">
       <DependentUpon>ViewProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -532,6 +544,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SystemAssets\Images\Employees\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cashless123123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

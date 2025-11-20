@@ -10,6 +10,6 @@ namespace FinalEDPOrderingSystem
     {
         public int ID { get; set; }          // <-- this was missing
         public string Name { get; set; }
-        public List<Product> Products { get; set; } = new List<Product>();
+        public List<Products> Products { get; set; } = new List<Products>();
     }
 }

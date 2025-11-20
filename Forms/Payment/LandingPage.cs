@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code;
 
 namespace FinalEDPOrderingSystem
 {
@@ -19,9 +20,24 @@ namespace FinalEDPOrderingSystem
 
         private void BtnCustomer_Click(object sender, EventArgs e)
         {
-            CustomerMainForm customer = new CustomerMainForm();
-            customer.Show();
-            this.Hide();
+            try
+            {
+                var cartRepo = new Code.Repositories.CartRepository();
+                int terminalID = 1; // adjust as needed
+                int cartID = cartRepo.GetOrCreateCart(terminalID);
+
+                // Store cartID globally
+                AppState.CurrentCartID = cartID;
+
+                // Open customer form
+                CustomerMainForm customer = new CustomerMainForm();
+                customer.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to initialize cart:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LandingPage_Load(object sender, EventArgs e)

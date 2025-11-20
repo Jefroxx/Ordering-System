@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.Data.Common;
+using FinalEDPOrderingSystem.Code.Product;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
@@ -251,6 +257,41 @@ namespace FinalEDPOrderingSystem.Code.Product
                 MessageBox.Show("Failed to delete product image folder:\n" + ex.Message,
                     "Folder Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        public List<Products> SearchProducts(string keyword)
+        {
+            List<Products> products = new List<Products>();
+
+            using (SqlConnection conn = DBConnection.getInstance().GetConnection())
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SearchProducts", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Keyword", keyword);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Products p = new Products
+                            {
+                                ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                                Brand = reader.GetString(reader.GetOrdinal("Brand")),
+                                Model = reader.GetString(reader.GetOrdinal("Model")),
+                                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                                //Image = reader["Image"] as byte[],
+                                Description = reader["Description"].ToString()
+                            };
+
+                            products.Add(p);
+                        }
+                    }
+                }
+            }
+
+            return products;
         }
 
 

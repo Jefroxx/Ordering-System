@@ -148,6 +148,9 @@
   <data name="4745974" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\4745974.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cashless123123" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cashless123123.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="7c10adae7dad7e5c7d4b01de25a2ca13" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7c10adae7dad7e5c7d4b01de25a2ca13.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="Group 24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BTn_Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BTn_Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Group 342" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 342.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -361,7 +367,7 @@
   <data name="tdesign_undertake-transaction-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tdesign_undertake-transaction-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BTn_Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BTn_Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="5eddb68e-d751-42a9-9154-a856d52e215b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

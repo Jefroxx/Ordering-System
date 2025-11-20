@@ -61,7 +61,6 @@
     <Compile Include="Code\Repositories\ProductRepository.cs" />
     <Compile Include="Code\Repositories\ReceiptPDF.cs" />
     <Compile Include="Code\Session.cs" />
-    <Compile Include="LoginCode\CredentialsVerifier.cs" />
     <Compile Include="Data\DBConnection.cs" />
     <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
       <SubType>Form</SubType>

@@ -10,15 +10,18 @@ namespace FinalEDPOrderingSystem
     public static class ProductFactory
     {
         //Diri ma layout ang mga pictures /products
-        public static ProductCard CreateProductCard(Product p)
+        public static ProductCard CreateProductCard(Products p)
         {
             var card = new ProductCard
             {
+                ProductID = p.ID,     // <-- ADD THIS
                 ProductName = p.Name,
                 ProductImage = p.Image,
+                Margin = new Padding(10)
             };
+
             card.Price = p.Price;
-            card.Margin = new Padding(10);
+
             return card;
         }
     }

@@ -14,7 +14,11 @@ namespace FinalEDPOrderingSystem
     {
         public QRPaymentControl()
         {
+
             InitializeComponent();
+
+
         }
+
     }
 }

@@ -84,7 +84,7 @@ namespace FinalEDPOrderingSystem
         }
         private void btnDone_Click(object sender, EventArgs e)
         {
-            int cartID = 3;
+            int cartID = 1;
             int paymentMethodID = 1;
             int? walkInCustomerID = null;
 

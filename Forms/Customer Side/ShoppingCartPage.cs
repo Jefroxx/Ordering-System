@@ -118,7 +118,7 @@ namespace FinalEDPOrderingSystem
             ButtonDesigner.MainButtons(btnPayNow);
             cartProductsLayout.Controls.Clear();
 
-            int cartID = 3; // replace with actual cart logic
+            int cartID = 2; // replace with actual cart logic
             List<Products> productsFromDb = LoadCartProductsFromDb(cartID);
 
             foreach (var product in productsFromDb)
@@ -201,7 +201,7 @@ namespace FinalEDPOrderingSystem
 
         private void btnPayNow_Click(object sender, EventArgs e)
         {
-            int cartID = 3; // replace with actual cart ID
+            int cartID = 2; // replace with actual cart ID
             UpdateCartQuantitiesInDb(cartID); // ✅ update DB before payment
 
             this.Hide();

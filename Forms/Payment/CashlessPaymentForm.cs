@@ -67,5 +67,10 @@ namespace FinalEDPOrderingSystem
             ShowPayment(new QRPaymentControl());
             timer1.Start();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

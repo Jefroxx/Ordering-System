@@ -58,5 +58,9 @@ namespace FinalEDPOrderingSystem
         {
             InputCheckers.TextOnly(e);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

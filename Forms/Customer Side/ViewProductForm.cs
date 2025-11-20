@@ -116,7 +116,7 @@ namespace FinalEDPOrderingSystem
         {
             try
             {
-                int terminalID = 1; // your current user/session ID
+                int terminalID = 2; // your current user/session ID
                 int cartID = GetOrCreateCartID(terminalID);
 
                 DBConnection db = DBConnection.getInstance();

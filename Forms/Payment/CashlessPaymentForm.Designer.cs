@@ -33,22 +33,25 @@
             this.btnCard = new System.Windows.Forms.Button();
             this.btnQR = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnClose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panelPaymentArea
             // 
             this.panelPaymentArea.BackColor = System.Drawing.Color.Snow;
-            this.panelPaymentArea.Location = new System.Drawing.Point(233, 136);
+            this.panelPaymentArea.Location = new System.Drawing.Point(311, 167);
+            this.panelPaymentArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPaymentArea.Name = "panelPaymentArea";
-            this.panelPaymentArea.Size = new System.Drawing.Size(834, 483);
+            this.panelPaymentArea.Size = new System.Drawing.Size(1112, 594);
             this.panelPaymentArea.TabIndex = 0;
             // 
             // btnCard
             // 
             this.btnCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCard.Location = new System.Drawing.Point(669, 57);
+            this.btnCard.Location = new System.Drawing.Point(892, 70);
+            this.btnCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCard.Name = "btnCard";
-            this.btnCard.Size = new System.Drawing.Size(398, 65);
+            this.btnCard.Size = new System.Drawing.Size(531, 80);
             this.btnCard.TabIndex = 3;
             this.btnCard.Text = "PAY WITH CARD";
             this.btnCard.UseVisualStyleBackColor = true;
@@ -57,9 +60,10 @@
             // btnQR
             // 
             this.btnQR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQR.Location = new System.Drawing.Point(233, 57);
+            this.btnQR.Location = new System.Drawing.Point(311, 70);
+            this.btnQR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnQR.Name = "btnQR";
-            this.btnQR.Size = new System.Drawing.Size(398, 65);
+            this.btnQR.Size = new System.Drawing.Size(531, 80);
             this.btnQR.TabIndex = 2;
             this.btnQR.Text = "SCAN QR";
             this.btnQR.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -70,16 +74,32 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnClose.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_Cancel;
+            this.btnClose.Location = new System.Drawing.Point(1431, 24);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(53, 52);
+            this.btnClose.TabIndex = 42;
+            this.btnClose.Text = "  ";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // CashlessPaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.ClientSize = new System.Drawing.Size(1712, 814);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCard);
             this.Controls.Add(this.btnQR);
             this.Controls.Add(this.panelPaymentArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CashlessPaymentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CashlessPaymentForm";
@@ -94,5 +114,6 @@
         private System.Windows.Forms.Button btnQR;
         private System.Windows.Forms.Button btnCard;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label btnClose;
     }
 }

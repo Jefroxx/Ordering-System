@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FinalEDPOrderingSystem.Code;
+using FinalEDPOrderingSystem.Code.Product;
 using FinalEDPOrderingSystem.Code.Repositories;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
@@ -136,6 +138,62 @@ namespace FinalEDPOrderingSystem
             ShoppingCartPage cartForm = new ShoppingCartPage();
             cartForm.FormClosed += (s, args) => this.Show(); 
             cartForm.Show();
+        }
+
+        private void lblSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = SearchBar.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                MessageBox.Show("Please enter a search keyword.");
+                return;
+            }
+
+            ShowSearchResults(keyword);
+        }
+
+        private void ShowSearchResults(string searchQuery)
+        {
+            panelMain.Controls.Clear();
+
+            List<Products> results;
+
+            using (SqlConnection conn = DBConnection.getInstance().GetConnection())
+            {
+                conn.Open();
+                ProductRepository repo = new ProductRepository(conn);
+                results = repo.SearchProducts(searchQuery);
+            }
+
+            // If nothing found
+            if (results.Count == 0)
+            {
+                Label noResults = new Label
+                {
+                    Text = "No products found.",
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                panelMain.Controls.Add(noResults);
+                return;
+            }
+
+            // Create scrollable result panel
+            FlowLayoutPanel resultPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true
+            };
+
+            foreach (var product in results)
+            {
+                var productCard = new ProductCard(product);
+                resultPanel.Controls.Add(productCard);
+            }
+
+            panelMain.Controls.Add(resultPanel);
         }
     }
 }

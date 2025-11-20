@@ -31,11 +31,11 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.flowLayoutCategories = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblLoggedUser = new System.Windows.Forms.Label();
             this.BtnCart = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.SearchBar = new System.Windows.Forms.TextBox();
-            this.lblLoggedUser = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1134, 59);
             this.panel2.TabIndex = 49;
+            // 
+            // lblLoggedUser
+            // 
+            this.lblLoggedUser.AutoSize = true;
+            this.lblLoggedUser.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
+            this.lblLoggedUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblLoggedUser.Location = new System.Drawing.Point(17, 20);
+            this.lblLoggedUser.Name = "lblLoggedUser";
+            this.lblLoggedUser.Size = new System.Drawing.Size(60, 20);
+            this.lblLoggedUser.TabIndex = 49;
+            this.lblLoggedUser.Text = "label1";
             // 
             // BtnCart
             // 
@@ -112,6 +123,7 @@
             this.lblSearch.Size = new System.Drawing.Size(30, 25);
             this.lblSearch.TabIndex = 47;
             this.lblSearch.Text = "   ";
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // SearchBar
             // 
@@ -123,17 +135,6 @@
             this.SearchBar.Name = "SearchBar";
             this.SearchBar.Size = new System.Drawing.Size(372, 20);
             this.SearchBar.TabIndex = 46;
-            // 
-            // lblLoggedUser
-            // 
-            this.lblLoggedUser.AutoSize = true;
-            this.lblLoggedUser.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
-            this.lblLoggedUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblLoggedUser.Location = new System.Drawing.Point(17, 20);
-            this.lblLoggedUser.Name = "lblLoggedUser";
-            this.lblLoggedUser.Size = new System.Drawing.Size(60, 20);
-            this.lblLoggedUser.TabIndex = 49;
-            this.lblLoggedUser.Text = "label1";
             // 
             // CustomerMainForm
             // 

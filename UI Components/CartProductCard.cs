@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +16,18 @@ namespace FinalEDPOrderingSystem
     {
         public event Action<CartProductCard> OnRemove; 
         public event Action OnQuantityChanged; 
-        public Product ProductData { get; private set; }
+        public Products ProductData { get; private set; }
+        public event EventHandler QuantityChanged;
+
 
         public CartProductCard()
         {
             InitializeComponent();
+            txtQuantity.TextChanged += TxtQuantity_TextChanged;
+
         }
 
-        public CartProductCard(Product product)
+        public CartProductCard(Products product)
         {
             InitializeComponent();
             ProductData = product;
@@ -30,11 +36,17 @@ namespace FinalEDPOrderingSystem
 
         private void LoadProductInfo()
         {
+            if (ProductData == null)
+                return;
+
+            // Always update labels
+            lblProductName.Text = ProductData.Name ?? "Unnamed Product";
+            lblPrice.Text = $"₱{ProductData.Price:N2}";
+            txtQuantity.Text = ProductData.Quantity.ToString();
+
+            // Handle image
             if (ProductData.Image != null)
             {
-                lblProductName.Text = ProductData.Name ?? "Unnamed Product";
-                lblPrice.Text = $"₱{ProductData.Price:N2}";
-                txtQuantity.Text = ProductData.Quantity.ToString();
                 Productimage.Image = new Bitmap(ProductData.Image); // clone so it’s independent
                 Productimage.SizeMode = PictureBoxSizeMode.Zoom;
             }
@@ -43,7 +55,6 @@ namespace FinalEDPOrderingSystem
                 CreatePlaceholderImage();
             }
         }
-
 
         private void CreatePlaceholderImage()
         {
@@ -90,21 +101,34 @@ namespace FinalEDPOrderingSystem
         }
 
         //KANI NA CLASS FOR EME EME RANI HA PARA MAKITA NAKOG NIGANA BA AHHAHA
-        public void SetProduct(Product product)
+        public void SetProduct(Products product)
         {
             ProductData = product;
-            lblProductName.Text = product.Name;
-            lblPrice.Text = $"₱{product.Price:N2}";
-            txtQuantity.Text = $"{product.Quantity}";
 
+            // Update labels
+            lblProductName.Text = product.Name ?? "Unnamed Product";
+            lblPrice.Text = $"₱{product.Price:N2}";
+            txtQuantity.Text = product.Quantity.ToString();
+
+            // Load image or placeholder
             if (product.Image != null)
             {
-                Productimage.Image = product.Image;
+                Productimage.Image = new Bitmap(product.Image); // clone image
                 Productimage.SizeMode = PictureBoxSizeMode.Zoom;
             }
             else
             {
-                Productimage.Image = null; // or a placeholder if you want
+                CreatePlaceholderImage(); // show "No Image" placeholder
+            }
+        }
+        private void TxtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtQuantity.Text, out int qty))
+            {
+                ProductData.Quantity = qty;
+
+                // Fire the event
+                QuantityChanged?.Invoke(this, EventArgs.Empty);
             }
         }
     }

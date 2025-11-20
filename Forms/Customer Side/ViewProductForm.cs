@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code;
+using static System.Collections.Specialized.BitVector32;
 
 namespace FinalEDPOrderingSystem
 {
@@ -15,6 +18,8 @@ namespace FinalEDPOrderingSystem
     {
         public int ProductID { get; set; }
         public int Quantity = 1;
+        private int Stock = 0; // Add this to keep track of stock
+
         public ViewProductForm()
         {
             InitializeComponent();
@@ -31,7 +36,6 @@ namespace FinalEDPOrderingSystem
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ProductID", ProductID);
-                    MessageBox.Show(ProductID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -41,6 +45,9 @@ namespace FinalEDPOrderingSystem
                             lblPrice.Text = $"₱{Convert.ToDecimal(reader["Price"]):N2}";
                             txtDescription.Text = reader["Description"] == DBNull.Value ? "" : reader["Description"].ToString();
                             lblCategory.Text = reader["CategoryName"] == DBNull.Value ? "No Category" : reader["CategoryName"].ToString();
+
+                            Stock = reader["StockQuantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["StockQuantity"]);
+
                         }
                         else
                         {
@@ -69,26 +76,122 @@ namespace FinalEDPOrderingSystem
         //FORM CLEANERS
         private void PlusQuantityBtn_Click(object sender, EventArgs e)
         {
-            txtQuantity.Text = (int.Parse(txtQuantity.Text) + 1).ToString();
-
+            int currentQty = int.Parse(txtQuantity.Text);
+            if (currentQty < Stock) // check against stock
+            {
+                txtQuantity.Text = (currentQty + 1).ToString();
+            }
+            else
+            {
+                MessageBox.Show($"Cannot exceed available stock: {Stock}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void MinusQuantityBtn_Click(object sender, EventArgs e)
         {
-            txtQuantity.Text = (int.Parse(txtQuantity.Text) - 1).ToString();
+            int currentQty = int.Parse(txtQuantity.Text);
+            if (currentQty > 1) // prevent going below 1
+                txtQuantity.Text = (currentQty - 1).ToString();
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            InputCheckers.NumbersOnly(e);
+            if (int.TryParse(txtQuantity.Text, out int value))
+            {
+                if (value > Stock)
+                {
+                    txtQuantity.Text = Stock.ToString();
+                }
+                else if (value < 1)
+                {
+                    txtQuantity.Text = "1";
+                }
+            }
+            else
+            {
+                txtQuantity.Text = "1";
+            }
         }
 
         private void BtnAddtoCart_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Added to Cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
-        }
+            try
+            {
+                // Check if an employee is logged in
+                if (!Session.IsLoggedIn)
+                {
+                    MessageBox.Show("You must log in before adding items to the cart.",
+                        "Login Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                // Optional: restrict only customers from ordering
+                if (!Session.Role.Equals("Employee", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("Only customers can add items to the cart.",
+                        "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int terminalID = 1; // your current user/session ID
+                int cartID = GetOrCreateCartID(terminalID);
+
+                DBConnection db = DBConnection.getInstance();
+                using (SqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_Cart_AddItem", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@CartID", cartID);
+                        cmd.Parameters.AddWithValue("@ItemType", "PRODUCT");
+                        cmd.Parameters.AddWithValue("@ItemID", ProductID);
+                        cmd.Parameters.AddWithValue("@Quantity", int.Parse(txtQuantity.Text));
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Added to Cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding product to cart:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private int GetOrCreateCartID(int terminalID)
+        {
+            int cartID = 0;
+            DBConnection db = DBConnection.getInstance();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                // Try to get existing cart
+                using (SqlCommand cmd = new SqlCommand(
+                    "SELECT TOP 1 CartID FROM Cart WHERE TerminalID=@TerminalID ORDER BY CreatedAt DESC", conn))
+                {
+                    cmd.Parameters.AddWithValue("@TerminalID", terminalID);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        cartID = Convert.ToInt32(result);
+                }
+
+                // If no cart exists, create one
+                if (cartID == 0)
+                {
+                    using (SqlCommand cmd = new SqlCommand(
+                        "INSERT INTO Cart (TerminalID, CreatedAt, UpdatedAt) VALUES (@TerminalID, GETDATE(), GETDATE()); SELECT SCOPE_IDENTITY();", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TerminalID", terminalID);
+                        cartID = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+            }
+
+            return cartID;
+        }
         private void BtnCart_Click(object sender, EventArgs e)
         {
             this.Hide(); // hide current form

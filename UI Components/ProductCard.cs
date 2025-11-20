@@ -16,6 +16,14 @@ namespace FinalEDPOrderingSystem
         public ProductCard()
         {
             InitializeComponent();
+            this.Click += ProductCard_Click;
+
+            foreach (Control ctrl in this.Controls)
+                ctrl.Click += ProductCard_Click;
+        }
+        public ProductCard(Products product) : this()
+        {
+            SetProduct(product);
         }
 
         public string ProductName
@@ -52,7 +60,19 @@ namespace FinalEDPOrderingSystem
             }
             return bmp;
         }
+        public void SetProduct(Products product)
+        {
+            ProductID = product.ID;
+            ProductName = $"{product.Brand} {product.Model}";
+            Price = product.Price;
 
+            // Image (make sure ProductImage handles null safely)
+            ProductImage = product.Image != null ? new Bitmap(product.Image) : null;
+
+            // If you store category inside product
+            if (product.Category != null)
+                Category = product.Category;
+        }
 
         private void ProductCard_Click(object sender, EventArgs e)
         {
@@ -61,14 +81,13 @@ namespace FinalEDPOrderingSystem
 
             this.Hide();
             ViewProductForm viewForm = new ViewProductForm();
-            viewForm.ProductID = card.ProductID; // pass the correct ID
+            viewForm.ProductID = this.ProductID;  // always correct now
             viewForm.FormClosed += (s, args) => this.Show();
             viewForm.Show();
         }
 
         private void ProductCard_Load(object sender, EventArgs e)
         {
-
             FitLabelFont(lblProductName);
         }
         private void FitLabelFont(Label lbl)

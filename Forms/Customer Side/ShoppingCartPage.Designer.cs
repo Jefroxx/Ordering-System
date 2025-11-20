@@ -30,17 +30,17 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cartProductsLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.BottomPanelSubTotalLayout = new System.Windows.Forms.Panel();
+            this.btnPayNow = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnPayNow = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.BottomPanelSubTotalLayout.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,32 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Review Shopping Cart";
             // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnBack.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTn_Back;
+            this.btnBack.Location = new System.Drawing.Point(14, 25);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(22, 23);
+            this.btnBack.TabIndex = 6;
+            this.btnBack.Text = "  ";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label3.Location = new System.Drawing.Point(42, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Add More";
+            // 
             // cartProductsLayout
             // 
             this.cartProductsLayout.AutoScroll = true;
@@ -92,6 +118,18 @@
             this.BottomPanelSubTotalLayout.Name = "BottomPanelSubTotalLayout";
             this.BottomPanelSubTotalLayout.Size = new System.Drawing.Size(1284, 64);
             this.BottomPanelSubTotalLayout.TabIndex = 0;
+            // 
+            // btnPayNow
+            // 
+            this.btnPayNow.BackColor = System.Drawing.Color.Transparent;
+            this.btnPayNow.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_31;
+            this.btnPayNow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPayNow.Location = new System.Drawing.Point(1107, 6);
+            this.btnPayNow.Name = "btnPayNow";
+            this.btnPayNow.Size = new System.Drawing.Size(164, 51);
+            this.btnPayNow.TabIndex = 6;
+            this.btnPayNow.UseVisualStyleBackColor = false;
+            this.btnPayNow.Click += new System.EventHandler(this.btnPayNow_Click);
             // 
             // label1
             // 
@@ -115,7 +153,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(113, 41);
             this.txtTotal.TabIndex = 5;
-            this.txtTotal.Text = "₱ 100";
+            this.txtTotal.Text = "₱ 101";
             // 
             // label4
             // 
@@ -164,44 +202,6 @@
             this.label7.Size = new System.Drawing.Size(87, 23);
             this.label7.TabIndex = 6;
             this.label7.Text = "Remove";
-            // 
-            // btnPayNow
-            // 
-            this.btnPayNow.BackColor = System.Drawing.Color.Transparent;
-            this.btnPayNow.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_31;
-            this.btnPayNow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPayNow.Location = new System.Drawing.Point(1107, 6);
-            this.btnPayNow.Name = "btnPayNow";
-            this.btnPayNow.Size = new System.Drawing.Size(164, 51);
-            this.btnPayNow.TabIndex = 6;
-            this.btnPayNow.UseVisualStyleBackColor = false;
-            this.btnPayNow.Click += new System.EventHandler(this.btnPayNow_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.btnBack.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTn_Back;
-            this.btnBack.Location = new System.Drawing.Point(14, 25);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(22, 23);
-            this.btnBack.TabIndex = 6;
-            this.btnBack.Text = "  ";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.label3.Location = new System.Drawing.Point(42, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Add More";
             // 
             // ShoppingCartPage
             // 

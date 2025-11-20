@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Data.Common;
+using FinalEDPOrderingSystem.Code.Product;
 
 namespace FinalEDPOrderingSystem.Code.Product
 {
@@ -114,6 +115,41 @@ namespace FinalEDPOrderingSystem.Code.Product
 
                 return cmd.ExecuteNonQuery() > 0;
             }
+        }
+        public List<Products> SearchProducts(string keyword)
+        {
+            List<Products> products = new List<Products>();
+
+            using (SqlConnection conn = DBConnection.getInstance().GetConnection())
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SearchProducts", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Keyword", keyword);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Products p = new Products
+                            {
+                                ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                                Brand = reader.GetString(reader.GetOrdinal("Brand")),
+                                Model = reader.GetString(reader.GetOrdinal("Model")),
+                                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                                //Image = reader["Image"] as byte[],
+                                Description = reader["Description"].ToString()
+                            };
+
+                            products.Add(p);
+                        }
+                    }
+                }
+            }
+
+            return products;
         }
     }
 }

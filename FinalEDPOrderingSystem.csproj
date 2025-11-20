@@ -156,6 +156,7 @@
     <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Photo&amp;DirectoryManager.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCard.cs">
       <SubType>UserControl</SubType>
@@ -529,6 +530,8 @@
   <ItemGroup>
     <None Include="Resources\BTn_Back.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SystemAssets\Images\Employees\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

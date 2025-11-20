@@ -1,19 +1,20 @@
-﻿using System;
+﻿using FinalEDPOrderingSystem.Code.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalEDPOrderingSystem.Code.Product;
 
 namespace FinalEDPOrderingSystem
 {
     public partial class ManageStocksForm : Form
     {
-        public ProductInformation CurrentProduct { get; set; }
+        public ProductInformationWithPath CurrentProduct { get; set; }
         private readonly ProductRepository _repository;
         public ManageStocksForm(ProductRepository repository)
         {
@@ -32,8 +33,8 @@ namespace FinalEDPOrderingSystem
              || !InputCheckers.NullChecker(txtQuantity, "Quantity"))
                 return;
 
-            int quantityToAdd = int.Parse(txtQuantity.Text);
-            int newStock = CurrentProduct.Stocks + quantityToAdd;
+            int quantityToChange = int.Parse(txtQuantity.Text);
+            int newStock = quantityToChange;
 
             // Prevent negative stock (optional but recommended)
             if (newStock < 0)
@@ -43,7 +44,7 @@ namespace FinalEDPOrderingSystem
             }
 
             // Save to database using repository
-            bool success = _repository.UpdateProductStock(CurrentProduct.ProductID, newStock);
+            bool success = _repository.UpdateStockAbsolute(CurrentProduct.ProductID, newStock);
 
             if (success)
             {
@@ -79,6 +80,7 @@ namespace FinalEDPOrderingSystem
         {
             dateUpdated.Format = DateTimePickerFormat.Custom;
             dateUpdated.CustomFormat = "MM/dd/yyyy";
+            ButtonDesigner.MainButtons(btnRemoveStock);
             ButtonDesigner.MainButtons(btnUpdateStocks);
             ButtonDesigner.SecondaryButtons(btnCancel);
 
@@ -90,5 +92,35 @@ namespace FinalEDPOrderingSystem
             }
 
         }
+
+        private void btnRemoveStock_Click(object sender, EventArgs e)
+        {
+            if (CurrentProduct == null)
+            {
+                MessageBox.Show("No product loaded.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int productId = CurrentProduct.ProductID;
+
+            // 1. Delete from DB
+            bool success = _repository.DeleteProduct(productId);
+
+            if (!success)
+                return;
+
+            // 2. Delete the physical image folder
+            Photo_DirectoryManager.DeleteProductFolder(productId);
+
+            MessageBox.Show("Product removed successfully!",
+                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
+
     }
 }

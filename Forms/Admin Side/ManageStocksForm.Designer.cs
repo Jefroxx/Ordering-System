@@ -45,50 +45,51 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdateStocks = new System.Windows.Forms.Button();
+            this.btnRemoveStock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TxtProdName
             // 
             this.TxtProdName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtProdName.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtProdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtProdName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.TxtProdName.Location = new System.Drawing.Point(85, 246);
             this.TxtProdName.Name = "TxtProdName";
             this.TxtProdName.ReadOnly = true;
-            this.TxtProdName.Size = new System.Drawing.Size(798, 33);
+            this.TxtProdName.Size = new System.Drawing.Size(798, 31);
             this.TxtProdName.TabIndex = 44;
             // 
             // txtProdID
             // 
             this.txtProdID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProdID.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProdID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtProdID.Location = new System.Drawing.Point(85, 164);
             this.txtProdID.Name = "txtProdID";
             this.txtProdID.ReadOnly = true;
-            this.txtProdID.Size = new System.Drawing.Size(430, 33);
+            this.txtProdID.Size = new System.Drawing.Size(430, 31);
             this.txtProdID.TabIndex = 43;
             this.txtProdID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdID_KeyPress);
             // 
             // txtCurrentStock
             // 
             this.txtCurrentStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCurrentStock.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtCurrentStock.Location = new System.Drawing.Point(87, 337);
             this.txtCurrentStock.Name = "txtCurrentStock";
             this.txtCurrentStock.ReadOnly = true;
-            this.txtCurrentStock.Size = new System.Drawing.Size(428, 33);
+            this.txtCurrentStock.Size = new System.Drawing.Size(428, 31);
             this.txtCurrentStock.TabIndex = 44;
             // 
             // txtQuantity
             // 
             this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQuantity.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtQuantity.Location = new System.Drawing.Point(532, 337);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(344, 33);
+            this.txtQuantity.Size = new System.Drawing.Size(344, 31);
             this.txtQuantity.TabIndex = 44;
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
@@ -102,11 +103,11 @@
             this.dateUpdated.CalendarTrailingForeColor = System.Drawing.Color.Purple;
             this.dateUpdated.CustomFormat = "MMMM dd ,yyyy";
             this.dateUpdated.Enabled = false;
-            this.dateUpdated.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateUpdated.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateUpdated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateUpdated.Location = new System.Drawing.Point(532, 164);
             this.dateUpdated.Name = "dateUpdated";
-            this.dateUpdated.Size = new System.Drawing.Size(351, 33);
+            this.dateUpdated.Size = new System.Drawing.Size(351, 31);
             this.dateUpdated.TabIndex = 45;
             this.dateUpdated.Value = new System.DateTime(2025, 11, 2, 16, 40, 20, 0);
             // 
@@ -118,9 +119,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.label9.Location = new System.Drawing.Point(523, 309);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(279, 20);
+            this.label9.Size = new System.Drawing.Size(293, 20);
             this.label9.TabIndex = 74;
-            this.label9.Text = " Add Quantity (New Stock Arrived)";
+            this.label9.Text = " Adust Quantity (New Stock Arrived)";
             // 
             // label1
             // 
@@ -174,11 +175,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.label5.Location = new System.Drawing.Point(341, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(278, 41);
+            this.label5.Size = new System.Drawing.Size(269, 39);
             this.label5.TabIndex = 79;
             this.label5.Text = "Manage Stocks";
             // 
@@ -225,7 +226,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Location = new System.Drawing.Point(285, 424);
+            this.btnCancel.Location = new System.Drawing.Point(126, 428);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(192, 45);
             this.btnCancel.TabIndex = 41;
@@ -239,12 +240,26 @@
             this.btnUpdateStocks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnUpdateStocks.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateStocks.ForeColor = System.Drawing.Color.Transparent;
-            this.btnUpdateStocks.Location = new System.Drawing.Point(507, 423);
+            this.btnUpdateStocks.Location = new System.Drawing.Point(373, 427);
             this.btnUpdateStocks.Name = "btnUpdateStocks";
             this.btnUpdateStocks.Size = new System.Drawing.Size(194, 47);
             this.btnUpdateStocks.TabIndex = 42;
             this.btnUpdateStocks.UseVisualStyleBackColor = false;
             this.btnUpdateStocks.Click += new System.EventHandler(this.btnUpdateStocks_Click);
+            // 
+            // btnRemoveStock
+            // 
+            this.btnRemoveStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.btnRemoveStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRemoveStock.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveStock.ForeColor = System.Drawing.Color.Transparent;
+            this.btnRemoveStock.Location = new System.Drawing.Point(622, 427);
+            this.btnRemoveStock.Name = "btnRemoveStock";
+            this.btnRemoveStock.Size = new System.Drawing.Size(194, 47);
+            this.btnRemoveStock.TabIndex = 84;
+            this.btnRemoveStock.Text = "Remove Stock";
+            this.btnRemoveStock.UseVisualStyleBackColor = false;
+            this.btnRemoveStock.Click += new System.EventHandler(this.btnRemoveStock_Click);
             // 
             // ManageStocksForm
             // 
@@ -253,6 +268,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(998, 565);
+            this.Controls.Add(this.btnRemoveStock);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -300,5 +316,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnRemoveStock;
     }
 }

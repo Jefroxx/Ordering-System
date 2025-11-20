@@ -1,4 +1,6 @@
-﻿namespace FinalEDPOrderingSystem
+﻿using System.Windows.Forms;
+
+namespace FinalEDPOrderingSystem
 {
     partial class Add_EditEmployees
     {
@@ -60,7 +62,7 @@
             // 
             this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAddress.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtAddress.Location = new System.Drawing.Point(431, 318);
             this.txtAddress.Multiline = true;
@@ -72,12 +74,12 @@
             // 
             this.txtContactNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContactNo.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtContactNo.Location = new System.Drawing.Point(432, 232);
             this.txtContactNo.MaxLength = 11;
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(200, 33);
+            this.txtContactNo.Size = new System.Drawing.Size(200, 31);
             this.txtContactNo.TabIndex = 45;
             this.txtContactNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContactNo_KeyPress);
             // 
@@ -85,12 +87,13 @@
             // 
             this.txtAge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAge.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtAge.Location = new System.Drawing.Point(876, 233);
             this.txtAge.MaxLength = 3;
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(58, 33);
+            this.txtAge.ReadOnly = true;
+            this.txtAge.Size = new System.Drawing.Size(58, 31);
             this.txtAge.TabIndex = 46;
             this.txtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAge_KeyPress);
             // 
@@ -98,11 +101,11 @@
             // 
             this.txtLname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtLname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLname.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtLname.Location = new System.Drawing.Point(431, 88);
             this.txtLname.Name = "txtLname";
-            this.txtLname.Size = new System.Drawing.Size(201, 33);
+            this.txtLname.Size = new System.Drawing.Size(201, 31);
             this.txtLname.TabIndex = 45;
             this.txtLname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLname_KeyPress);
             // 
@@ -110,11 +113,11 @@
             // 
             this.txtFname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtFname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFname.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtFname.Location = new System.Drawing.Point(648, 88);
             this.txtFname.Name = "txtFname";
-            this.txtFname.Size = new System.Drawing.Size(212, 33);
+            this.txtFname.Size = new System.Drawing.Size(212, 31);
             this.txtFname.TabIndex = 45;
             this.txtFname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFname_KeyPress);
             // 
@@ -122,12 +125,12 @@
             // 
             this.txtMI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMI.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtMI.Location = new System.Drawing.Point(876, 88);
             this.txtMI.MaxLength = 1;
             this.txtMI.Name = "txtMI";
-            this.txtMI.Size = new System.Drawing.Size(58, 33);
+            this.txtMI.Size = new System.Drawing.Size(58, 31);
             this.txtMI.TabIndex = 45;
             this.txtMI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMI_KeyPress);
             // 
@@ -280,7 +283,6 @@
             this.label7.Size = new System.Drawing.Size(94, 20);
             this.label7.TabIndex = 71;
             this.label7.Text = "First Name";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -312,6 +314,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(49, 88);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(348, 368);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 54;
             this.pictureBox1.TabStop = false;
             // 
@@ -319,7 +322,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancel.Font = new System.Drawing.Font("Imprint MT Shadow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
             this.btnCancel.Location = new System.Drawing.Point(520, 478);
             this.btnCancel.Name = "btnCancel";
@@ -332,20 +335,20 @@
             // 
             this.btnUploadImage.BackColor = System.Drawing.Color.Transparent;
             this.btnUploadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUploadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUploadImage.Font = new System.Drawing.Font("Imprint MT Shadow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadImage.ForeColor = System.Drawing.Color.Transparent;
             this.btnUploadImage.Location = new System.Drawing.Point(149, 477);
             this.btnUploadImage.Name = "btnUploadImage";
             this.btnUploadImage.Size = new System.Drawing.Size(150, 37);
             this.btnUploadImage.TabIndex = 42;
             this.btnUploadImage.UseVisualStyleBackColor = false;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
             // 
             // btnAddEmployee
             // 
             this.btnAddEmployee.BackColor = System.Drawing.Color.Transparent;
             this.btnAddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddEmployee.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployee.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddEmployee.Location = new System.Drawing.Point(692, 477);
             this.btnAddEmployee.Name = "btnAddEmployee";

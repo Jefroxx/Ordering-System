@@ -29,6 +29,9 @@ namespace FinalEDPOrderingSystem.Code.Employee
                 cmd.Parameters.AddWithValue("@Gender", emp.Gender);
                 cmd.Parameters.AddWithValue("@Contact_Number", emp.ContactNo);
                 cmd.Parameters.AddWithValue("@Address", emp.Address);
+                cmd.Parameters.AddWithValue("@PhotoPath",
+                string.IsNullOrEmpty(emp.PhotoPath) ? (object)DBNull.Value : emp.PhotoPath);
+
 
                 if (_conn.State != ConnectionState.Open)
                     _conn.Open();
@@ -52,9 +55,10 @@ namespace FinalEDPOrderingSystem.Code.Employee
                 cmd.Parameters.AddWithValue("@Middle_Initial", emp.MiddleInitial);
                 cmd.Parameters.AddWithValue("@Birthday", emp.Birthday);
                 cmd.Parameters.AddWithValue("@Gender", emp.Gender);
-                cmd.Parameters.AddWithValue("@Age", emp.Age);
                 cmd.Parameters.AddWithValue("@Contact_Number", emp.ContactNo);
                 cmd.Parameters.AddWithValue("@Address", emp.Address);
+                cmd.Parameters.AddWithValue("@PhotoPath",
+                string.IsNullOrEmpty(emp.PhotoPath) ? (object)DBNull.Value : emp.PhotoPath);
 
                 if (_conn.State != ConnectionState.Open)
                     _conn.Open();
@@ -76,24 +80,31 @@ namespace FinalEDPOrderingSystem.Code.Employee
 
                 if (_conn.State != ConnectionState.Open)
                     _conn.Open();
+
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     if (dr.Read())
+                    {
                         return new EmployeeInformation
                         {
                             EmployeeID = employeeID,
-                            LastName = dr["LastName"].ToString(),
-                            FirstName = dr["FirstName"].ToString(),
-                            MiddleInitial = dr["MI"].ToString(),
-                            Birthday = Convert.ToDateTime(dr["Birthday"]),
-                            Gender = dr["Gender"].ToString(),
-                            Age = Convert.ToInt32(dr["Age"]),
-                            ContactNo = dr["ContactNo"].ToString(),
-                            Address = dr["Address"].ToString()
+                            LastName = dr["LastName"]?.ToString() ?? "",
+                            FirstName = dr["FirstName"]?.ToString() ?? "",
+                            MiddleInitial = dr["MiddleInitial"]?.ToString() ?? "",
+                            Birthday = dr.GetDateTime(dr.GetOrdinal("Birthdate")),
+                            Gender = dr["Gender"]?.ToString() ?? "",
+                            ContactNo = dr["ContactNo"]?.ToString() ?? "",
+                            Address = dr["Address"]?.ToString() ?? "",
+                            PhotoPath = dr["PhotoPath"] == DBNull.Value? null: dr["PhotoPath"].ToString()
+
                         };
+                    }
                 }
             }
+
             return null;
         }
+
+
     }
 }

@@ -323,6 +323,16 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cashless123123 {
+            get {
+                object obj = ResourceManager.GetObject("Cashless123123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EditEmployees {
             get {
                 object obj = ResourceManager.GetObject("EditEmployees", resourceCulture);

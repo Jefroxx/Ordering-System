@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblOrderNum = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnDone = new System.Windows.Forms.Button();
-            this.btnOrderAgain = new System.Windows.Forms.Button();
+            this.btnReceipt = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
-            this.panel1.Controls.Add(this.lblOrderNum);
+            this.panel1.Controls.Add(this.lblTotalAmount);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(253, 148);
@@ -48,17 +48,17 @@
             this.panel1.Size = new System.Drawing.Size(793, 404);
             this.panel1.TabIndex = 0;
             // 
-            // lblOrderNum
+            // lblTotalAmount
             // 
-            this.lblOrderNum.AutoSize = true;
-            this.lblOrderNum.BackColor = System.Drawing.Color.Transparent;
-            this.lblOrderNum.Font = new System.Drawing.Font("Cambria", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrderNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
-            this.lblOrderNum.Location = new System.Drawing.Point(230, 137);
-            this.lblOrderNum.Name = "lblOrderNum";
-            this.lblOrderNum.Size = new System.Drawing.Size(332, 112);
-            this.lblOrderNum.TabIndex = 5;
-            this.lblOrderNum.Text = "10001";
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Cambria", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
+            this.lblTotalAmount.Location = new System.Drawing.Point(230, 161);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(332, 112);
+            this.lblTotalAmount.TabIndex = 5;
+            this.lblTotalAmount.Text = "10001";
             // 
             // label3
             // 
@@ -71,6 +71,7 @@
             this.label3.Size = new System.Drawing.Size(428, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Please present this number at the counter";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -78,31 +79,31 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.label2.Location = new System.Drawing.Point(231, 48);
+            this.label2.Location = new System.Drawing.Point(242, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(331, 33);
+            this.label2.Size = new System.Drawing.Size(322, 33);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Your Order Number is ";
+            this.label2.Text = "Your Total Amount is ";
             // 
-            // btnDone
+            // btnReceipt
             // 
-            this.btnDone.Location = new System.Drawing.Point(662, 581);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(194, 52);
-            this.btnDone.TabIndex = 1;
-            this.btnDone.Text = "Done";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            this.btnReceipt.Location = new System.Drawing.Point(662, 581);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(194, 52);
+            this.btnReceipt.TabIndex = 1;
+            this.btnReceipt.Text = "Print Receipt";
+            this.btnReceipt.UseVisualStyleBackColor = true;
+            this.btnReceipt.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // btnOrderAgain
+            // btnCancel
             // 
-            this.btnOrderAgain.Location = new System.Drawing.Point(454, 581);
-            this.btnOrderAgain.Name = "btnOrderAgain";
-            this.btnOrderAgain.Size = new System.Drawing.Size(194, 52);
-            this.btnOrderAgain.TabIndex = 1;
-            this.btnOrderAgain.Text = "Order Again?";
-            this.btnOrderAgain.UseVisualStyleBackColor = true;
-            this.btnOrderAgain.Click += new System.EventHandler(this.btnOrderAgain_Click);
+            this.btnCancel.Location = new System.Drawing.Point(454, 581);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(194, 52);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnOrderAgain_Click);
             // 
             // CashPaymentForm
             // 
@@ -110,8 +111,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
-            this.Controls.Add(this.btnOrderAgain);
-            this.Controls.Add(this.btnDone);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnReceipt);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Coral;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -129,9 +130,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblOrderNum;
+        private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.Button btnOrderAgain;
+        private System.Windows.Forms.Button btnReceipt;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -12,9 +12,13 @@ namespace FinalEDPOrderingSystem
 {
     public partial class PaymentMethodCashorCard : Form
     {
-        public PaymentMethodCashorCard()
+        private List<Products> cartProducts;
+
+        public PaymentMethodCashorCard(List<Products> products)
         {
             InitializeComponent();
+            cartProducts = products;
+
         }
 
         private void PaymentMethodCashorCard_Load(object sender, EventArgs e)
@@ -27,7 +31,7 @@ namespace FinalEDPOrderingSystem
 
         private void btnCash_Click(object sender, EventArgs e)
         {
-            CashPaymentForm cashForm = new CashPaymentForm();
+            CashPaymentForm cashForm = new CashPaymentForm(cartProducts);
             cashForm.Show();
         }
 

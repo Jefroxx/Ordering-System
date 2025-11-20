@@ -14,13 +14,13 @@ namespace FinalEDPOrderingSystem
 {
     public partial class ShoppingCartPage : Form
     {
-        private List<Product> cartProducts = new List<Product>();
-        public Product ProductData { get; private set; }
+        private List<Products> cartProducts = new List<Products>();
+        public Products ProductData { get; private set; }
 
         public ShoppingCartPage()
         {
             InitializeComponent();
-            cartProducts = new List<Product>();
+            cartProducts = new List<Products>();
         }
         public event EventHandler QuantityChanged;
 
@@ -34,10 +34,10 @@ namespace FinalEDPOrderingSystem
                 QuantityChanged?.Invoke(this, EventArgs.Empty);
             }
         }
-        public ShoppingCartPage(List<Product> productsInCart)
+        public ShoppingCartPage(List<Products> productsInCart)
         {
             InitializeComponent();
-            cartProducts = productsInCart ?? new List<Product>();
+            cartProducts = productsInCart ?? new List<Products>();
 
             LoadCartItems();
         }
@@ -76,9 +76,9 @@ namespace FinalEDPOrderingSystem
             }
             txtTotal.Text = $"₱{total:N2}";
         }
-        private List<Product> LoadCartProductsFromDb(int cartID)
+        private List<Products> LoadCartProductsFromDb(int cartID)
         {
-            List<Product> products = new List<Product>();
+            List<Products> products = new List<Products>();
             DBConnection db = DBConnection.getInstance();
 
             using (SqlConnection conn = db.GetConnection())
@@ -94,7 +94,7 @@ namespace FinalEDPOrderingSystem
                     {
                         while (reader.Read())
                         {
-                            products.Add(new Product
+                            products.Add(new Products
                             {
                                 ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -118,8 +118,8 @@ namespace FinalEDPOrderingSystem
             ButtonDesigner.MainButtons(btnPayNow);
             cartProductsLayout.Controls.Clear();
 
-            int cartID = 4; // replace with actual cart logic
-            List<Product> productsFromDb = LoadCartProductsFromDb(cartID);
+            int cartID = 3; // replace with actual cart logic
+            List<Products> productsFromDb = LoadCartProductsFromDb(cartID);
 
             foreach (var product in productsFromDb)
             {
@@ -135,9 +135,9 @@ namespace FinalEDPOrderingSystem
 
             
         }
-        public static List<Product> GetCartProducts(int cartID)
+        public static List<Products> GetCartProducts(int cartID)
         {
-            List<Product> products = new List<Product>();
+            List<Products> products = new List<Products>();
             DBConnection db = DBConnection.getInstance();
 
             using (SqlConnection conn = db.GetConnection())
@@ -154,7 +154,7 @@ namespace FinalEDPOrderingSystem
                         // Assuming the first result set is the cart items
                         while (reader.Read())
                         {
-                            products.Add(new Product
+                            products.Add(new Products
                             {
                                 ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -174,11 +174,40 @@ namespace FinalEDPOrderingSystem
 
             return products;
         }
+        private void UpdateCartQuantitiesInDb(int cartID)
+        {
+            DBConnection db = DBConnection.getInstance();
+
+            using (SqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+
+                foreach (var card in cartProductsLayout.Controls.OfType<CartProductCard>())
+                {
+                    if (card.ProductData != null)
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_UpdateCartItemQuantity", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@CartID", cartID);
+                            cmd.Parameters.AddWithValue("@ProductID", card.ProductData.ID);
+                            cmd.Parameters.AddWithValue("@Quantity", card.ProductData.Quantity);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
 
         private void btnPayNow_Click(object sender, EventArgs e)
         {
+            int cartID = 3; // replace with actual cart ID
+            UpdateCartQuantitiesInDb(cartID); // ✅ update DB before payment
+
             this.Hide();
-            PaymentMethodCashorCard paymentPage = new PaymentMethodCashorCard();
+
+            var cartProducts = LoadCartProductsFromDb(cartID);
+            PaymentMethodCashorCard paymentPage = new PaymentMethodCashorCard(cartProducts);
             paymentPage.FormClosed += (s, args) => this.Show();
             paymentPage.ShowDialog();
 

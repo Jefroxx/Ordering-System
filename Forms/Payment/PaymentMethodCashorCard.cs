@@ -37,7 +37,7 @@ namespace FinalEDPOrderingSystem
 
         private void btnCashless_Click(object sender, EventArgs e)
         {
-            CashlessPaymentForm cashlessForm = new CashlessPaymentForm();
+            CashlessPaymentForm cashlessForm = new CashlessPaymentForm(cartProducts);
             cashlessForm.Show();
             
         }

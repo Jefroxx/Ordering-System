@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Repositories;
 
 namespace FinalEDPOrderingSystem
 {
@@ -55,12 +56,36 @@ namespace FinalEDPOrderingSystem
 
             UpdateTotal();
         }
+        private void AddProductToCartUI(Products product)
+        {
+            CartProductCard card = new CartProductCard(product);
 
+            // Handle remove button click
+            card.OnRemove += RemoveCartItem;
+
+            // Handle quantity changes
+            card.OnQuantityChanged += UpdateTotal;
+
+            cartProductsLayout.Controls.Add(card);
+        }
         private void RemoveCartItem(CartProductCard card)
         {
-            cartProducts.Remove(card.ProductData);
+            // 1. Keep a copy of the product
+            Products product = card.ProductData;
+
+            // 2. Remove from UI
             cartProductsLayout.Controls.Remove(card);
+
+            // 3. Remove from in-memory list
+            cartProducts.Remove(product);
+
+            // 4. Remove from database
+            CartRepository cartRepo = new CartRepository();
+            cartRepo.RemoveItem(cartID, product.ID);
+
+            // 5. Update total
             UpdateTotal();
+
         }
         
         private void UpdateTotal()
@@ -76,138 +101,56 @@ namespace FinalEDPOrderingSystem
             }
             txtTotal.Text = $"₱{total:N2}";
         }
-        private List<Products> LoadCartProductsFromDb(int cartID)
-        {
-            List<Products> products = new List<Products>();
-            DBConnection db = DBConnection.getInstance();
-
-            using (SqlConnection conn = db.GetConnection())
-            {
-                conn.Open(); // IMPORTANT
-
-                using (SqlCommand cmd = new SqlCommand("sp_GetCartItems", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CartID", cartID);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            products.Add(new Products
-                            {
-                                ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
-                                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
-                                Description = reader.IsDBNull(reader.GetOrdinal("Description"))
-                                    ? string.Empty
-                                    : reader.GetString(reader.GetOrdinal("Description")),
-                                Image = null // skip for now
-                            });
-                        }
-                    }
-                }
-            }
-
-            return products;
-        }
-
+       
+        private CartRepository cartRepo = new CartRepository();
+        private int cartID;
         private void ShoppingCartPage_Load(object sender, EventArgs e)
         {
             ButtonDesigner.MainButtons(btnPayNow);
             cartProductsLayout.Controls.Clear();
 
-            int cartID = 3; // replace with actual cart logic
-            List<Products> productsFromDb = LoadCartProductsFromDb(cartID);
+            // 1. Get or create dynamic cart
+            cartID = cartRepo.GetOrCreateCart(1); // terminal ID = 1
 
-            foreach (var product in productsFromDb)
+            // 2. Load products from DB
+            cartProducts = cartRepo.GetCartProducts(cartID);
+
+            // 3. Add each product to the UI using AddProductToCartUI
+            foreach (var product in cartProducts)
             {
-                CartProductCard card = new CartProductCard();
-                card.SetProduct(product);
-
-                // Subscribe to QuantityChanged event
-                card.QuantityChanged += (s, ev) => UpdateTotal();
-
-                cartProductsLayout.Controls.Add(card);
+                AddProductToCartUI(product);
             }
+
             UpdateTotal();
-
-            
         }
-        public static List<Products> GetCartProducts(int cartID)
+        private void UpdateCartQuantitiesInDb()
         {
-            List<Products> products = new List<Products>();
-            DBConnection db = DBConnection.getInstance();
-
-            using (SqlConnection conn = db.GetConnection())
-            {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("sp_GetCartItems", conn)) // your stored procedure
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@CartID", cartID);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        // Assuming the first result set is the cart items
-                        while (reader.Read())
-                        {
-                            products.Add(new Products
-                            {
-                                ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
-                                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
-                                Description = reader.IsDBNull(reader.GetOrdinal("Description"))
-                                    ? string.Empty
-                                    : reader.GetString(reader.GetOrdinal("Description"))
-                            });
-                        }
-
-                        // If your stored procedure returns other result sets (like totals), you can handle them here
-                        // if (reader.NextResult()) { ... }
-                    }
-                }
-            }
-
-            return products;
+            cartRepo.UpdateCartQuantities(cartID, cartProducts);
         }
-        private void UpdateCartQuantitiesInDb(int cartID)
-        {
-            DBConnection db = DBConnection.getInstance();
 
-            using (SqlConnection conn = db.GetConnection())
-            {
-                conn.Open();
-
-                foreach (var card in cartProductsLayout.Controls.OfType<CartProductCard>())
-                {
-                    if (card.ProductData != null)
-                    {
-                        using (SqlCommand cmd = new SqlCommand("sp_UpdateCartItemQuantity", conn))
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@CartID", cartID);
-                            cmd.Parameters.AddWithValue("@ProductID", card.ProductData.ID);
-                            cmd.Parameters.AddWithValue("@Quantity", card.ProductData.Quantity);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
-            }
-        }
 
         private void btnPayNow_Click(object sender, EventArgs e)
         {
-            int cartID = 3; // replace with actual cart ID
-            UpdateCartQuantitiesInDb(cartID); // ✅ update DB before payment
+            UpdateCartQuantitiesInDb();
 
+            // 2. Get the latest cart products
+            var cartProductsList = cartRepo.GetCartProducts(cartID);
+
+            // 3. Check if cart is empty
+            if (cartProductsList == null || cartProductsList.Count == 0)
+            {
+                MessageBox.Show(
+                    "Your cart is empty. Please add products before proceeding to payment.",
+                    "Cart Empty",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return; // stop here
+            }
+
+            // 4. Proceed to payment
             this.Hide();
-
-            var cartProducts = LoadCartProductsFromDb(cartID);
-            PaymentMethodCashorCard paymentPage = new PaymentMethodCashorCard(cartProducts);
+            PaymentMethodCashorCard paymentPage = new PaymentMethodCashorCard(cartProductsList);
             paymentPage.FormClosed += (s, args) => this.Show();
             paymentPage.ShowDialog();
 

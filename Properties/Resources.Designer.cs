@@ -73,6 +73,16 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5eddb68e_d751_42a9_9154_a856d52e215b {
+            get {
+                object obj = ResourceManager.GetObject("5eddb68e-d751-42a9-9154-a856d52e215b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _7c10adae7dad7e5c7d4b01de25a2ca13 {
             get {
                 object obj = ResourceManager.GetObject("7c10adae7dad7e5c7d4b01de25a2ca13", resourceCulture);

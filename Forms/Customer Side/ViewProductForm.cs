@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code;
 using static System.Collections.Specialized.BitVector32;
 
 namespace FinalEDPOrderingSystem
@@ -116,6 +117,22 @@ namespace FinalEDPOrderingSystem
         {
             try
             {
+                // Check if an employee is logged in
+                if (!Session.IsLoggedIn)
+                {
+                    MessageBox.Show("You must log in before adding items to the cart.",
+                        "Login Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Optional: restrict only customers from ordering
+                if (!Session.Role.Equals("Employee", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("Only customers can add items to the cart.",
+                        "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 int terminalID = 1; // your current user/session ID
                 int cartID = GetOrCreateCartID(terminalID);
 

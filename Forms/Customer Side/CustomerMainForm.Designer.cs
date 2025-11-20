@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.SearchBar = new System.Windows.Forms.TextBox();
+            this.lblLoggedUser = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblLoggedUser);
             this.panel2.Controls.Add(this.BtnCart);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -122,6 +124,17 @@
             this.SearchBar.Size = new System.Drawing.Size(372, 20);
             this.SearchBar.TabIndex = 46;
             // 
+            // lblLoggedUser
+            // 
+            this.lblLoggedUser.AutoSize = true;
+            this.lblLoggedUser.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
+            this.lblLoggedUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblLoggedUser.Location = new System.Drawing.Point(17, 20);
+            this.lblLoggedUser.Name = "lblLoggedUser";
+            this.lblLoggedUser.Size = new System.Drawing.Size(60, 20);
+            this.lblLoggedUser.TabIndex = 49;
+            this.lblLoggedUser.Text = "label1";
+            // 
             // CustomerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +151,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerMainForm";
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -152,5 +166,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutCategories;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox SearchBar;
+        private System.Windows.Forms.Label lblLoggedUser;
     }
 }

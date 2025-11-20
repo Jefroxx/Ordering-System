@@ -36,11 +36,17 @@ namespace FinalEDPOrderingSystem
 
         private void LoadProductInfo()
         {
+            if (ProductData == null)
+                return;
+
+            // Always update labels
+            lblProductName.Text = ProductData.Name ?? "Unnamed Product";
+            lblPrice.Text = $"₱{ProductData.Price:N2}";
+            txtQuantity.Text = ProductData.Quantity.ToString();
+
+            // Handle image
             if (ProductData.Image != null)
             {
-                lblProductName.Text = ProductData.Name ?? "Unnamed Product";
-                lblPrice.Text = $"₱{ProductData.Price:N2}";
-                txtQuantity.Text = ProductData.Quantity.ToString();
                 Productimage.Image = new Bitmap(ProductData.Image); // clone so it’s independent
                 Productimage.SizeMode = PictureBoxSizeMode.Zoom;
             }
@@ -49,7 +55,6 @@ namespace FinalEDPOrderingSystem
                 CreatePlaceholderImage();
             }
         }
-
 
         private void CreatePlaceholderImage()
         {
@@ -99,12 +104,22 @@ namespace FinalEDPOrderingSystem
         public void SetProduct(Products product)
         {
             ProductData = product;
+
+            // Update labels
             lblProductName.Text = product.Name ?? "Unnamed Product";
             lblPrice.Text = $"₱{product.Price:N2}";
             txtQuantity.Text = product.Quantity.ToString();
 
-            // If you have an image later, handle it here
-            Productimage.Image = null;
+            // Load image or placeholder
+            if (product.Image != null)
+            {
+                Productimage.Image = new Bitmap(product.Image); // clone image
+                Productimage.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                CreatePlaceholderImage(); // show "No Image" placeholder
+            }
         }
         private void TxtQuantity_TextChanged(object sender, EventArgs e)
         {

@@ -57,42 +57,29 @@ namespace FinalEDPOrderingSystem
         {
             return productsInCart;
         }
-        private bool CheckoutCart(int cartID, int paymentMethodID, int? customerID)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(DBConnection.getInstance().s))
-                using (SqlCommand cmd = new SqlCommand("sp_CheckoutCart", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@CartID", cartID);
-                    cmd.Parameters.AddWithValue("@PaymentMethodID", paymentMethodID);
-                    //cmd.Parameters.AddWithValue("@CustomerID", (object)customerID ?? DBNull.Value);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Checkout failed:\n" + ex.Message);
-                return false;
-            }
-        }
+       
         private void btnDone_Click(object sender, EventArgs e)
         {
-            int cartID = 3;
+            var cartRepo = new CartRepository();
+
+            // 1. Get dynamic cart ID (latest or new)
+            int cartID = cartRepo.GetOrCreateCart(1); // terminalID = 1
             int paymentMethodID = 1;
             int? walkInCustomerID = null;
 
-            // 1. Try checkout
-            bool ok = CheckoutCart(cartID, paymentMethodID, walkInCustomerID);
-            if (!ok) return;
+            // 2. Checkout
+            try
+            {
+                if (!cartRepo.CheckoutCart(cartID, paymentMethodID, walkInCustomerID))
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Checkout failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // 2. Generate receipt PDF (✔ now using productsInCart)
+            // 3. Generate receipt PDF
             var products = GetDisplayedProducts();
             string filePath = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
 
@@ -102,17 +89,17 @@ namespace FinalEDPOrderingSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating receipt:\n" + ex.Message);
+                MessageBox.Show("Error generating receipt:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // 3. Show success
-            MessageBox.Show("Checkout complete!\nReceipt generated.");
+            // 4. Show success
+            MessageBox.Show("Checkout complete!\nReceipt generated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // 4. Open receipt
+            // 5. Open receipt
             System.Diagnostics.Process.Start(filePath);
 
-            // 5. Reset UI
+            // 6. Reset UI & return to landing page
             lblTotalAmount.Text = "₱0.00";
 
             LandingPage landingPage = new LandingPage();

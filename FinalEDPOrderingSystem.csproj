@@ -52,12 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\AppState.cs" />
     <Compile Include="Code\Cart\CartDataAccess.cs" />
     <Compile Include="Code\Cart\EmployeeInformation.cs" />
+    <Compile Include="Code\Repositories\CartRepository.cs" />
     <Compile Include="Code\Repositories\EmployeeRepository.cs" />
     <Compile Include="Code\Repositories\ProductInformation.cs" />
     <Compile Include="Code\Repositories\ProductRepository.cs" />
     <Compile Include="Code\Repositories\ReceiptPDF.cs" />
+    <Compile Include="Code\Session.cs" />
     <Compile Include="LoginCode\CredentialsVerifier.cs" />
     <Compile Include="Data\DBConnection.cs" />
     <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
@@ -79,6 +82,7 @@
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPageFactory.cs" />
+    <Compile Include="QRListener.cs" />
     <Compile Include="UI Components\ButtonDesigner.cs" />
     <Compile Include="UI Components\CardPaymentControl.cs">
       <SubType>UserControl</SubType>
@@ -540,6 +544,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cashless123123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

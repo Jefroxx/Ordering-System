@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code;
+using FinalEDPOrderingSystem.Code.Repositories;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace FinalEDPOrderingSystem
@@ -16,6 +18,14 @@ namespace FinalEDPOrderingSystem
         public CustomerMainForm()
         {
             InitializeComponent();
+            if (Session.IsLoggedIn)
+            {
+                lblLoggedUser.Text = $"Welcome, {Session.Username}";
+            }
+            else
+            {
+                lblLoggedUser.Text = "Not logged in";
+            }
             LoadCategories();
             ShowHomepage();
         }
@@ -59,17 +69,42 @@ namespace FinalEDPOrderingSystem
 
             }
 
-            Button BackButton = new Button
+            Button backButton = new Button
             {
-                Text = "Cancel",
+                Text = Session.IsLoggedIn ? "Logout" : "Cancel",
                 Width = 125,
                 Height = 75,
             };
-            ButtonDesigner.SecondaryButtons(BackButton);
+            ButtonDesigner.SecondaryButtons(backButton);
 
+            backButton.Click += (s, e) =>
+            {
+                // If logged in, logout and clear session/cart
+                if (Session.IsLoggedIn)
+                {
+                    CartRepository cartRepo = new CartRepository();
+                    int cartID = cartRepo.GetOrCreateCart(cartRepo.GetOrCreateCart(1)); // Or your method to get cart ID
 
-            BackButton.Click += (s, e) => ShowLandingPage();
-            flowLayoutCategories.Controls.Add(BackButton);
+                    // Clear the cart
+                    cartRepo.ClearCart(cartID);
+
+                    // Clear session info
+                    Session.Username = null;
+                    Session.Role = null;
+                    lblLoggedUser.Text = "Not logged in";
+
+                    MessageBox.Show("You have been logged out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ShowLandingPage();
+                }
+                else
+                {
+                    // Just go back to landing page
+                    ShowLandingPage();
+                }
+            };
+
+            flowLayoutCategories.Controls.Add(backButton);
         }
         //Results of every click
             private void ShowHomepage()

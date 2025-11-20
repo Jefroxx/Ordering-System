@@ -33,14 +33,14 @@
             this.formLabel = new System.Windows.Forms.Label();
             this.BtnPanels = new System.Windows.Forms.Panel();
             this.lbluserName = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.BtnPanels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -96,36 +96,14 @@
             // 
             this.lbluserName.AutoSize = true;
             this.lbluserName.BackColor = System.Drawing.Color.Transparent;
-            this.lbluserName.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbluserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbluserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(246)))));
             this.lbluserName.Location = new System.Drawing.Point(92, 162);
             this.lbluserName.Name = "lbluserName";
-            this.lbluserName.Size = new System.Drawing.Size(80, 18);
+            this.lbluserName.Size = new System.Drawing.Size(77, 18);
             this.lbluserName.TabIndex = 44;
             this.lbluserName.Text = "Username";
             this.lbluserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.panel1.Location = new System.Drawing.Point(918, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 39);
-            this.panel1.TabIndex = 45;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblSearch.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_24;
-            this.lblSearch.Location = new System.Drawing.Point(925, 27);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(30, 25);
-            this.lblSearch.TabIndex = 44;
-            this.lblSearch.Text = "   ";
-            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // pictureBox1
             // 
@@ -143,7 +121,7 @@
             this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Transparent;
             this.btnLogout.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_Logout;
             this.btnLogout.Location = new System.Drawing.Point(-2, 518);
@@ -162,7 +140,7 @@
             this.btnTransactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTransactions.FlatAppearance.BorderSize = 0;
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransactions.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransactions.ForeColor = System.Drawing.Color.Transparent;
             this.btnTransactions.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTNTransactions;
             this.btnTransactions.Location = new System.Drawing.Point(-2, 439);
@@ -181,7 +159,7 @@
             this.btnDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.Transparent;
             this.btnDashboard.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_DASHBOARD;
             this.btnDashboard.Location = new System.Drawing.Point(-2, 229);
@@ -200,7 +178,7 @@
             this.btnEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEmployees.FlatAppearance.BorderSize = 0;
             this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployees.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployees.ForeColor = System.Drawing.Color.Transparent;
             this.btnEmployees.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_Employees;
             this.btnEmployees.Location = new System.Drawing.Point(-2, 369);
@@ -219,7 +197,7 @@
             this.btnProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnProducts.FlatAppearance.BorderSize = 0;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProducts.Font = new System.Drawing.Font("Imprint MT Shadow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducts.ForeColor = System.Drawing.Color.Transparent;
             this.btnProducts.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_PRODUCTS;
             this.btnProducts.Location = new System.Drawing.Point(-2, 300);
@@ -231,6 +209,28 @@
             this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click_1);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.panel1.Location = new System.Drawing.Point(918, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(353, 39);
+            this.panel1.TabIndex = 45;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_24;
+            this.lblSearch.Location = new System.Drawing.Point(925, 27);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(30, 25);
+            this.lblSearch.TabIndex = 44;
+            this.lblSearch.Text = "   ";
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // AdminMainForm
             // 

@@ -1,19 +1,21 @@
-﻿using System;
+﻿using FinalEDPOrderingSystem.Code.Employee;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalEDPOrderingSystem.Code.Employee;
 
 namespace FinalEDPOrderingSystem
 {
     public partial class Add_EditEmployees : Form
     {
+        private string selectedPhotoPath = null;
         private readonly EmployeeRepository _repository;
         public EmployeeInformation CurrentEmployee { get; set; }
         public string Status { get; set; }
@@ -22,6 +24,7 @@ namespace FinalEDPOrderingSystem
             InitializeComponent();
             _repository = repository;
             FillGender();
+            birthdayPicker.ValueChanged += birthdayPicker_ValueChanged;
         }
 
 
@@ -39,9 +42,22 @@ namespace FinalEDPOrderingSystem
                 txtMI.Text = CurrentEmployee.MiddleInitial;
                 birthdayPicker.Value = CurrentEmployee.Birthday;
                 GenderComboBox.Text = CurrentEmployee.Gender;
-                txtAge.Text = CurrentEmployee.Age.ToString();
                 txtContactNo.Text = CurrentEmployee.ContactNo;
                 txtAddress.Text = CurrentEmployee.Address;
+
+                if (!string.IsNullOrWhiteSpace(CurrentEmployee.PhotoPath))
+                {
+                    var img = Photo_DirectoryManager.LoadImage(CurrentEmployee.PhotoPath);
+
+                    if (img != null)
+                        pictureBox1.Image = img;
+                    else
+                        pictureBox1.Image = null;
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
             }
         }
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -54,51 +70,65 @@ namespace FinalEDPOrderingSystem
                 MiddleInitial = txtMI.Text.Trim(),
                 Birthday = birthdayPicker.Value.Date,
                 Gender = GenderComboBox.SelectedItem?.ToString(),
-                Age = int.Parse(txtAge.Text.Trim()),
                 ContactNo = txtContactNo.Text.Trim(),
                 Address = txtAddress.Text.Trim()
             };
 
+            if (!string.IsNullOrEmpty(selectedPhotoPath))
+            {
+                emp.PhotoPath = Photo_DirectoryManager.SaveImage(selectedPhotoPath, "Employees");
+            }
+            else
+            {
+                // If editing, keep the old photo
+                emp.PhotoPath = (Status == "Edit") ? CurrentEmployee.PhotoPath : null;
+            }
+
+            // ---- Add New Employee ----
             if (Status == "Add")
             {
                 var (success, newID) = _repository.AddEmployee(emp);
+
                 if (success)
                 {
                     MessageBox.Show($"Employee added successfully! ID: {newID}");
                     DialogResult = DialogResult.OK;
                     Close();
                 }
-                else
-                    MessageBox.Show("Duplicate employee exists.");
+                else MessageBox.Show("Duplicate employee exists.");
             }
+
+            // ---- Update Employee ----
             else if (Status == "Edit")
             {
                 bool success = _repository.UpdateEmployee(emp);
+
                 if (success)
                 {
                     MessageBox.Show("Employee updated successfully.");
                     DialogResult = DialogResult.OK;
                     Close();
                 }
-                else
-                    MessageBox.Show("Duplicate employee exists.");
+                else MessageBox.Show("Duplicate employee exists.");
             }
         }
+
 
         private void Add_EditEmployees_Load(object sender, EventArgs e)
         {
             if (Status == "Edit" && CurrentEmployee != null)
             {
-                // Reload from DB in case data changed
                 CurrentEmployee = _repository.GetEmployeeByID(CurrentEmployee.EmployeeID);
+
                 LoadEmployeeData();
             }
+
             ButtonDesigner.MainButtons(btnAddEmployee);
             ButtonDesigner.SecondaryButtons(btnCancel);
             ButtonDesigner.SecondaryButtons(btnUploadImage);
             ButtonLoader();
-
         }
+
         private void ButtonLoader()
         {
             if (Status == "Add")
@@ -115,6 +145,26 @@ namespace FinalEDPOrderingSystem
 
             }
         }
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Select an image";
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    selectedPhotoPath = ofd.FileName;
+
+                    // Load image safely using the manager (temporary)
+                    using (Image src = Image.FromFile(selectedPhotoPath))
+                    {
+                        pictureBox1.Image = new Bitmap(src);
+                    }
+                }
+            }
+        }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -151,11 +201,21 @@ namespace FinalEDPOrderingSystem
         private void birthdayPicker_ValueChanged(object sender, EventArgs e)
         {
             InputCheckers.ValidatePastOrToday(birthdayPicker, "Birthday");
-        }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
+            DateTime birth = birthdayPicker.Value;
+            DateTime today = DateTime.Today;
 
+            int age = today.Year - birth.Year;
+
+            // If they haven't had their birthday yet this year, subtract 1
+            if (birth > today.AddYears(-age))
+                age--;
+
+            // Prevent negative ages if user selects a future date
+            if (age < 0)
+                age = 0;
+
+            txtAge.Text = age.ToString();
         }
     }
 }

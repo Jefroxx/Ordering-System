@@ -22,13 +22,23 @@ namespace FinalEDPOrderingSystem
         {
             InitializeComponent();
             _repository = repo;
+            LoadCategories();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void LoadCategories()
+        {
+            var categories = _repository.GetCategories(); // List<string>
+            CategoryComboBox.DataSource = categories;
 
+            if (Status == "Edit" && CurrentProduct != null)
+            {
+                CategoryComboBox.SelectedItem = CurrentProduct.Category;
+            }
+        }
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
 
@@ -42,13 +52,14 @@ namespace FinalEDPOrderingSystem
 
            ProductInformation product = new ProductInformation
             {
-                ProductID = CurrentProduct?.ProductID ?? 0,
-                Brand = txtProdBrand.Text.Trim(),
-                Model = txtProdModel.Text.Trim(),
-                Stocks = int.Parse(txtStocks.Text),
-                Price = decimal.Parse(txtPrice.Text),
-                Description = txtDescription.Text.Trim()
-            };
+               ProductID = CurrentProduct?.ProductID ?? 0,
+               Brand = txtProdBrand.Text.Trim(),
+               Model = txtProdModel.Text.Trim(),
+               Stocks = int.Parse(txtStocks.Text),
+               Price = decimal.Parse(txtPrice.Text),
+               Description = txtDescription.Text.Trim(),
+               Category = CategoryComboBox.SelectedItem?.ToString() ?? ""  // <-- this is key
+           };
 
             if (Status == "Add")
             {
@@ -57,6 +68,7 @@ namespace FinalEDPOrderingSystem
                 if (success)
                 {
                     MessageBox.Show($"Product added successfully! ID: {id}");
+                    this.DialogResult = DialogResult.OK; // <<< signal parent to reload
                     Close();
                 }
                 else
@@ -71,11 +83,16 @@ namespace FinalEDPOrderingSystem
                 if (success)
                 {
                     MessageBox.Show("Product updated successfully!");
+                    this.DialogResult = DialogResult.OK; // <<< signal parent to reload
+
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Update failed.");
+                    MessageBox.Show("Product updated successfully!");
+                    this.DialogResult = DialogResult.OK; // <<< signal parent to reload
+
+                    Close();
                 }
             }
                 
@@ -105,6 +122,10 @@ namespace FinalEDPOrderingSystem
             txtStocks.Text = CurrentProduct.Stocks.ToString();
             txtPrice.Text = CurrentProduct.Price.ToString("0.00");
             txtDescription.Text = CurrentProduct.Description;
+
+            // ✅ Set the ComboBox to the product's category
+            if (CurrentProduct.Category != null)
+                CategoryComboBox.SelectedItem = CurrentProduct.Category;
         }
 
         //Form Cleaners

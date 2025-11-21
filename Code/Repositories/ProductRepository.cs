@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Data.Common;
 using FinalEDPOrderingSystem.Code.Product;
+using System.Windows.Forms;
 
 namespace FinalEDPOrderingSystem.Code.Product
 {
@@ -19,33 +20,61 @@ namespace FinalEDPOrderingSystem.Code.Product
         {
             _conn = conn;
         }
+        public List<string> GetCategories()
+        {
+            var categories = new List<string>();
 
+            try
+            {
+                if (_conn.State != ConnectionState.Open)
+                    _conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("sp_GetCategories", _conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            categories.Add(reader["CategoryName"].ToString());
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open)
+                    _conn.Close();
+            }
+
+            return categories;
+        }
         public (bool Success, int NewID) AddProduct(ProductInformation product)
         {
             using (SqlCommand cmd = new SqlCommand("AddProduct", _conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 cmd.Parameters.AddWithValue("@Product_Brand", product.Brand);
                 cmd.Parameters.AddWithValue("@Product_Model", product.Model);
                 cmd.Parameters.AddWithValue("@Stocks", product.Stocks);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Description", product.Description);
+                cmd.Parameters.AddWithValue("@CategoryName", product.Category);
 
-                if (_conn.State != ConnectionState.Open)
-                    _conn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
+                _conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (dr.Read())
+                    if (reader.Read())
                     {
-                        bool success = Convert.ToInt32(dr["Success"]) == 1;
-                        int newID = Convert.ToInt32(dr["ProductID"]);
-                        return (success, newID);
+                        int success = (int)reader["Success"];
+                        int id = success == 1 ? (int)reader["ProductID"] : 0;
+                        _conn.Close();
+                        return (success == 1, id);
                     }
                 }
+                _conn.Close();
             }
-
             return (false, 0);
         }
 
@@ -61,19 +90,19 @@ namespace FinalEDPOrderingSystem.Code.Product
                 cmd.Parameters.AddWithValue("@Stocks", product.Stocks);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Description", product.Description);
+                cmd.Parameters.AddWithValue("@CategoryName", product.Category);
 
                 if (_conn.State != ConnectionState.Open)
                     _conn.Open();
 
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    if (dr.Read())
-                        return Convert.ToInt32(dr["Success"]) == 1;
-                }
-            }
+                int rowsAffected = cmd.ExecuteNonQuery(); // total rows updated
 
-            return false;
+                _conn.Close();
+
+                return rowsAffected > 0; // success if at least one row updated
+            }
         }
+
 
         public ProductInformation GetProductByID(int productID)
         {
@@ -92,6 +121,7 @@ namespace FinalEDPOrderingSystem.Code.Product
                         return new ProductInformation
                         {
                             ProductID = productID,
+                            Category = dr["Category"].ToString(),
                             Brand = dr["Brand"].ToString(),
                             Model = dr["Model"].ToString(),
                             Stocks = Convert.ToInt32(dr["StockQuantity"]),
@@ -151,5 +181,6 @@ namespace FinalEDPOrderingSystem.Code.Product
 
             return products;
         }
+
     }
 }

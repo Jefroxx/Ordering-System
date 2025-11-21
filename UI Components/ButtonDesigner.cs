@@ -33,8 +33,7 @@ namespace FinalEDPOrderingSystem
 
         private static void AddClickHighlight(Button btn)
         {
-            btn.Click -= Button_Click; 
-            btn.Click += Button_Click;
+            btn.MouseDown += Button_Click;
         }
 
         private static void Button_Click(object sender, EventArgs e)

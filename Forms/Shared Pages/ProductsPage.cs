@@ -5,10 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalEDPOrderingSystem.Code.Employee;
 using FinalEDPOrderingSystem.Code.Product;
 
 namespace FinalEDPOrderingSystem
@@ -19,30 +16,35 @@ namespace FinalEDPOrderingSystem
         {
             InitializeComponent();
             this.Load += ProductsPage_Load;
+        }
 
+        // Helper: get connection string from DBConnection singleton
+        private string GetConnectionString()
+        {
+            var db = DBConnection.getInstance();
+            // obtain a temporary connection to read its ConnectionString, then dispose
+            using (SqlConnection conn = db.GetConnection())
+            {
+                return conn.ConnectionString;
+            }
         }
 
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
-            DBConnection db = DBConnection.getInstance();
+            string connStr = GetConnectionString();
+            var repository = new ProductRepository(connStr);
 
-            using (SqlConnection conn = db.GetConnection())
+            using (Add_EditProductsForm addForm = new Add_EditProductsForm(repository))
             {
-                ProductRepository repository = new ProductRepository(conn);
+                addForm.Status = "Add";
+                addForm.StartPosition = FormStartPosition.CenterParent;
 
-                using (Add_EditProductsForm addForm = new Add_EditProductsForm(repository))
+                if (addForm.ShowDialog(this.FindForm()) == DialogResult.OK)
                 {
-                    addForm.Status = "Add";
-                    addForm.StartPosition = FormStartPosition.CenterParent;
-
-                    if (addForm.ShowDialog(this.FindForm()) == DialogResult.OK)
-                    {
-                        LoadProducts();
-                    }
+                    LoadProducts();
                 }
             }
         }
-
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -57,30 +59,28 @@ namespace FinalEDPOrderingSystem
 
             int productID = Convert.ToInt32(Productsviewer.SelectedRows[0].Cells["ProductID"].Value);
 
-            DBConnection db = DBConnection.getInstance();
-            using (SqlConnection conn = db.GetConnection())
+            string connStr = GetConnectionString();
+            var repository = new ProductRepository(connStr);
+
+            // Load product using repository
+            ProductInformation product = repository.GetProductByID(productID);
+
+            if (product == null)
             {
-                ProductRepository repository = new ProductRepository(conn);
-                // Load product
-                ProductInformation product = repository.GetProductByID(productID);
+                MessageBox.Show("Product not found.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                if (product == null)
+            using (Add_EditProductsForm editForm = new Add_EditProductsForm(repository))
+            {
+                editForm.Status = "Edit";
+                editForm.CurrentProduct = product as ProductInformationWithPath;
+                editForm.StartPosition = FormStartPosition.CenterParent;
+
+                if (editForm.ShowDialog(this.FindForm()) == DialogResult.OK)
                 {
-                    MessageBox.Show("Product not found.", "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                using (Add_EditProductsForm editForm = new Add_EditProductsForm(repository))
-                {
-                    editForm.Status = "Edit";
-                    editForm.CurrentProduct = product;
-                    editForm.StartPosition = FormStartPosition.CenterParent;
-
-                    if (editForm.ShowDialog(this.FindForm()) == DialogResult.OK)
-                    {
-                        LoadProducts();
-                    }
+                    LoadProducts();
                 }
             }
         }
@@ -96,41 +96,35 @@ namespace FinalEDPOrderingSystem
                 return;
             }
 
-            // Get the selected ProductID
             int productID = Convert.ToInt32(Productsviewer.SelectedRows[0].Cells["ProductID"].Value);
 
-            DBConnection db = DBConnection.getInstance();
-            using (SqlConnection conn = db.GetConnection())
+            string connStr = GetConnectionString();
+            var repository = new ProductRepository(connStr);
+
+            ProductInformation product = repository.GetProductByID(productID);
+
+            if (product == null)
             {
-                ProductRepository repository = new ProductRepository(conn);
+                MessageBox.Show("Product not found.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return;
+            }
 
-                // Fetch the product to edit
-                ProductInformation product = repository.GetProductByID(productID);
+            using (ManageStocksForm manager = new ManageStocksForm(repository))
+            {
+                manager.CurrentProduct = product as ProductInformationWithPath;
+                manager.StartPosition = FormStartPosition.CenterParent;
 
-                if (product == null)
+                if (manager.ShowDialog(this.FindForm()) == DialogResult.OK)
                 {
-                    MessageBox.Show("Product not found.",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Open stock management form
-                using (ManageStocksForm manager = new ManageStocksForm(repository))
-                {
-                    manager.CurrentProduct = product;   // ← Load ID, Name, Stock
-                    manager.StartPosition = FormStartPosition.CenterParent;
-
-                    // IMPORTANT: refresh table after updating!
-                    if (manager.ShowDialog(this.FindForm()) == DialogResult.OK)
-                    {
-                        LoadProducts();   // <<< REFRESH TABLE
-                    }
+                    LoadProducts();
                 }
             }
         }
-        private void FormatEmployeeGrid()
+
+        private void FormatProductGrid()
         {
             var dgv = Productsviewer;
 
@@ -153,15 +147,18 @@ namespace FinalEDPOrderingSystem
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(180, 150, 220);
             dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            // Correct product column headers
+            // Correct product column headers (match ProductInformation property names)
             if (dgv.Columns.Contains("ProductID"))
                 dgv.Columns["ProductID"].HeaderText = "ID";
+            
+            if (dgv.Columns.Contains("Category"))
+                dgv.Columns["Category"].HeaderText = "Category";
 
-            if (dgv.Columns.Contains("Product_Brand"))
-                dgv.Columns["Product_Brand"].HeaderText = "Brand";
+            if (dgv.Columns.Contains("Brand"))
+                dgv.Columns["Brand"].HeaderText = "Brand";
 
-            if (dgv.Columns.Contains("Product_Model"))
-                dgv.Columns["Product_Model"].HeaderText = "Model";
+            if (dgv.Columns.Contains("Model"))
+                dgv.Columns["Model"].HeaderText = "Model";
 
             if (dgv.Columns.Contains("Stocks"))
                 dgv.Columns["Stocks"].HeaderText = "Stock";
@@ -171,28 +168,25 @@ namespace FinalEDPOrderingSystem
 
             if (dgv.Columns.Contains("Description"))
                 dgv.Columns["Description"].HeaderText = "Description";
+            
+            if (dgv.Columns.Contains("IsActive"))
+                dgv.Columns["IsActive"].HeaderText = "IsActive";
         }
 
-        private void LoadProducts()
+        public void LoadProducts()
         {
-            DBConnection db = DBConnection.getInstance();
+            string connStr = GetConnectionString();
+            var repository = new ProductRepository(connStr);
 
-            using (SqlConnection conn = db.GetConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand("GetAllProducts", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+            List<ProductInformation> products = repository.GetAllProducts();
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
+            // Bind list directly to DataGridView
+            Productsviewer.DataSource = null;
+            Productsviewer.DataSource = products;
 
-                    da.Fill(dt);
-
-                    Productsviewer.DataSource = dt; // <-- loads all data into the grid
-                }
-                FormatEmployeeGrid();
-            }
+            FormatProductGrid();
         }
+
         private void ProductsPage_Load(object sender, EventArgs e)
         {
             ButtonDesigner.MainButtons(btnAddProducts);

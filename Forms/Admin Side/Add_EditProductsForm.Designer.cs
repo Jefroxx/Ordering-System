@@ -1,4 +1,6 @@
-﻿namespace FinalEDPOrderingSystem
+﻿using System.Windows.Forms;
+
+namespace FinalEDPOrderingSystem
 {
     partial class Add_EditProductsForm
     {
@@ -59,11 +61,12 @@
             this.btnUploadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadImage.ForeColor = System.Drawing.Color.Transparent;
-            this.btnUploadImage.Location = new System.Drawing.Point(148, 481);
+            this.btnUploadImage.Location = new System.Drawing.Point(143, 483);
             this.btnUploadImage.Name = "btnUploadImage";
             this.btnUploadImage.Size = new System.Drawing.Size(155, 37);
             this.btnUploadImage.TabIndex = 39;
             this.btnUploadImage.UseVisualStyleBackColor = false;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
             // 
             // btnAddProducts
             // 
@@ -82,22 +85,22 @@
             // 
             this.txtProdBrand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtProdBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProdBrand.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProdBrand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtProdBrand.Location = new System.Drawing.Point(433, 76);
             this.txtProdBrand.Name = "txtProdBrand";
-            this.txtProdBrand.Size = new System.Drawing.Size(169, 33);
+            this.txtProdBrand.Size = new System.Drawing.Size(169, 31);
             this.txtProdBrand.TabIndex = 41;
             // 
             // txtPrice
             // 
             this.txtPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
             this.txtPrice.Location = new System.Drawing.Point(433, 228);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(492, 33);
+            this.txtPrice.Size = new System.Drawing.Size(492, 31);
             this.txtPrice.TabIndex = 41;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
@@ -105,11 +108,11 @@
             // 
             this.txtStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtStocks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStocks.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
             this.txtStocks.Location = new System.Drawing.Point(433, 304);
             this.txtStocks.Name = "txtStocks";
-            this.txtStocks.Size = new System.Drawing.Size(492, 33);
+            this.txtStocks.Size = new System.Drawing.Size(492, 31);
             this.txtStocks.TabIndex = 41;
             this.txtStocks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStocks_KeyPress);
             // 
@@ -117,7 +120,7 @@
             // 
             this.txtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescription.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
             this.txtDescription.Location = new System.Drawing.Point(433, 373);
             this.txtDescription.Multiline = true;
@@ -130,7 +133,7 @@
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CategoryComboBox.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(433, 149);
@@ -144,6 +147,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(62, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(345, 378);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -272,11 +276,11 @@
             // 
             this.txtProdModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.txtProdModel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProdModel.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProdModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
             this.txtProdModel.Location = new System.Drawing.Point(633, 76);
             this.txtProdModel.Name = "txtProdModel";
-            this.txtProdModel.Size = new System.Drawing.Size(292, 33);
+            this.txtProdModel.Size = new System.Drawing.Size(292, 31);
             this.txtProdModel.TabIndex = 61;
             // 
             // label7
@@ -290,7 +294,6 @@
             this.label7.Size = new System.Drawing.Size(123, 20);
             this.label7.TabIndex = 62;
             this.label7.Text = "Product Model";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // Add_EditProductsForm
             // 
@@ -299,6 +302,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(998, 565);
+            this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtProdModel);
             this.Controls.Add(this.panel4);
@@ -318,7 +322,6 @@
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtProdBrand);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.btnAddProducts);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

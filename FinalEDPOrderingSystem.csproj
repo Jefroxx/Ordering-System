@@ -543,6 +543,9 @@
     <None Include="Resources\BTn_Back.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="SystemAssets\Images\Employees\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Cashless123123.png" />
   </ItemGroup>
   <ItemGroup>

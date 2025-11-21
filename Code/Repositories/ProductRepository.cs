@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -8,112 +7,255 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Data.Common;
 using FinalEDPOrderingSystem.Code.Product;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Forms;
 
 namespace FinalEDPOrderingSystem.Code.Product
 {
     public class ProductRepository
     {
-        private readonly SqlConnection _conn;
+        private readonly string _connectionString;
 
-        public ProductRepository(SqlConnection conn)
+        public ProductRepository(string connectionString)
         {
-            _conn = conn;
+            _connectionString = connectionString;
         }
 
-        public (bool Success, int NewID) AddProduct(ProductInformation product)
+        // ---------------------------------------------------------------
+        // GET ALL PRODUCTS
+        // ---------------------------------------------------------------
+        public List<ProductInformation> GetAllProducts()
         {
-            using (SqlCommand cmd = new SqlCommand("AddProduct", _conn))
+            var list = new List<ProductInformation>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("GetAllProducts", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@Product_Brand", product.Brand);
-                cmd.Parameters.AddWithValue("@Product_Model", product.Model);
-                cmd.Parameters.AddWithValue("@Stocks", product.Stocks);
-                cmd.Parameters.AddWithValue("@Price", product.Price);
-                cmd.Parameters.AddWithValue("@Description", product.Description);
-
-                if (_conn.State != ConnectionState.Open)
-                    _conn.Open();
+                conn.Open();
 
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
-                    if (dr.Read())
+                    while (dr.Read())
                     {
-                        bool success = Convert.ToInt32(dr["Success"]) == 1;
-                        int newID = Convert.ToInt32(dr["ProductID"]);
-                        return (success, newID);
-                    }
-                }
-            }
-
-            return (false, 0);
-        }
-
-        public bool UpdateProduct(ProductInformation product)
-        {
-            using (SqlCommand cmd = new SqlCommand("EditProduct", _conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@ProductID", product.ProductID);
-                cmd.Parameters.AddWithValue("@Product_Brand", product.Brand);
-                cmd.Parameters.AddWithValue("@Product_Model", product.Model);
-                cmd.Parameters.AddWithValue("@Stocks", product.Stocks);
-                cmd.Parameters.AddWithValue("@Price", product.Price);
-                cmd.Parameters.AddWithValue("@Description", product.Description);
-
-                if (_conn.State != ConnectionState.Open)
-                    _conn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    if (dr.Read())
-                        return Convert.ToInt32(dr["Success"]) == 1;
-                }
-            }
-
-            return false;
-        }
-
-        public ProductInformation GetProductByID(int productID)
-        {
-            using (SqlCommand cmd = new SqlCommand("GetProductByID", _conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ProductID", productID);
-
-                if (_conn.State != ConnectionState.Open)
-                    _conn.Open();
-
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    if (dr.Read())
-                    {
-                        return new ProductInformation
+                        list.Add(new ProductInformation
                         {
-                            ProductID = productID,
+                            ProductID = dr.GetInt32(dr.GetOrdinal("ProductID")),
+                            Category = dr["Category"].ToString(),
                             Brand = dr["Brand"].ToString(),
                             Model = dr["Model"].ToString(),
-                            Stocks = Convert.ToInt32(dr["StockQuantity"]),
-                            Price = Convert.ToDecimal(dr["Price"]),
-                            Description = dr["Description"].ToString()
-                        };
+                            Description = dr["Description"].ToString(),
+                            Price = dr.GetDecimal(dr.GetOrdinal("Price")),
+                            Stocks = dr.GetInt32(dr.GetOrdinal("StockQuantity")),
+                            IsActive = dr.GetBoolean(dr.GetOrdinal("isActive"))
+                        });
                     }
                 }
             }
 
-            return null;
+            return list;
         }
-        public bool UpdateProductStock(int productID, int newStock)
+
+        // ---------------------------------------------------------------
+        // GET PRODUCT BY ID
+        // ---------------------------------------------------------------
+        public ProductInformationWithPath GetProductByID(int productID)
         {
-            using (SqlCommand cmd = new SqlCommand("UpdateProductStock", _conn))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("GetProductByID", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (!dr.Read())
+                        return null;
+
+                    return new ProductInformationWithPath
+                    {
+                        ProductID = dr.GetInt32(dr.GetOrdinal("ProductID")),
+                        Category = dr["Category"].ToString(),
+                        Brand = dr["Brand"].ToString(),
+                        Model = dr["Model"].ToString(),
+                        Description = dr["Description"].ToString(),
+                        Price = dr.GetDecimal(dr.GetOrdinal("Price")),
+                        Stocks = dr.GetInt32(dr.GetOrdinal("StockQuantity")),
+                        PhotoPath = dr["PhotoPath"].ToString()
+                    };
+                }
+            }
+        }
+
+        // ---------------------------------------------------------------
+        // ADD PRODUCT
+        // ---------------------------------------------------------------
+        public (bool Success, int ProductID) AddProduct(ProductInformationWithPath p)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("AddProduct", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@ProductID", productID);
-                cmd.Parameters.AddWithValue("@NewStock", newStock);
+                cmd.Parameters.AddWithValue("@Category", p.Category);
+                cmd.Parameters.AddWithValue("@Product_Brand", p.Brand);
+                cmd.Parameters.AddWithValue("@Product_Model", p.Model);
+                cmd.Parameters.AddWithValue("@Stocks", p.Stocks);
+                cmd.Parameters.AddWithValue("@Price", p.Price);
+                cmd.Parameters.AddWithValue("@Description", p.Description);
+                cmd.Parameters.AddWithValue("@PhotoPath", (object)p.PhotoPath ?? DBNull.Value);
 
-                return cmd.ExecuteNonQuery() > 0;
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (!dr.Read())
+                        return (false, 0);
+
+                    bool success = Convert.ToInt32(dr["Success"]) == 1;
+                    int newId = dr.FieldCount > 1 && success
+                        ? Convert.ToInt32(dr["ProductID"])
+                        : 0;
+
+                    return (success, newId);
+                }
+            }
+        }
+
+        // ---------------------------------------------------------------
+        // UPDATE PRODUCT
+        // ---------------------------------------------------------------
+        public bool UpdateProduct(ProductInformationWithPath p)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("EditProduct", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ProductID", p.ProductID);
+                cmd.Parameters.AddWithValue("@Category", p.Category);
+                cmd.Parameters.AddWithValue("@Product_Brand", p.Brand);
+                cmd.Parameters.AddWithValue("@Product_Model", p.Model);
+                cmd.Parameters.AddWithValue("@Stocks", p.Stocks);
+                cmd.Parameters.AddWithValue("@Price", p.Price);
+                cmd.Parameters.AddWithValue("@Description", p.Description);
+                cmd.Parameters.AddWithValue("@PhotoPath", (object)p.PhotoPath ?? DBNull.Value);
+
+                conn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (!dr.Read())
+                        return false;
+
+                    int success = Convert.ToInt32(dr["Success"]);
+                    return success == 1;
+                }
+            }
+        }
+
+        // ---------------------------------------------------------------
+        // GET CATEGORY LIST
+        // ---------------------------------------------------------------
+        public List<CategoryInfo> GetCategories()
+        {
+            var categories = new List<CategoryInfo>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT CategoryID, CategoryName FROM Category ORDER BY CategoryName", conn))
+            {
+                conn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        categories.Add(new CategoryInfo
+                        {
+                            CategoryID = dr.GetInt32(0),
+                            CategoryName = dr.GetString(1)
+                        });
+                    }
+                }
+            }
+
+            return categories;
+        }
+
+        // ---------------------------------------------------------------
+        // UPDATE STOCK (ABSOLUTE)
+        // ---------------------------------------------------------------
+        public bool UpdateStockAbsolute(int productId, int newStock)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_AdjustStock", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@EmployeeID", 1);
+                cmd.Parameters.AddWithValue("@ProductID", productId);
+                cmd.Parameters.AddWithValue("@Quantity", newStock);
+                cmd.Parameters.AddWithValue("@IsAbsolute", 1);
+
+                conn.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public bool DeleteProduct(int productId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_DeleteProduct", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@EmployeeID", 1); // default admin
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error deleting product:\n" + ex.Message,
+                    "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        public void DeleteProductImageFolder(int productId)
+        {
+            try
+            {
+                string basePath = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "SystemAssets", "Images", "Products", "Individual");
+
+                string folderPath = Path.Combine(basePath, $"Product_{productId}");
+
+                if (Directory.Exists(folderPath))
+                {
+                    Directory.Delete(folderPath, true); // delete with files
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to delete product image folder:\n" + ex.Message,
+                    "Folder Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public List<Products> SearchProducts(string keyword)
@@ -151,5 +293,8 @@ namespace FinalEDPOrderingSystem.Code.Product
 
             return products;
         }
+
+
+
     }
 }

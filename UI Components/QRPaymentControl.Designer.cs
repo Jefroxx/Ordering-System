@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.QR = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.QR = new System.Windows.Forms.PictureBox();
+            this.txtQRInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.QR)).BeginInit();
             this.SuspendLayout();
-            // 
-            // QR
-            // 
-            this.QR.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Hi_Tech_ordering_System;
-            this.QR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.QR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QR.Location = new System.Drawing.Point(230, 60);
-            this.QR.Name = "QR";
-            this.QR.Size = new System.Drawing.Size(378, 382);
-            this.QR.TabIndex = 0;
-            this.QR.TabStop = false;
             // 
             // label3
             // 
@@ -56,11 +46,32 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Place QR inside the frame to scan\r\n";
             // 
+            // QR
+            // 
+            this.QR.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources._5eddb68e_d751_42a9_9154_a856d52e215b;
+            this.QR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.QR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.QR.Location = new System.Drawing.Point(230, 60);
+            this.QR.Name = "QR";
+            this.QR.Size = new System.Drawing.Size(378, 382);
+            this.QR.TabIndex = 0;
+            this.QR.TabStop = false;
+            // 
+            // txtQRInput
+            // 
+            this.txtQRInput.Location = new System.Drawing.Point(370, 448);
+            this.txtQRInput.Name = "txtQRInput";
+            this.txtQRInput.Size = new System.Drawing.Size(100, 20);
+            this.txtQRInput.TabIndex = 7;
+            this.txtQRInput.TabStop = false;
+            this.txtQRInput.Visible = false;
+            // 
             // QRPaymentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.Controls.Add(this.txtQRInput);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.QR);
             this.Name = "QRPaymentControl";
@@ -75,5 +86,6 @@
 
         private System.Windows.Forms.PictureBox QR;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtQRInput;
     }
 }

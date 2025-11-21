@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalEDPOrderingSystem.Code.Repositories;
+using FinalEDPOrderingSystem.Code;
 
 namespace FinalEDPOrderingSystem
 {
@@ -60,12 +62,19 @@ namespace FinalEDPOrderingSystem
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Clear session info
+            Session.Username = null;
+            Session.Role = null;
+
+            MessageBox.Show("You have been logged out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Go back to landing page
             LandingPage landingPage = new LandingPage();
             landingPage.Show();
             this.Close();
 
         }
-
+        
         private void AdminMainForm_Load(object sender, EventArgs e)
         {
             InitialButtonDesigns();

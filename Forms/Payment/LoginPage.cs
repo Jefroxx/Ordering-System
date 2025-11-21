@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using FinalEDPOrderingSystem.Code;
 
 namespace FinalEDPOrderingSystem
 {
@@ -43,18 +44,26 @@ namespace FinalEDPOrderingSystem
 
                     conn.Open();
 
+                    // Assuming your stored procedure now also returns Role as string
+                    // You can modify the stored procedure to return Role instead of just 1/0
                     object result = cmd.ExecuteScalar();
-                    int isValid = (result != null) ? Convert.ToInt32(result) : 0;
 
-                    if (isValid == 1)
+                    if (result != null)
                     {
+                        string role = result.ToString(); // Admin or Customer
+
+                        // Save session
+                        Session.Username = TxtUsername.Text.Trim();
+                        Session.Role = role;
+
                         if (this.Owner != null)
-                        {
                             this.Owner.Hide();
-                        }
                         this.Close();
-                        AdminMainForm admin = new AdminMainForm();
-                        admin.Show();
+
+                        if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                            new AdminMainForm().Show();
+                        else
+                            new CustomerMainForm().Show();
                     }
                     else
                     {

@@ -12,16 +12,19 @@ namespace FinalEDPOrderingSystem
 {
     public partial class CashlessPaymentForm : Form
     {
-        public CashlessPaymentForm()
+        private List<Products> cartProducts;
+        public CashlessPaymentForm(List<Products> products)
         {
             InitializeComponent();
+            cartProducts = products;
+
         }
 
         private void CashlessPaymentForm_Load(object sender, EventArgs e)
         {
-            ButtonDesigner.SecondaryButtons(btnQR);
+            //ButtonDesigner.SecondaryButtons(btnQR);
             ButtonDesigner.SecondaryButtons(btnCard);
-            ShowPayment(new QRPaymentControl());
+            ShowPayment(new CardPaymentControl(cartProducts));
 
         }
 
@@ -59,13 +62,23 @@ namespace FinalEDPOrderingSystem
 
         private void btnCard_Click(object sender, EventArgs e)
         {
-            ShowPayment(new CardPaymentControl());
+            ShowPayment(new CardPaymentControl(cartProducts));
         }
 
         private void btnQR_Click(object sender, EventArgs e)
         {
             ShowPayment(new QRPaymentControl());
             timer1.Start();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panelPaymentArea_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

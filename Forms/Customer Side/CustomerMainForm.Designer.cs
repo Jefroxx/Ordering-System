@@ -31,6 +31,7 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.flowLayoutCategories = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblLoggedUser = new System.Windows.Forms.Label();
             this.BtnCart = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblLoggedUser);
             this.panel2.Controls.Add(this.BtnCart);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,6 +69,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1134, 59);
             this.panel2.TabIndex = 49;
+            // 
+            // lblLoggedUser
+            // 
+            this.lblLoggedUser.AutoSize = true;
+            this.lblLoggedUser.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
+            this.lblLoggedUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblLoggedUser.Location = new System.Drawing.Point(17, 20);
+            this.lblLoggedUser.Name = "lblLoggedUser";
+            this.lblLoggedUser.Size = new System.Drawing.Size(60, 20);
+            this.lblLoggedUser.TabIndex = 49;
+            this.lblLoggedUser.Text = "label1";
             // 
             // BtnCart
             // 
@@ -110,6 +123,7 @@
             this.lblSearch.Size = new System.Drawing.Size(30, 25);
             this.lblSearch.TabIndex = 47;
             this.lblSearch.Text = "   ";
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // SearchBar
             // 
@@ -138,6 +152,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerMainForm";
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -152,5 +167,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutCategories;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox SearchBar;
+        private System.Windows.Forms.Label lblLoggedUser;
     }
 }

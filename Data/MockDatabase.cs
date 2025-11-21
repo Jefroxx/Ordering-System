@@ -34,7 +34,7 @@ namespace FinalEDPOrderingSystem
                             {
                                 ID = reader.GetInt32(reader.GetOrdinal("CategoryID")),
                                 Name = reader.GetString(reader.GetOrdinal("CategoryName")),
-                                Products = new List<Product>()
+                                Products = new List<Products>()
                             });
                         }
 
@@ -47,7 +47,7 @@ namespace FinalEDPOrderingSystem
                                 Category cat = categories.Find(c => c.ID == categoryId);
                                 if (cat != null)
                                 {
-                                    cat.Products.Add(new Product
+                                    cat.Products.Add(new Products
                                     {
                                         ID = reader.GetInt32(reader.GetOrdinal("ProductID")),
                                         Name = $"{reader.GetString(reader.GetOrdinal("Brand"))} {reader.GetString(reader.GetOrdinal("Model"))}",
@@ -67,27 +67,27 @@ namespace FinalEDPOrderingSystem
             return categories;
         }
 
-        public static List<Product> GetBestSellers()
+        public static List<Products> GetBestSellers()
         {
-            return new List<Product>
+            return new List<Products>
             {
-                new Product { Name = "Wireless Earsdasdasdbuds", Price = 2999 },
-                new Product { Name = "Sneasadsadkers", Price = 4999 },
-                new Product { Name = "Snedadasdsadakers", Price = 4999 },
-                new Product { Name = "Sneadsdakers", Price = 4999 },
-                new Product { Name = "Snesdasddasdakers", Price = 4999 },
-                new Product { Name = "Sneakers", Price = 4999 },
-                new Product { Name = "Sneakers", Price = 4999 },
-                new Product { Name = "sda", Price = 4999 },
-                new Product { Name = "Snesddadakers", Price = 4999 },
-                new Product { Name = "Sneadsasdsadakers", Price = 4999 },
-                new Product { Name = "Sneadasdaskdasders", Price = 4999 },
-                new Product { Name = "Sneakers", Price = 4999 },
-                new Product { Name = "Sndasdeakers", Price = 4999 },
-                new Product { Name = "Sneakers", Price = 4999 },
-                new Product { Name = "adasdasdd", Price = 4999 },
-                new Product { Name = "Sneakers", Price = 4999 },
-                new Product { Name = "dsad", Price = 4999 }
+                new Products { Name = "Wireless Earsdasdasdbuds", Price = 2999 },
+                new Products { Name = "Sneasadsadkers", Price = 4999 },
+                new Products { Name = "Snedadasdsadakers", Price = 4999 },
+                new Products { Name = "Sneadsdakers", Price = 4999 },
+                new Products { Name = "Snesdasddasdakers", Price = 4999 },
+                new Products { Name = "Sneakers", Price = 4999 },
+                new Products { Name = "Sneakers", Price = 4999 },
+                new Products { Name = "sda", Price = 4999 },
+                new Products { Name = "Snesddadakers", Price = 4999 },
+                new Products { Name = "Sneadsasdsadakers", Price = 4999 },
+                new Products { Name = "Sneadasdaskdasders", Price = 4999 },
+                new Products { Name = "Sneakers", Price = 4999 },
+                new Products { Name = "Sndasdeakers", Price = 4999 },
+                new Products { Name = "Sneakers", Price = 4999 },
+                new Products { Name = "adasdasdd", Price = 4999 },
+                new Products { Name = "Sneakers", Price = 4999 },
+                new Products { Name = "dsad", Price = 4999 }
             };
         }
     }

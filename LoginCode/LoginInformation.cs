@@ -10,6 +10,7 @@ namespace FinalEDPOrderingSystem.LoginCode
     {
         string Username;
         string Password;
+        string item;
 
         public LoginInformation(string username, string password)
         {

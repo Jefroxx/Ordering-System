@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalEDPOrderingSystem
 {
-    public class Products
+    public class Product
     {
         public int ID { get; set; }          // <-- ProductID
         public string Name { get; set; }

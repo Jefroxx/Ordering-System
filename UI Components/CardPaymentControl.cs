@@ -14,9 +14,9 @@ namespace FinalEDPOrderingSystem
 {
     public partial class CardPaymentControl : UserControl
     {
-        private List<Products> productsInCart;
+        private List<Product> productsInCart;
 
-        public CardPaymentControl(List<Products> products)
+        public CardPaymentControl(List<Product> products)
         {
             InitializeComponent();
             productsInCart = products;

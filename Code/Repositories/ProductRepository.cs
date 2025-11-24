@@ -258,7 +258,7 @@ namespace FinalEDPOrderingSystem.Code.Product
                     "Folder Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public List<Products> SearchProducts(string keyword)
+        public List<Product> SearchProducts(string keyword)
         {
             List<Products> products = new List<Products>();
 

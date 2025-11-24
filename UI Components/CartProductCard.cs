@@ -27,7 +27,7 @@ namespace FinalEDPOrderingSystem
 
         }
 
-        public CartProductCard(Products product)
+        public CartProductCard(Product product)
         {
             InitializeComponent();
             ProductData = product;
@@ -101,7 +101,7 @@ namespace FinalEDPOrderingSystem
         }
 
         //KANI NA CLASS FOR EME EME RANI HA PARA MAKITA NAKOG NIGANA BA AHHAHA
-        public void SetProduct(Products product)
+        public void SetProduct(Product product)
         {
             ProductData = product;
 

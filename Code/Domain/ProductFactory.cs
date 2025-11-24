@@ -10,7 +10,7 @@ namespace FinalEDPOrderingSystem
     public static class ProductFactory
     {
         //Diri ma layout ang mga pictures /products
-        public static ProductCard CreateProductCard(Products p)
+        public static ProductCard CreateProductCard(Product p)
         {
             var card = new ProductCard
             {

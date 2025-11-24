@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -16,7 +15,7 @@ namespace FinalEDPOrderingSystem.Code.Repositories
 {
     public static class ReceiptPDF
     {
-        public static void Generate(string filePath, List<Products> products)
+        public static void Generate(string filePath, List<Product> products)
         {
             Document doc = new Document(PageSize.A4, 25, 25, 30, 30);
 

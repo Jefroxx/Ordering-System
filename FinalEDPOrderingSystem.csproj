@@ -167,8 +167,10 @@
     <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </Compile>
+=======
     <Compile Include="Product.cs" />
     <Compile Include="ProductCard.cs">
+>>>>>>> parent of f2218bf (EHE)
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI Components\ProductCard.Designer.cs">

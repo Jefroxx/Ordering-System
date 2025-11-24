@@ -6,8 +6,8 @@ namespace FinalEDPOrderingSystem
 {
     public class ButtonDesigner
     {
-        private static readonly Color Purple= Color.FromArgb(152, 16, 250);
-        private static readonly Color White = Color.FromArgb(228, 245, 237);
+        private static readonly Color newBlue= Color.FromArgb(40, 97, 172);
+        private static readonly Color White = Color.FromArgb(255, 255, 255);
         private static readonly Color blue = Color.FromArgb(20, 174, 220);
         private static readonly Color dark = Color.FromArgb(49, 65, 88);
 
@@ -15,7 +15,7 @@ namespace FinalEDPOrderingSystem
         public static void MainButtons(Button btn)
         {
             
-            btn.BackColor = Purple;
+            btn.BackColor = newBlue;
             btn.ForeColor = White;
 
             AddClickHighlight(btn);
@@ -25,8 +25,8 @@ namespace FinalEDPOrderingSystem
         {
             btn.FlatAppearance.BorderSize = 2;
             btn.Font = new Font("Roboto", 14, FontStyle.Regular);
-            btn.BackColor = dark;
-            btn.ForeColor = White;
+            btn.BackColor = White;
+            btn.ForeColor = newBlue;
 
             AddClickHighlight(btn);
         }
@@ -52,12 +52,12 @@ namespace FinalEDPOrderingSystem
                         if (b.FlatAppearance.BorderSize == 0)
                             b.BackColor = White;
                         else
-                            b.BackColor = dark;
+                            b.BackColor = newBlue;
                     }
                 }
 
                
-                btn.BackColor = Purple;
+                btn.BackColor = newBlue;
             }
         }
     }

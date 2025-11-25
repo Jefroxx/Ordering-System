@@ -60,10 +60,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtAddress
             // 
-            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtAddress.BackColor = System.Drawing.Color.Ivory;
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtAddress.ForeColor = System.Drawing.Color.Black;
             this.txtAddress.Location = new System.Drawing.Point(431, 318);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
@@ -72,10 +72,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtContactNo
             // 
-            this.txtContactNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtContactNo.BackColor = System.Drawing.Color.Ivory;
             this.txtContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContactNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtContactNo.ForeColor = System.Drawing.Color.Black;
             this.txtContactNo.Location = new System.Drawing.Point(432, 232);
             this.txtContactNo.MaxLength = 11;
             this.txtContactNo.Name = "txtContactNo";
@@ -85,10 +85,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtAge
             // 
-            this.txtAge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtAge.BackColor = System.Drawing.Color.Ivory;
             this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtAge.ForeColor = System.Drawing.Color.Black;
             this.txtAge.Location = new System.Drawing.Point(876, 233);
             this.txtAge.MaxLength = 3;
             this.txtAge.Name = "txtAge";
@@ -99,10 +99,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtLname
             // 
-            this.txtLname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtLname.BackColor = System.Drawing.Color.Ivory;
             this.txtLname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtLname.ForeColor = System.Drawing.Color.Black;
             this.txtLname.Location = new System.Drawing.Point(431, 88);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(201, 31);
@@ -111,10 +111,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtFname
             // 
-            this.txtFname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtFname.BackColor = System.Drawing.Color.Ivory;
             this.txtFname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtFname.ForeColor = System.Drawing.Color.Black;
             this.txtFname.Location = new System.Drawing.Point(648, 88);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(212, 31);
@@ -123,10 +123,10 @@ namespace FinalEDPOrderingSystem
             // 
             // txtMI
             // 
-            this.txtMI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.txtMI.BackColor = System.Drawing.Color.Ivory;
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.txtMI.ForeColor = System.Drawing.Color.Black;
             this.txtMI.Location = new System.Drawing.Point(876, 88);
             this.txtMI.MaxLength = 1;
             this.txtMI.Name = "txtMI";
@@ -137,11 +137,11 @@ namespace FinalEDPOrderingSystem
             // birthdayPicker
             // 
             this.birthdayPicker.CalendarFont = new System.Drawing.Font("Sylfaen", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthdayPicker.CalendarForeColor = System.Drawing.Color.Purple;
-            this.birthdayPicker.CalendarMonthBackground = System.Drawing.Color.Purple;
-            this.birthdayPicker.CalendarTitleBackColor = System.Drawing.Color.Purple;
-            this.birthdayPicker.CalendarTitleForeColor = System.Drawing.Color.Purple;
-            this.birthdayPicker.CalendarTrailingForeColor = System.Drawing.Color.Purple;
+            this.birthdayPicker.CalendarForeColor = System.Drawing.Color.Ivory;
+            this.birthdayPicker.CalendarMonthBackground = System.Drawing.Color.Black;
+            this.birthdayPicker.CalendarTitleBackColor = System.Drawing.Color.Ivory;
+            this.birthdayPicker.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.birthdayPicker.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.birthdayPicker.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.birthdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthdayPicker.Location = new System.Drawing.Point(431, 157);
@@ -153,11 +153,11 @@ namespace FinalEDPOrderingSystem
             // 
             // GenderComboBox
             // 
-            this.GenderComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.GenderComboBox.BackColor = System.Drawing.Color.Ivory;
             this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GenderComboBox.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenderComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.GenderComboBox.ForeColor = System.Drawing.Color.Black;
             this.GenderComboBox.FormattingEnabled = true;
             this.GenderComboBox.Location = new System.Drawing.Point(648, 233);
             this.GenderComboBox.Name = "GenderComboBox";
@@ -166,7 +166,7 @@ namespace FinalEDPOrderingSystem
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 10);
             this.panel4.Name = "panel4";
@@ -175,7 +175,7 @@ namespace FinalEDPOrderingSystem
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(988, 10);
             this.panel3.Name = "panel3";
@@ -184,7 +184,7 @@ namespace FinalEDPOrderingSystem
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 555);
             this.panel2.Name = "panel2";
@@ -193,7 +193,7 @@ namespace FinalEDPOrderingSystem
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -205,7 +205,7 @@ namespace FinalEDPOrderingSystem
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label5.Location = new System.Drawing.Point(428, 295);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 20);
@@ -217,7 +217,7 @@ namespace FinalEDPOrderingSystem
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label1.Location = new System.Drawing.Point(429, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 20);
@@ -229,7 +229,7 @@ namespace FinalEDPOrderingSystem
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label2.Location = new System.Drawing.Point(429, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
@@ -241,7 +241,7 @@ namespace FinalEDPOrderingSystem
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label3.Location = new System.Drawing.Point(644, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 20);
@@ -253,7 +253,7 @@ namespace FinalEDPOrderingSystem
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label4.Location = new System.Drawing.Point(872, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 20);
@@ -265,7 +265,7 @@ namespace FinalEDPOrderingSystem
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label6.Location = new System.Drawing.Point(429, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 20);
@@ -277,7 +277,7 @@ namespace FinalEDPOrderingSystem
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label7.Location = new System.Drawing.Point(644, 67);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 20);
@@ -289,7 +289,7 @@ namespace FinalEDPOrderingSystem
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label8.Location = new System.Drawing.Point(872, 67);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 20);
@@ -301,7 +301,7 @@ namespace FinalEDPOrderingSystem
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.label9.Location = new System.Drawing.Point(145, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(163, 22);
@@ -310,6 +310,7 @@ namespace FinalEDPOrderingSystem
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Ivory;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(49, 88);
             this.pictureBox1.Name = "pictureBox1";
@@ -361,7 +362,7 @@ namespace FinalEDPOrderingSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(998, 565);
             this.Controls.Add(this.label9);

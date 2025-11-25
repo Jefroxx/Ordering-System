@@ -34,7 +34,7 @@ namespace FinalEDPOrderingSystem
                             {
                                 ID = reader.GetInt32(reader.GetOrdinal("CategoryID")),
                                 Name = reader.GetString(reader.GetOrdinal("CategoryName")),
-                                Products = new List<Product>()
+                                Products = new List<Products>()
                             });
                         }
 
@@ -67,7 +67,7 @@ namespace FinalEDPOrderingSystem
             return categories;
         }
 
-        public static List<Product> GetBestSellers()
+        public static List<Products> GetBestSellers()
         {
             return new List<Products>
             {

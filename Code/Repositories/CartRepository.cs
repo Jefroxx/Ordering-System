@@ -81,7 +81,11 @@ namespace FinalEDPOrderingSystem.Code.Repositories
         /// <summary>
         /// Load all products in a cart
         /// </summary>
+<<<<<<< HEAD
         public List<Product> GetCartProducts(int cartID)
+=======
+        public List<Products> GetCartProducts(int cartID)
+>>>>>>> 6cb0a38b6de10007c3f328383e8a688a57016e3b
         {
             var products = new List<Products>();
 
@@ -119,7 +123,11 @@ namespace FinalEDPOrderingSystem.Code.Repositories
         /// <summary>
         /// Update all quantities of a cart
         /// </summary>
+<<<<<<< HEAD
         public void UpdateCartQuantities(int cartID, List<Product> products)
+=======
+        public void UpdateCartQuantities(int cartID, List<Products> products)
+>>>>>>> 6cb0a38b6de10007c3f328383e8a688a57016e3b
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

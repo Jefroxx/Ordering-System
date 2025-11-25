@@ -1,450 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D416C27-E6AE-4CDA-835B-3274BDAD8EA7}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>FinalEDPOrderingSystem</RootNamespace>
-    <AssemblyName>FinalEDPOrderingSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
-      <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Code\AppState.cs" />
-    <Compile Include="Code\Cart\CartDataAccess.cs" />
-    <Compile Include="Code\Cart\EmployeeInformation.cs" />
-    <Compile Include="Code\Repositories\CartRepository.cs" />
-    <Compile Include="Code\Repositories\EmployeeRepository.cs" />
-    <Compile Include="Code\Repositories\ProductInformation.cs" />
-    <Compile Include="Code\Repositories\ProductRepository.cs" />
-    <Compile Include="Code\Repositories\ReceiptPDF.cs" />
-    <Compile Include="Code\Session.cs" />
-    <Compile Include="Data\DBConnection.cs" />
-    <Compile Include="Forms\Admin Side\Add_EditEmployees.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin Side\Add_EditEmployees.Designer.cs">
-      <DependentUpon>Add_EditEmployees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Admin Side\Add_EditProductsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin Side\Add_EditProductsForm.Designer.cs">
-      <DependentUpon>Add_EditProductsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Admin Side\AdminMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin Side\AdminMainForm.Designer.cs">
-      <DependentUpon>AdminMainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminPageFactory.cs" />
-    <Compile Include="QRListener.cs" />
-    <Compile Include="UI Components\ButtonDesigner.cs" />
-    <Compile Include="UI Components\CardPaymentControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI Components\CardPaymentControl.Designer.cs">
-      <DependentUpon>CardPaymentControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI Components\CartProductCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI Components\CartProductCard.Designer.cs">
-      <DependentUpon>CartProductCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Payment\CashlessPaymentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Payment\CashlessPaymentForm.Designer.cs">
-      <DependentUpon>CashlessPaymentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Payment\CashPaymentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Payment\CashPaymentForm.Designer.cs">
-      <DependentUpon>CashPaymentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Domain\Category.cs" />
-    <Compile Include="Forms\Shared Pages\CategoryPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\CategoryPage.Designer.cs">
-      <DependentUpon>CategoryPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer Side\CustomerMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer Side\CustomerMainForm.Designer.cs">
-      <DependentUpon>CustomerMainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\DashboardPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\DashboardPage.Designer.cs">
-      <DependentUpon>DashboardPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\EmployeesPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\EmployeesPage.Designer.cs">
-      <DependentUpon>EmployeesPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\Homepage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\Homepage.Designer.cs">
-      <DependentUpon>Homepage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InputCheckers.cs" />
-    <Compile Include="Forms\Payment\LandingPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Payment\LandingPage.Designer.cs">
-      <DependentUpon>LandingPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Payment\LoginPage.cs">
-      <SubType>Form</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Forms\Payment\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Forms\Admin Side\ManageStocksForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin Side\ManageStocksForm.Designer.cs">
-      <DependentUpon>ManageStocksForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginCode\LoginInformation.cs" />
-    <Compile Include="Data\MockDatabase.cs" />
-    <Compile Include="Forms\Payment\PaymentMethodCashorCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
-      <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
-    </Compile>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-    <!-- Added missing file -->
-    <Compile Include="Code\Photo&amp;DirectoryManager.cs" />
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net4.7.2</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
+	</PropertyGroup>
 
-    <Compile Include="UI Components\ProductCard.Designer.cs">
-      <DependentUpon>ProductCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Domain\ProductFactory.cs" />
-    <Compile Include="Forms\Shared Pages\ProductsPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\ProductsPage.Designer.cs">
-      <DependentUpon>ProductsPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI Components\QRPaymentControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI Components\QRPaymentControl.Designer.cs">
-      <DependentUpon>QRPaymentControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer Side\ShoppingCartPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer Side\ShoppingCartPage.Designer.cs">
-      <DependentUpon>ShoppingCartPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\TransactionsPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Shared Pages\TransactionsPage.Designer.cs">
-      <DependentUpon>TransactionsPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer Side\ViewProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer Side\ViewProductForm.Designer.cs">
-      <DependentUpon>ViewProductForm.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FinalLandingPage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stash_user-cog.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LP.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ADMIN.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle 66.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle 116.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\7c10adae7dad7e5c7d4b01de25a2ca13.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EditProducts.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Manage Stocks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EditEmployees.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle 92.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rectangle 921.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Product View.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mingcute_left-fill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Product View %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 34.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mdi_cash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\famicons_card.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hi Tech ordering System.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\material-symbols_home-rounded.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\material-symbols_home-rounded1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mingcute_computer-fill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tabler_user-filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tdesign_undertake-transaction-filled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_round-logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Photoeme %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mingcute_search-fill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mingcute_search-fill %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\si_inventory-fill.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\si_inventory-fill1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\material-symbols_edit-rounded.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\basil_add-solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mdi_filter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FinalLogin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BG_Login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Cancel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BG_LandingPage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BGF_LandingPage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_admin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_DASHBOARD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_PRODUCTS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Employees.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTNTransactions.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Search %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_Filter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTN_STOCKS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTNEDIT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTn_ADD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4745974.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Password_.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Username_.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 36.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 38.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 37.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 36 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Manage Cart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 31.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 41.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 43.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 36 %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 44.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CASHLESS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CASHLESS %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 45.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 46.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\card %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cash %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 33.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 341.png" />
-  </ItemGroup>
+	<!-- 🟦 CODE FOLDERS -->
 	<ItemGroup>
-		<None Include="Resources\Group 342.png" />
+		<!-- Code -->
+		<Compile Include="Code\Cart\CartDataAccess.cs" />
+		<Compile Include="Code\EmployeeInformation.cs" />
+
+		<!-- Domain -->
+		<Compile Include="Domain\Category.cs" />
+		<Compile Include="Domain\Employee.cs" />
+		<Compile Include="Domain\Product.cs" />
+		<Compile Include="Domain\ProductFactory.cs" />
+
+		<!-- Product -->
+		<Compile Include="Product\ProductRepository.cs" />
+
+		<!-- Repositories -->
+		<Compile Include="Repositories\CartRepository.cs" />
+		<Compile Include="Repositories\EmployeeRepository.cs" />
+		<Compile Include="Repositories\ProductInformation.cs" />
+		<Compile Include="Repositories\ProductRepository.cs" />
+		<Compile Include="Repositories\ReceiptPDF.cs" />
+
+		<!-- Data -->
+		<Compile Include="Data\AppState.cs" />
+		<Compile Include="Data\Session.cs" />
 	</ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+	<!-- 🟦 FORMS -->
+	<ItemGroup>
+		<!-- Admin Forms -->
+		<Compile Include="Forms\Admin Side\Add_EditEmployees.cs" />
+		<Compile Include="Forms\Admin Side\Add_EditEmployees.Designer.cs" />
+		<Compile Include="Forms\Admin Side\Add_EditEmployees.resx" />
+
+		<Compile Include="Forms\Admin Side\Add_EditProducts.cs" />
+		<Compile Include="Forms\Admin Side\Add_EditProducts.Designer.cs" />
+		<Compile Include="Forms\Admin Side\Add_EditProducts.resx" />
+
+		<Compile Include="Forms\Admin Side\ManageStockForm.cs" />
+		<Compile Include="Forms\Admin Side\ManageStockForm.Designer.cs" />
+		<Compile Include="Forms\Admin Side\ManageStockForm.resx" />
+
+		<Compile Include="Forms\Admin Side\AdminMainForm.cs" />
+		<Compile Include="Forms\Admin Side\AdminMainForm.Designer.cs" />
+		<Compile Include="Forms\Admin Side\AdminMainForm.resx" />
+
+		<!-- Customer Forms -->
+		<Compile Include="Forms\Customer Side\CustomerMainForm.cs" />
+		<Compile Include="Forms\Customer Side\CustomerMainForm.Designer.cs" />
+		<Compile Include="Forms\Customer Side\CustomerMainForm.resx" />
+
+		<Compile Include="Forms\Customer Side\ShoppingCartPage.cs" />
+		<Compile Include="Forms\Customer Side\ShoppingCartPage.Designer.cs" />
+		<Compile Include="Forms\Customer Side\ShoppingCartPage.resx" />
+
+		<Compile Include="Forms\Customer Side\ViewProductForm.cs" />
+		<Compile Include="Forms\Customer Side\ViewProductForm.Designer.cs" />
+		<Compile Include="Forms\Customer Side\ViewProductForm.resx" />
+
+		<!-- Shared Pages -->
+		<Compile Include="Forms\Shared Pages\CategoryPage.cs" />
+		<Compile Include="Forms\Shared Pages\CategoryPage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\CategoryPage.resx" />
+
+		<Compile Include="Forms\Shared Pages\DashboardPage.cs" />
+		<Compile Include="Forms\Shared Pages\DashboardPage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\DashboardPage.resx" />
+
+		<Compile Include="Forms\Shared Pages\EmployeesPage.cs" />
+		<Compile Include="Forms\Shared Pages\EmployeesPage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\EmployeesPage.resx" />
+
+		<Compile Include="Forms\Shared Pages\Homepage.cs" />
+		<Compile Include="Forms\Shared Pages\Homepage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\Homepage.resx" />
+
+		<Compile Include="Forms\Shared Pages\ProductsPage.cs" />
+		<Compile Include="Forms\Shared Pages\ProductsPage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\ProductsPage.resx" />
+
+		<Compile Include="Forms\Shared Pages\TransactionsPage.cs" />
+		<Compile Include="Forms\Shared Pages\TransactionsPage.Designer.cs" />
+		<Compile Include="Forms\Shared Pages\TransactionsPage.resx" />
+	</ItemGroup>
+
+	<!-- 🟦 LOGIN CODE -->
+	<ItemGroup>
+		<Compile Include="LoginCode\LoginInformations.cs" />
+	</ItemGroup>
+
+	<!-- 🟦 UI COMPONENTS -->
+	<ItemGroup>
+		<Compile Include="UI Components\ButtonDesigner.cs" />
+		<Compile Include="UI Components\CardPaymentControl.cs" />
+		<Compile Include="UI Components\CardPaymentControl.Designer.cs" />
+		<Compile Include="UI Components\CardPaymentControl.resx" />
+		<Compile Include="UI Components\CartProductCard.cs" />
+		<Compile Include="UI Components\CartProductCard.Designer.cs" />
+		<Compile Include="UI Components\CartProductCard.resx" />
+		<Compile Include="UI Components\ProductCard.cs" />
+		<Compile Include="UI Components\ProductCard.Designer.cs" />
+		<Compile Include="UI Components\ProductCard.resx" />
+		<Compile Include="UI Components\QRPaymentControl.cs" />
+		<Compile Include="UI Components\QRPaymentControl.Designer.cs" />
+		<Compile Include="UI Components\QRPaymentControl.resx" />
+	</ItemGroup>
+
+	<!-- 🟦 SYSTEM FILES -->
+	<ItemGroup>
+		<Compile Include="Program.cs" />
+		<Compile Include="InputCheckers.cs" />
+		<Compile Include="QRListener.cs" />
+		<Compile Include="Photo&amp;DirectoryManager.cs" />
+	</ItemGroup>
+
+	<!-- 🟦 RESOURCES -->
+	<ItemGroup>
+		<EmbeddedResource Include="Properties\Resources.resx" />
+	</ItemGroup>
+
+	<!-- 🟦 IMAGE ASSETS -->
+	<ItemGroup>
+		<None Include="SystemAssets\Images\Employees\**\*.jpg" />
+		<None Include="SystemAssets\Images\Products\Individual\**\*.jpg" />
+	</ItemGroup>
+
 </Project>

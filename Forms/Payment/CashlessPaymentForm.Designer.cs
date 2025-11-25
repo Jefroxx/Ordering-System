@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.panelPaymentArea = new System.Windows.Forms.Panel();
             this.btnCard = new System.Windows.Forms.Button();
-            this.btnQR = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnClose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panelPaymentArea
@@ -42,11 +42,12 @@
             this.panelPaymentArea.Name = "panelPaymentArea";
             this.panelPaymentArea.Size = new System.Drawing.Size(834, 483);
             this.panelPaymentArea.TabIndex = 0;
+            this.panelPaymentArea.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPaymentArea_Paint);
             // 
             // btnCard
             // 
             this.btnCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCard.Location = new System.Drawing.Point(669, 57);
+            this.btnCard.Location = new System.Drawing.Point(455, 57);
             this.btnCard.Name = "btnCard";
             this.btnCard.Size = new System.Drawing.Size(398, 65);
             this.btnCard.TabIndex = 3;
@@ -54,21 +55,22 @@
             this.btnCard.UseVisualStyleBackColor = true;
             this.btnCard.Click += new System.EventHandler(this.btnCard_Click);
             // 
-            // btnQR
-            // 
-            this.btnQR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQR.Location = new System.Drawing.Point(233, 57);
-            this.btnQR.Name = "btnQR";
-            this.btnQR.Size = new System.Drawing.Size(398, 65);
-            this.btnQR.TabIndex = 2;
-            this.btnQR.Text = "SCAN QR";
-            this.btnQR.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnQR.UseVisualStyleBackColor = true;
-            this.btnQR.Click += new System.EventHandler(this.btnQR_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnClose.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_Cancel;
+            this.btnClose.Location = new System.Drawing.Point(1027, 57);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(40, 42);
+            this.btnClose.TabIndex = 42;
+            this.btnClose.Text = "  ";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // CashlessPaymentForm
             // 
@@ -76,8 +78,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCard);
-            this.Controls.Add(this.btnQR);
             this.Controls.Add(this.panelPaymentArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CashlessPaymentForm";
@@ -91,8 +93,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panelPaymentArea;
-        private System.Windows.Forms.Button btnQR;
         private System.Windows.Forms.Button btnCard;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label btnClose;
     }
 }

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCashless = new System.Windows.Forms.Button();
             this.btnCash = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,20 @@
             this.panel1.Size = new System.Drawing.Size(1300, 101);
             this.panel1.TabIndex = 1;
             // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnBack.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTn_Back;
+            this.btnBack.Location = new System.Drawing.Point(19, 38);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(22, 23);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "  ";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -63,6 +77,18 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Choose Payment Method";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label3.Location = new System.Drawing.Point(47, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Review Cart";
+            // 
             // btnCashless
             // 
             this.btnCashless.BackColor = System.Drawing.Color.White;
@@ -70,7 +96,7 @@
             this.btnCashless.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCashless.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCashless.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCashless.Image = global::FinalEDPOrderingSystem.Properties.Resources.card__1_;
+            this.btnCashless.Image = global::FinalEDPOrderingSystem.Properties.Resources.Cashless123123;
             this.btnCashless.Location = new System.Drawing.Point(749, 217);
             this.btnCashless.Name = "btnCashless";
             this.btnCashless.Size = new System.Drawing.Size(374, 351);
@@ -96,32 +122,6 @@
             this.btnCash.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCash.UseVisualStyleBackColor = false;
             this.btnCash.Click += new System.EventHandler(this.btnCash_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.btnBack.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTn_Back;
-            this.btnBack.Location = new System.Drawing.Point(19, 38);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(22, 23);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "  ";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.label3.Location = new System.Drawing.Point(47, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Review Cart";
             // 
             // PaymentMethodCashorCard
             // 

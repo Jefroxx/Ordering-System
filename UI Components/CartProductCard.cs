@@ -16,7 +16,11 @@ namespace FinalEDPOrderingSystem
     {
         public event Action<CartProductCard> OnRemove; 
         public event Action OnQuantityChanged; 
+<<<<<<< HEAD
         public Product ProductData { get; private set; }
+=======
+        public Products ProductData { get; private set; }
+>>>>>>> 6cb0a38b6de10007c3f328383e8a688a57016e3b
         public event EventHandler QuantityChanged;
 
 
@@ -27,7 +31,7 @@ namespace FinalEDPOrderingSystem
 
         }
 
-        public CartProductCard(Product product)
+        public CartProductCard(Products product)
         {
             InitializeComponent();
             ProductData = product;
@@ -101,7 +105,7 @@ namespace FinalEDPOrderingSystem
         }
 
         //KANI NA CLASS FOR EME EME RANI HA PARA MAKITA NAKOG NIGANA BA AHHAHA
-        public void SetProduct(Product product)
+        public void SetProduct(Products product)
         {
             ProductData = product;
 

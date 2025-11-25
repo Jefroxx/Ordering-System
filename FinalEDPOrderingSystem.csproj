@@ -593,5 +593,20 @@
   <ItemGroup>
     <None Include="Resources\card1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mdi_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mingcute_add-fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mingcute_add-fill1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mdi_edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle 922.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

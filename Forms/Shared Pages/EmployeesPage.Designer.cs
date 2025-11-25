@@ -41,7 +41,7 @@
             // EmployeesViewer
             // 
             this.EmployeesViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.EmployeesViewer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.EmployeesViewer.BackgroundColor = System.Drawing.Color.Ivory;
             this.EmployeesViewer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
@@ -53,14 +53,14 @@
             this.EmployeesViewer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.EmployeesViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Dubai Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(20)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(138)))), ((int)(((byte)(221)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EmployeesViewer.DefaultCellStyle = dataGridViewCellStyle2;
-            this.EmployeesViewer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(20)))), ((int)(((byte)(90)))));
+            this.EmployeesViewer.GridColor = System.Drawing.Color.Black;
             this.EmployeesViewer.Location = new System.Drawing.Point(13, 68);
             this.EmployeesViewer.Name = "EmployeesViewer";
             this.EmployeesViewer.ReadOnly = true;
@@ -81,26 +81,28 @@
             // 
             // filterComboBox
             // 
-            this.filterComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.filterComboBox.BackColor = System.Drawing.Color.Ivory;
             this.filterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterComboBox.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterComboBox.ForeColor = System.Drawing.Color.Black;
             this.filterComboBox.FormattingEnabled = true;
             this.filterComboBox.Location = new System.Drawing.Point(13, 19);
             this.filterComboBox.Name = "filterComboBox";
-            this.filterComboBox.Size = new System.Drawing.Size(292, 33);
+            this.filterComboBox.Size = new System.Drawing.Size(187, 33);
             this.filterComboBox.TabIndex = 47;
             // 
             // btnEditEmployees
             // 
-            this.btnEditEmployees.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_43;
             this.btnEditEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEditEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
-            this.btnEditEmployees.Location = new System.Drawing.Point(752, 15);
+            this.btnEditEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
+            this.btnEditEmployees.Image = global::FinalEDPOrderingSystem.Properties.Resources.mdi_edit;
+            this.btnEditEmployees.Location = new System.Drawing.Point(827, 15);
             this.btnEditEmployees.Name = "btnEditEmployees";
-            this.btnEditEmployees.Size = new System.Drawing.Size(117, 37);
+            this.btnEditEmployees.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnEditEmployees.Size = new System.Drawing.Size(86, 37);
             this.btnEditEmployees.TabIndex = 44;
-            this.btnEditEmployees.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditEmployees.Text = "Edit";
             this.btnEditEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnEditEmployees.UseVisualStyleBackColor = false;
             this.btnEditEmployees.Click += new System.EventHandler(this.btnEditEmployees_Click);
@@ -108,16 +110,16 @@
             // btnAddEmployees
             // 
             this.btnAddEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
-            this.btnAddEmployees.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Group_41;
             this.btnAddEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployees.ForeColor = System.Drawing.Color.Transparent;
-            this.btnAddEmployees.Location = new System.Drawing.Point(875, 15);
+            this.btnAddEmployees.Image = global::FinalEDPOrderingSystem.Properties.Resources.mingcute_add_fill;
+            this.btnAddEmployees.Location = new System.Drawing.Point(919, 15);
             this.btnAddEmployees.Name = "btnAddEmployees";
-            this.btnAddEmployees.Size = new System.Drawing.Size(114, 37);
+            this.btnAddEmployees.Size = new System.Drawing.Size(83, 37);
             this.btnAddEmployees.TabIndex = 45;
-            this.btnAddEmployees.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnAddEmployees.Text = "Add";
+            this.btnAddEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAddEmployees.UseVisualStyleBackColor = false;
             this.btnAddEmployees.Click += new System.EventHandler(this.btnAddEmployees_Click);
             // 
@@ -125,11 +127,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.Controls.Add(this.filterComboBox);
             this.Controls.Add(this.EmployeesViewer);
             this.Controls.Add(this.btnEditEmployees);
             this.Controls.Add(this.btnAddEmployees);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "EmployeesPage";
             this.Size = new System.Drawing.Size(1014, 575);
             this.Load += new System.EventHandler(this.EmployeesPage_Load);

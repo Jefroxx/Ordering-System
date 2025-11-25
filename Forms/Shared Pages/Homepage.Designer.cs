@@ -37,6 +37,7 @@
             // flowLayoutBestSellers
             // 
             this.flowLayoutBestSellers.AutoScroll = true;
+            this.flowLayoutBestSellers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.flowLayoutBestSellers.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutBestSellers.Location = new System.Drawing.Point(0, 157);
             this.flowLayoutBestSellers.Name = "flowLayoutBestSellers";
@@ -47,8 +48,9 @@
             // lblProductPrice
             // 
             this.lblProductPrice.AutoSize = true;
+            this.lblProductPrice.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblProductPrice.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblProductPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
             this.lblProductPrice.Location = new System.Drawing.Point(2, 124);
             this.lblProductPrice.Name = "lblProductPrice";
             this.lblProductPrice.Size = new System.Drawing.Size(140, 28);
@@ -57,11 +59,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Rectangle_921;
+            this.pictureBox1.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Rectangle_922;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1106, 116);
+            this.pictureBox1.Size = new System.Drawing.Size(1109, 119);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -70,7 +72,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.Controls.Add(this.lblProductPrice);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.flowLayoutBestSellers);

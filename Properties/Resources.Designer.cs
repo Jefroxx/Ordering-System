@@ -833,9 +833,49 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mdi_edit {
+            get {
+                object obj = ResourceManager.GetObject("mdi_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdi_edit1 {
+            get {
+                object obj = ResourceManager.GetObject("mdi_edit1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mdi_filter {
             get {
                 object obj = ResourceManager.GetObject("mdi_filter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mingcute_add_fill {
+            get {
+                object obj = ResourceManager.GetObject("mingcute_add-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mingcute_add_fill1 {
+            get {
+                object obj = ResourceManager.GetObject("mingcute_add-fill1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -966,6 +1006,16 @@ namespace FinalEDPOrderingSystem.Properties {
         internal static System.Drawing.Bitmap Rectangle_921 {
             get {
                 object obj = ResourceManager.GetObject("Rectangle 921", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rectangle_922 {
+            get {
+                object obj = ResourceManager.GetObject("Rectangle 922", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

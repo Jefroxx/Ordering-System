@@ -608,5 +608,17 @@
   <ItemGroup>
     <None Include="Resources\Rectangle 922.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gridicons_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lsicon_minus-filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gridicons_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mdi_remove-bold.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

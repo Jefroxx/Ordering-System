@@ -42,11 +42,11 @@
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.BackColor = System.Drawing.Color.Transparent;
-            this.lblProductName.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductName.ForeColor = System.Drawing.Color.Black;
             this.lblProductName.Location = new System.Drawing.Point(250, 59);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(231, 25);
+            this.lblProductName.Size = new System.Drawing.Size(166, 20);
             this.lblProductName.TabIndex = 5;
             this.lblProductName.Text = "Review Shopping Cart";
             // 
@@ -54,48 +54,47 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.BackColor = System.Drawing.Color.Transparent;
-            this.lblPrice.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.ForeColor = System.Drawing.Color.Black;
             this.lblPrice.Location = new System.Drawing.Point(604, 59);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(231, 25);
+            this.lblPrice.Size = new System.Drawing.Size(166, 20);
             this.lblPrice.TabIndex = 5;
             this.lblPrice.Text = "Review Shopping Cart";
             // 
             // txtQuantity
             // 
-            this.txtQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.txtQuantity.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(953, 56);
+            this.txtQuantity.BackColor = System.Drawing.Color.Ivory;
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
+            this.txtQuantity.Location = new System.Drawing.Point(954, 57);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(52, 27);
+            this.txtQuantity.Size = new System.Drawing.Size(52, 26);
             this.txtQuantity.TabIndex = 6;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // MinusQuantity
             // 
-            this.MinusQuantity.AutoSize = true;
             this.MinusQuantity.BackColor = System.Drawing.Color.Transparent;
             this.MinusQuantity.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinusQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
-            this.MinusQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_33;
-            this.MinusQuantity.Location = new System.Drawing.Point(921, 58);
+            this.MinusQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.lsicon_minus_filled;
+            this.MinusQuantity.Location = new System.Drawing.Point(919, 56);
             this.MinusQuantity.Name = "MinusQuantity";
-            this.MinusQuantity.Size = new System.Drawing.Size(30, 23);
+            this.MinusQuantity.Size = new System.Drawing.Size(30, 27);
             this.MinusQuantity.TabIndex = 5;
             this.MinusQuantity.Text = "    ";
             this.MinusQuantity.Click += new System.EventHandler(this.MinusQuantity_Click);
             // 
             // addQuantity
             // 
-            this.addQuantity.AutoSize = true;
             this.addQuantity.BackColor = System.Drawing.Color.Transparent;
             this.addQuantity.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
-            this.addQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_32;
-            this.addQuantity.Location = new System.Drawing.Point(1009, 58);
+            this.addQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.gridicons_add1;
+            this.addQuantity.Location = new System.Drawing.Point(1009, 57);
             this.addQuantity.Name = "addQuantity";
-            this.addQuantity.Size = new System.Drawing.Size(25, 23);
+            this.addQuantity.Size = new System.Drawing.Size(33, 27);
             this.addQuantity.TabIndex = 5;
             this.addQuantity.Text = "   ";
             this.addQuantity.Click += new System.EventHandler(this.addQuantity_Click);
@@ -106,8 +105,8 @@
             this.removeQuantity.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.removeQuantity.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeQuantity.ForeColor = System.Drawing.Color.White;
-            this.removeQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_342;
-            this.removeQuantity.Location = new System.Drawing.Point(1142, 55);
+            this.removeQuantity.Image = global::FinalEDPOrderingSystem.Properties.Resources.mdi_remove_bold;
+            this.removeQuantity.Location = new System.Drawing.Point(1142, 57);
             this.removeQuantity.Name = "removeQuantity";
             this.removeQuantity.Size = new System.Drawing.Size(31, 30);
             this.removeQuantity.TabIndex = 5;
@@ -127,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.BackColor = System.Drawing.Color.Ivory;
             this.Controls.Add(this.MinusQuantity);
             this.Controls.Add(this.addQuantity);
             this.Controls.Add(this.txtQuantity);

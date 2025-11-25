@@ -127,6 +127,9 @@
   <data name="BTn_ADD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BTn_ADD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gridicons_add1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gridicons_add1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Group 34" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -220,6 +223,9 @@
   <data name="BG_LandingPage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BG_LandingPage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cash3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cash3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Group 46" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 46.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,6 +259,9 @@
   <data name="ic_round-logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_round-logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lsicon_minus-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lsicon_minus-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BGF_LandingPage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BGF_LandingPage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -273,6 +282,9 @@
   </data>
   <data name="BTN_Employees" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BTN_Employees.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Group 36 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 36 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Group 43" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 43.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -343,6 +355,9 @@
   <data name="FinalHomepage (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FinalHomepage (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gridicons_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gridicons_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mdi_edit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mdi_edit1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -354,6 +369,9 @@
   </data>
   <data name="FinalLandingPage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FinalLandingPage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rectangle 922" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rectangle 922.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Manage Stocks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Manage Stocks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -373,9 +391,6 @@
   <data name="Group 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Group 31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -388,8 +403,8 @@
   <data name="Group 342" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 342.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Group 36 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 36 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Group 341" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 341.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -406,8 +421,8 @@
   <data name="mdi_cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mdi_cash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cash3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cash3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Rectangle 92" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rectangle 92.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CASHLESS (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CASHLESS (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -418,13 +433,10 @@
   <data name="5eddb68e-d751-42a9-9154-a856d52e215b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Rectangle 92" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rectangle 92.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="tdesign_undertake-transaction-filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tdesign_undertake-transaction-filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Rectangle 922" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rectangle 922.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mdi_remove-bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mdi_remove-bold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

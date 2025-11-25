@@ -38,11 +38,10 @@
             // lblProductName
             // 
             this.lblProductName.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblProductName.Location = new System.Drawing.Point(4, 239);
-            this.lblProductName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProductName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
+            this.lblProductName.Location = new System.Drawing.Point(3, 194);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(251, 62);
+            this.lblProductName.Size = new System.Drawing.Size(188, 50);
             this.lblProductName.TabIndex = 1;
             this.lblProductName.Text = "label1";
             this.lblProductName.UseCompatibleTextRendering = true;
@@ -51,11 +50,10 @@
             // 
             this.lblProductPrice.AutoSize = true;
             this.lblProductPrice.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(130)))), ((int)(((byte)(148)))));
-            this.lblProductPrice.Location = new System.Drawing.Point(4, 289);
-            this.lblProductPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProductPrice.ForeColor = System.Drawing.Color.Black;
+            this.lblProductPrice.Location = new System.Drawing.Point(3, 235);
             this.lblProductPrice.Name = "lblProductPrice";
-            this.lblProductPrice.Size = new System.Drawing.Size(118, 40);
+            this.lblProductPrice.Size = new System.Drawing.Size(94, 32);
             this.lblProductPrice.TabIndex = 1;
             this.lblProductPrice.Text = "label1";
             // 
@@ -63,9 +61,9 @@
             // 
             this.pictureBoxProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxProduct.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxProduct.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.pictureBoxProduct.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.pictureBoxProduct.Name = "pictureBoxProduct";
-            this.pictureBoxProduct.Size = new System.Drawing.Size(259, 201);
+            this.pictureBoxProduct.Size = new System.Drawing.Size(194, 163);
             this.pictureBoxProduct.TabIndex = 0;
             this.pictureBoxProduct.TabStop = false;
             // 
@@ -73,28 +71,27 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(174)))), ((int)(((byte)(220)))));
-            this.lblCategory.Location = new System.Drawing.Point(4, 214);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
+            this.lblCategory.Location = new System.Drawing.Point(3, 174);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(56, 21);
+            this.lblCategory.Size = new System.Drawing.Size(42, 16);
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "label1";
             this.lblCategory.Visible = false;
             // 
             // ProductCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.BackColor = System.Drawing.Color.Ivory;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblProductPrice);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.pictureBoxProduct);
-            this.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.Name = "ProductCard";
-            this.Size = new System.Drawing.Size(259, 345);
+            this.Size = new System.Drawing.Size(194, 280);
             this.Load += new System.EventHandler(this.ProductCard_Load);
             this.Click += new System.EventHandler(this.ProductCard_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).EndInit();

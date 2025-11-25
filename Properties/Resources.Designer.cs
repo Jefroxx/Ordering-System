@@ -533,6 +533,26 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gridicons_add {
+            get {
+                object obj = ResourceManager.GetObject("gridicons_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gridicons_add1 {
+            get {
+                object obj = ResourceManager.GetObject("gridicons_add1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Group_24 {
             get {
                 object obj = ResourceManager.GetObject("Group 24", resourceCulture);
@@ -773,6 +793,16 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lsicon_minus_filled {
+            get {
+                object obj = ResourceManager.GetObject("lsicon_minus-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Manage_Cart {
             get {
                 object obj = ResourceManager.GetObject("Manage Cart", resourceCulture);
@@ -856,6 +886,16 @@ namespace FinalEDPOrderingSystem.Properties {
         internal static System.Drawing.Bitmap mdi_filter {
             get {
                 object obj = ResourceManager.GetObject("mdi_filter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdi_remove_bold {
+            get {
+                object obj = ResourceManager.GetObject("mdi_remove-bold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

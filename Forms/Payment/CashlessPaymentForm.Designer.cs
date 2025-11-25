@@ -37,7 +37,7 @@
             // 
             // panelPaymentArea
             // 
-            this.panelPaymentArea.BackColor = System.Drawing.Color.Snow;
+            this.panelPaymentArea.BackColor = System.Drawing.Color.Transparent;
             this.panelPaymentArea.Location = new System.Drawing.Point(233, 136);
             this.panelPaymentArea.Name = "panelPaymentArea";
             this.panelPaymentArea.Size = new System.Drawing.Size(834, 483);
@@ -46,13 +46,15 @@
             // 
             // btnCard
             // 
+            this.btnCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCard.ForeColor = System.Drawing.Color.Ivory;
             this.btnCard.Location = new System.Drawing.Point(455, 57);
             this.btnCard.Name = "btnCard";
             this.btnCard.Size = new System.Drawing.Size(398, 65);
             this.btnCard.TabIndex = 3;
             this.btnCard.Text = "PAY WITH CARD";
-            this.btnCard.UseVisualStyleBackColor = true;
+            this.btnCard.UseVisualStyleBackColor = false;
             this.btnCard.Click += new System.EventHandler(this.btnCard_Click);
             // 
             // timer1
@@ -64,7 +66,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.btnClose.Image = global::FinalEDPOrderingSystem.Properties.Resources.BTN_Cancel;
+            this.btnClose.Image = global::FinalEDPOrderingSystem.Properties.Resources.carbon_close_filled;
             this.btnClose.Location = new System.Drawing.Point(1027, 57);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(40, 42);
@@ -76,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCard);

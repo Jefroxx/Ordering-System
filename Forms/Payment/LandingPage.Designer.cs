@@ -35,12 +35,12 @@
             // 
             // BtnCustomer
             // 
-            this.BtnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
+            this.BtnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.BtnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnCustomer.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCustomer.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCustomer.ForeColor = System.Drawing.Color.White;
+            this.BtnCustomer.ForeColor = System.Drawing.Color.Ivory;
             this.BtnCustomer.Location = new System.Drawing.Point(485, 479);
             this.BtnCustomer.Name = "BtnCustomer";
             this.BtnCustomer.Size = new System.Drawing.Size(318, 57);
@@ -81,7 +81,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(51)))), ((int)(((byte)(238)))));
-            this.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.BGF_LandingPage;
+            this.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.BGF_LandingPage1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.btnClose);

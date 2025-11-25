@@ -143,6 +143,16 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BGF_LandingPage1 {
+            get {
+                object obj = ResourceManager.GetObject("BGF_LandingPage1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BTn_ADD {
             get {
                 object obj = ResourceManager.GetObject("BTn_ADD", resourceCulture);
@@ -283,9 +293,59 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap carbon_close_filled {
+            get {
+                object obj = ResourceManager.GetObject("carbon_close-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carbon_close_filled1 {
+            get {
+                object obj = ResourceManager.GetObject("carbon_close-filled1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carbon_close_filled2 {
+            get {
+                object obj = ResourceManager.GetObject("carbon_close-filled2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap card {
+            get {
+                object obj = ResourceManager.GetObject("card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap card__1_ {
             get {
                 object obj = ResourceManager.GetObject("card (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap card1 {
+            get {
+                object obj = ResourceManager.GetObject("card1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +366,36 @@ namespace FinalEDPOrderingSystem.Properties {
         internal static System.Drawing.Bitmap cash__1_ {
             get {
                 object obj = ResourceManager.GetObject("cash (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cash1 {
+            get {
+                object obj = ResourceManager.GetObject("cash1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cash2 {
+            get {
+                object obj = ResourceManager.GetObject("cash2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cash3 {
+            get {
+                object obj = ResourceManager.GetObject("cash3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

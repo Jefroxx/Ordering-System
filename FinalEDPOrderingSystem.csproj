@@ -566,5 +566,32 @@
   <ItemGroup>
     <None Include="Resources\FINALCART.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carbon_close-filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGF_LandingPage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carbon_close-filled1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carbon_close-filled2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

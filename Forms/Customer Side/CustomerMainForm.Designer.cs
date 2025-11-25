@@ -42,6 +42,7 @@
             // 
             // panelMain
             // 
+            this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(150, 59);
             this.panelMain.Name = "panelMain";
@@ -51,6 +52,7 @@
             // flowLayoutCategories
             // 
             this.flowLayoutCategories.AutoScroll = true;
+            this.flowLayoutCategories.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutCategories.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutCategories.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutCategories.Location = new System.Drawing.Point(0, 0);
@@ -61,6 +63,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.panel2.Controls.Add(this.lblLoggedUser);
             this.panel2.Controls.Add(this.BtnCart);
             this.panel2.Controls.Add(this.panel1);
@@ -73,35 +76,35 @@
             // lblLoggedUser
             // 
             this.lblLoggedUser.AutoSize = true;
-            this.lblLoggedUser.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold);
-            this.lblLoggedUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblLoggedUser.Location = new System.Drawing.Point(17, 20);
+            this.lblLoggedUser.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoggedUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
+            this.lblLoggedUser.Location = new System.Drawing.Point(17, 15);
             this.lblLoggedUser.Name = "lblLoggedUser";
-            this.lblLoggedUser.Size = new System.Drawing.Size(60, 20);
+            this.lblLoggedUser.Size = new System.Drawing.Size(70, 25);
             this.lblLoggedUser.TabIndex = 49;
             this.lblLoggedUser.Text = "label1";
             // 
             // BtnCart
             // 
-            this.BtnCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(42)))), ((int)(((byte)(192)))));
-            this.BtnCart.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Manage_Cart;
+            this.BtnCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.BtnCart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnCart.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCart.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCart.ForeColor = System.Drawing.Color.White;
+            this.BtnCart.Image = global::FinalEDPOrderingSystem.Properties.Resources.FINALCARTCARTBTN;
             this.BtnCart.Location = new System.Drawing.Point(914, 10);
             this.BtnCart.Name = "BtnCart";
             this.BtnCart.Size = new System.Drawing.Size(202, 37);
             this.BtnCart.TabIndex = 6;
-            this.BtnCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCart.Text = "View/Manage Cart";
+            this.BtnCart.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnCart.UseVisualStyleBackColor = false;
             this.BtnCart.Click += new System.EventHandler(this.BtnCart_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::FinalEDPOrderingSystem.Properties.Resources.Search;
+            this.panel1.BackColor = System.Drawing.Color.Ivory;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel1.Controls.Add(this.lblSearch);
             this.panel1.Controls.Add(this.SearchBar);
@@ -116,8 +119,8 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.BackColor = System.Drawing.Color.Transparent;
             this.lblSearch.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_24;
+            this.lblSearch.ForeColor = System.Drawing.Color.Ivory;
+            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.FINALSEARCHBTN1;
             this.lblSearch.Location = new System.Drawing.Point(398, 8);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(30, 25);
@@ -127,20 +130,20 @@
             // 
             // SearchBar
             // 
-            this.SearchBar.BackColor = System.Drawing.Color.White;
+            this.SearchBar.BackColor = System.Drawing.Color.Ivory;
             this.SearchBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBar.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
-            this.SearchBar.Location = new System.Drawing.Point(20, 11);
+            this.SearchBar.Location = new System.Drawing.Point(8, 10);
             this.SearchBar.Name = "SearchBar";
-            this.SearchBar.Size = new System.Drawing.Size(372, 20);
+            this.SearchBar.Size = new System.Drawing.Size(386, 24);
             this.SearchBar.TabIndex = 46;
             // 
             // CustomerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.panelMain);

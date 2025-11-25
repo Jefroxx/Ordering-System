@@ -554,5 +554,17 @@
   <ItemGroup>
     <None Include="Resources\FINALSEARCHBTN.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ion_cart-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FINALCARTCARTBTN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FINALSEARCHBTN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FINALCART.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

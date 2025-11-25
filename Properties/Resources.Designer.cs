@@ -373,6 +373,26 @@ namespace FinalEDPOrderingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FINALCART {
+            get {
+                object obj = ResourceManager.GetObject("FINALCART", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FINALCARTCARTBTN {
+            get {
+                object obj = ResourceManager.GetObject("FINALCARTCARTBTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FinalHomepage__1_ {
             get {
                 object obj = ResourceManager.GetObject("FinalHomepage (1)", resourceCulture);
@@ -406,6 +426,16 @@ namespace FinalEDPOrderingSystem.Properties {
         internal static System.Drawing.Bitmap FINALSEARCHBTN {
             get {
                 object obj = ResourceManager.GetObject("FINALSEARCHBTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FINALSEARCHBTN1 {
+            get {
+                object obj = ResourceManager.GetObject("FINALSEARCHBTN1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -616,6 +646,16 @@ namespace FinalEDPOrderingSystem.Properties {
         internal static System.Drawing.Bitmap ic_round_logout {
             get {
                 object obj = ResourceManager.GetObject("ic_round-logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ion_cart_outline {
+            get {
+                object obj = ResourceManager.GetObject("ion_cart-outline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

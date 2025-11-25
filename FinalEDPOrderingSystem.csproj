@@ -551,5 +551,8 @@
   <ItemGroup>
     <None Include="Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FINALSEARCHBTN.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

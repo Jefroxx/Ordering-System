@@ -33,32 +33,32 @@
             this.formLabel = new System.Windows.Forms.Label();
             this.BtnPanels = new System.Windows.Forms.Panel();
             this.lbluserName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.BtnPanels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBar
             // 
-            this.SearchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.SearchBar.BackColor = System.Drawing.Color.Ivory;
             this.SearchBar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBar.Font = new System.Drawing.Font("Cambria", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(16)))), ((int)(((byte)(250)))));
-            this.SearchBar.Location = new System.Drawing.Point(958, 30);
+            this.SearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBar.ForeColor = System.Drawing.Color.Black;
+            this.SearchBar.Location = new System.Drawing.Point(958, 27);
             this.SearchBar.Name = "SearchBar";
-            this.SearchBar.Size = new System.Drawing.Size(306, 20);
+            this.SearchBar.Size = new System.Drawing.Size(306, 24);
             this.SearchBar.TabIndex = 38;
             // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
+            this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.Location = new System.Drawing.Point(258, 75);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1014, 574);
@@ -69,8 +69,8 @@
             this.formLabel.AutoSize = true;
             this.formLabel.BackColor = System.Drawing.Color.Transparent;
             this.formLabel.Font = new System.Drawing.Font("Cambria", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.formLabel.Location = new System.Drawing.Point(258, 29);
+            this.formLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(53)))), ((int)(((byte)(62)))));
+            this.formLabel.Location = new System.Drawing.Point(258, 24);
             this.formLabel.Name = "formLabel";
             this.formLabel.Size = new System.Drawing.Size(166, 41);
             this.formLabel.TabIndex = 40;
@@ -79,7 +79,7 @@
             // 
             // BtnPanels
             // 
-            this.BtnPanels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.BtnPanels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.BtnPanels.Controls.Add(this.lbluserName);
             this.BtnPanels.Controls.Add(this.pictureBox1);
             this.BtnPanels.Controls.Add(this.btnLogout);
@@ -105,6 +105,28 @@
             this.lbluserName.Text = "Username";
             this.lbluserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Ivory;
+            this.panel1.Location = new System.Drawing.Point(918, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(353, 39);
+            this.panel1.TabIndex = 45;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.Ivory;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.FINALSEARCHBTN;
+            this.lblSearch.Location = new System.Drawing.Point(925, 27);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(30, 25);
+            this.lblSearch.TabIndex = 44;
+            this.lblSearch.Text = "   ";
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FinalEDPOrderingSystem.Properties.Resources._4745974;
@@ -117,7 +139,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -136,7 +158,7 @@
             // 
             // btnTransactions
             // 
-            this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnTransactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTransactions.FlatAppearance.BorderSize = 0;
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -155,7 +177,7 @@
             // 
             // btnDashboard
             // 
-            this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -174,7 +196,7 @@
             // 
             // btnEmployees
             // 
-            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEmployees.FlatAppearance.BorderSize = 0;
             this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -193,7 +215,7 @@
             // 
             // btnProducts
             // 
-            this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(24)))), ((int)(((byte)(85)))));
+            this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnProducts.FlatAppearance.BorderSize = 0;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -210,33 +232,11 @@
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click_1);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.panel1.Location = new System.Drawing.Point(918, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 39);
-            this.panel1.TabIndex = 45;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.lblSearch.Image = global::FinalEDPOrderingSystem.Properties.Resources.Group_24;
-            this.lblSearch.Location = new System.Drawing.Point(925, 27);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(30, 25);
-            this.lblSearch.TabIndex = 44;
-            this.lblSearch.Text = "   ";
-            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
-            // 
             // AdminMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.formLabel);

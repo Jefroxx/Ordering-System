@@ -142,11 +142,11 @@ namespace FinalEDPOrderingSystem
             this.birthdayPicker.CalendarTitleBackColor = System.Drawing.Color.Ivory;
             this.birthdayPicker.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.birthdayPicker.CalendarTrailingForeColor = System.Drawing.Color.Black;
-            this.birthdayPicker.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.birthdayPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.birthdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthdayPicker.Location = new System.Drawing.Point(431, 157);
             this.birthdayPicker.Name = "birthdayPicker";
-            this.birthdayPicker.Size = new System.Drawing.Size(502, 33);
+            this.birthdayPicker.Size = new System.Drawing.Size(502, 31);
             this.birthdayPicker.TabIndex = 48;
             this.birthdayPicker.Value = new System.DateTime(2025, 11, 2, 16, 40, 20, 0);
             this.birthdayPicker.ValueChanged += new System.EventHandler(this.birthdayPicker_ValueChanged);
@@ -156,7 +156,7 @@ namespace FinalEDPOrderingSystem
             this.GenderComboBox.BackColor = System.Drawing.Color.Ivory;
             this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GenderComboBox.Font = new System.Drawing.Font("Sylfaen", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenderComboBox.ForeColor = System.Drawing.Color.Black;
             this.GenderComboBox.FormattingEnabled = true;
             this.GenderComboBox.Location = new System.Drawing.Point(648, 233);
@@ -311,7 +311,7 @@ namespace FinalEDPOrderingSystem
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Ivory;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(49, 88);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(348, 368);
@@ -321,7 +321,7 @@ namespace FinalEDPOrderingSystem
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
@@ -337,7 +337,7 @@ namespace FinalEDPOrderingSystem
             this.btnUploadImage.BackColor = System.Drawing.Color.Transparent;
             this.btnUploadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUploadImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadImage.ForeColor = System.Drawing.Color.Transparent;
+            this.btnUploadImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnUploadImage.Location = new System.Drawing.Point(149, 477);
             this.btnUploadImage.Name = "btnUploadImage";
             this.btnUploadImage.Size = new System.Drawing.Size(150, 37);
@@ -347,7 +347,7 @@ namespace FinalEDPOrderingSystem
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(97)))), ((int)(((byte)(172)))));
             this.btnAddEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployee.ForeColor = System.Drawing.Color.Transparent;

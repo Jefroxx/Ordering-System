@@ -16,7 +16,7 @@ namespace FinalEDPOrderingSystem
     {
         public event Action<CartProductCard> OnRemove; 
         public event Action OnQuantityChanged; 
-        public Products ProductData { get; private set; }
+        public Product ProductData { get; private set; }
         public event EventHandler QuantityChanged;
 
 

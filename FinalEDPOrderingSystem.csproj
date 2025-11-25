@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -167,12 +168,10 @@
     <Compile Include="Forms\Payment\PaymentMethodCashorCard.Designer.cs">
       <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
     </Compile>
-=======
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductCard.cs">
->>>>>>> parent of f2218bf (EHE)
-      <SubType>UserControl</SubType>
-    </Compile>
+
+    <!-- Added missing file -->
+    <Compile Include="Code\Photo&amp;DirectoryManager.cs" />
+
     <Compile Include="UI Components\ProductCard.Designer.cs">
       <DependentUpon>ProductCard.cs</DependentUpon>
     </Compile>
@@ -208,94 +207,6 @@
     </Compile>
     <Compile Include="Forms\Customer Side\ViewProductForm.Designer.cs">
       <DependentUpon>ViewProductForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Forms\Admin Side\Add_EditEmployees.resx">
-      <DependentUpon>Add_EditEmployees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin Side\Add_EditProductsForm.resx">
-      <DependentUpon>Add_EditProductsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin Side\AdminMainForm.resx">
-      <DependentUpon>AdminMainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI Components\CardPaymentControl.resx">
-      <DependentUpon>CardPaymentControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI Components\CartProductCard.resx">
-      <DependentUpon>CartProductCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Payment\CashlessPaymentForm.resx">
-      <DependentUpon>CashlessPaymentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Payment\CashPaymentForm.resx">
-      <DependentUpon>CashPaymentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\CategoryPage.resx">
-      <DependentUpon>CategoryPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer Side\CustomerMainForm.resx">
-      <DependentUpon>CustomerMainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\DashboardPage.resx">
-      <DependentUpon>DashboardPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\EmployeesPage.resx">
-      <DependentUpon>EmployeesPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\Homepage.resx">
-      <DependentUpon>Homepage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Payment\LandingPage.resx">
-      <DependentUpon>LandingPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Payment\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin Side\ManageStocksForm.resx">
-      <DependentUpon>ManageStocksForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Payment\PaymentMethodCashorCard.resx">
-      <DependentUpon>PaymentMethodCashorCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI Components\ProductCard.resx">
-      <DependentUpon>ProductCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\ProductsPage.resx">
-      <DependentUpon>ProductsPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="UI Components\QRPaymentControl.resx">
-      <DependentUpon>QRPaymentControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer Side\ShoppingCartPage.resx">
-      <DependentUpon>ShoppingCartPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Shared Pages\TransactionsPage.resx">
-      <DependentUpon>TransactionsPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer Side\ViewProductForm.resx">
-      <DependentUpon>ViewProductForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -532,26 +443,8 @@
   <ItemGroup>
     <None Include="Resources\Group 341.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 342.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 39 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Group 47.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BTn_Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cashless123123.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5eddb68e-d751-42a9-9154-a856d52e215b.jpg" />
-  </ItemGroup>
-=======
-  <ItemGroup />
->>>>>>> parent of f2218bf (EHE)
+	<ItemGroup>
+		<None Include="Resources\Group 342.png" />
+	</ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
